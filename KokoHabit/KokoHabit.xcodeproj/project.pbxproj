@@ -12,6 +12,7 @@
 		0F3132442237315E00B9B83A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132432237315E00B9B83A /* libsqlite3.tbd */; };
 		0F3132462237316600B9B83A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132452237316600B9B83A /* WebKit.framework */; };
 		0F31324822373D7000B9B83A /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31324722373D7000B9B83A /* DAO.swift */; };
+		0FC6DCD6223EEBA5008AF1D6 /* IOSProject.db in Resources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD5223EEBA5008AF1D6 /* IOSProject.db */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		0F3132432237315E00B9B83A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0F3132452237316600B9B83A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0F31324722373D7000B9B83A /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		0FC6DCD5223EEBA5008AF1D6 /* IOSProject.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = IOSProject.db; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BA0D5B222D771A00ADF50B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0FC6DCD4223EEB53008AF1D6 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				0FC6DCD5223EEBA5008AF1D6 /* IOSProject.db */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		63BA0D4D222D771A00ADF50B = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		63BA0D58222D771A00ADF50B /* KokoHabit */ = {
 			isa = PBXGroup;
 			children = (
+				0FC6DCD4223EEB53008AF1D6 /* Database */,
 				63BA0D65222D771C00ADF50B /* Info.plist */,
 				CB6C080622346C9600CF4D4B /* Classes */,
 				CB6C080822346CD500CF4D4B /* Images */,
@@ -183,6 +194,7 @@
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
 				63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */,
+				0FC6DCD6223EEBA5008AF1D6 /* IOSProject.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

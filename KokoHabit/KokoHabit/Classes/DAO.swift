@@ -13,7 +13,7 @@ class DAO: NSObject {
     
     override init() {
         super.init()
-        databasePath = databaseCheck.getDataBasePath(databaseName: "DatabaseName")
+        databasePath = databaseCheck.getDataBasePath(databaseName: "IOSProject.db")
     }
     
     public func addPerson() {

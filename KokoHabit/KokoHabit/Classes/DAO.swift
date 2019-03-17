@@ -43,5 +43,5 @@ class DAO: NSObject {
     public func viewHabits(email:String) {
         //Code
     }
-
+    
 }

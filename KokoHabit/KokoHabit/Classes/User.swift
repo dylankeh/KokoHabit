@@ -10,13 +10,15 @@ import UIKit
 
 class User: NSObject {
     
-    private var email : String
-    private var name : String
-    private var age : Int
-    private var password : String
+    private var id : Int!
+    private var email : String!
+    private var name : String!
+    private var age : Int!
+    private var password : String!
     private var occupation : String?
+    //private var uga : UGA!
     
-    init(email: String, name: String, age: Int, password: String, occupation: String) {
+    func initWithData(email: String, name: String, age: Int, password: String, occupation: String) {
         self.email = email
         self.name = name
         self.age = age
@@ -24,6 +26,18 @@ class User: NSObject {
         self.occupation = occupation
     }
     
+    // what is createUser class for??
+    func createUser()
+    {
+        
+    }
+    
+    
+    
+    func getId() -> Int
+    {
+        return id
+    }
     
     func getEmail() -> String
     {
@@ -48,5 +62,10 @@ class User: NSObject {
     func getOccupation() -> String
     {
         return occupation ?? ""
+    }
+    
+    func setOccupation(occu: String)
+    {
+        occupation = occu;
     }
 }

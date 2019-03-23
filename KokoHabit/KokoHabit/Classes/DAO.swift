@@ -17,6 +17,7 @@ class DAO: NSObject {
     override init() {
         super.init()
         databasePath = databaseCheck.getDataBasePath(databaseName: "IOSProject.db")
+        print(databasePath)
     }
     
     public func addPerson(email:NSString, name:NSString, age:Int32, password:NSString, occupation:NSString) {
@@ -35,7 +36,8 @@ class DAO: NSObject {
                     print("Successful insertion")
                 }
                 else {
-                    print("3")
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
                 }
             }
             else {
@@ -62,11 +64,11 @@ class DAO: NSObject {
                 
                 while sqlite3_step(sqlQuery) == SQLITE_ROW{
                     
-                    let cemail = sqlite3_column_text(sqlQuery, 1)
-                    let cname = sqlite3_column_text(sqlQuery, 2)
-                    let age: Int = Int(sqlite3_column_int(sqlQuery, 3))
-                    let cpassword = sqlite3_column_text(sqlQuery, 4)
-                    let coccupation = sqlite3_column_text(sqlQuery, 5)
+                    let cemail = sqlite3_column_text(sqlQuery, 0)
+                    let cname = sqlite3_column_text(sqlQuery, 1)
+                    let age: Int = Int(sqlite3_column_int(sqlQuery, 2))
+                    let cpassword = sqlite3_column_text(sqlQuery, 3)
+                    let coccupation = sqlite3_column_text(sqlQuery, 4)
                     
                     let name = String(cString: cname!)
                     let password = String(cString: cpassword!)

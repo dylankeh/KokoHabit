@@ -9,6 +9,9 @@
 import UIKit
 
 class LoginController: UIViewController {
+    
+    @IBOutlet var email:UITextField!
+    @IBOutlet var password:UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +19,18 @@ class LoginController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func login(sender:UIButton) {
+        let dao = DAO()
+        let user:User = dao.viewPerson(email: email!.text! as NSString)
+        
+        //Login to menu
+        if(password!.text == user.getPassword()) {
+            print("We in bitches");
+        }
+        // Alert Wrong password
+        else {
+            print("We out bitches");
+        }
     }
-    */
 
 }

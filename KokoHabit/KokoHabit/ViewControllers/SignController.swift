@@ -22,7 +22,8 @@ class SignController: UIViewController {
     
     @IBAction func createAccount(sender:UIButton) {
         let dao = DAO()
-        print(dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: "unKnown"))
+        let occupetion:NSString = "Unknown"
+        print(dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion))
     
         //Alert incase not inserted or error.. or alert to send them to the login page
     }

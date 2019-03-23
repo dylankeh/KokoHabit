@@ -9,6 +9,10 @@
 import UIKit
 
 class SignController: UIViewController {
+    
+    @IBOutlet var name: UITextField!
+    @IBOutlet var email: UITextField!
+    @IBOutlet var password: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +20,11 @@ class SignController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func createAccount(sender:UIButton) {
+        let dao = DAO()
+        dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString
+            , age: 0, password: password!.text! as NSString, occupation: "unknown" as NSString)
+    
+        //Alert incase not inserted or error.. or alert to send them to the login page
     }
-    */
-
 }

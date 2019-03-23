@@ -203,7 +203,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zzQ-HB-hoY" kind="unwind" unwindAction="unWindToHomeWithSender:" id="XNB-zr-7C1"/>
+                                    <action selector="createAccountWithSender:" destination="amR-4U-6GO" eventType="touchUpInside" id="iXL-rr-VYU"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-DZ-1cK">
@@ -224,6 +224,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QRh-9Q-ziB"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="HP1-bB-oRY" id="S8o-ze-tbA"/>
+                        <outlet property="name" destination="cu9-bh-Wv5" id="PMQ-OW-j9H"/>
+                        <outlet property="password" destination="pv9-DZ-1cK" id="fud-xA-N0j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDl-3H-I4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zzQ-HB-hoY" userLabel="Exit" sceneMemberID="exit"/>

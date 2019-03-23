@@ -34,16 +34,54 @@ class DAO: NSObject {
                 if sqlite3_step(sqlQuery) == SQLITE_DONE {
                     print("Successful insertion")
                 }
+                else {
+                    print("3")
+                }
             }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlQuery)
         }
+        sqlite3_close(db)
     }
     
-    public func deletePerson(email:String) {
+    public func deletePerson(email:NSString) {
         //Code
     }
     
-    public func viewPerson(email:String) {
-        //Code
+    public func viewPerson(email:NSString)->User{
+        let selectPerson = "SELECT * FROM user WHERE UPPER(email) = UPPER(?)"
+        let user: User = User.init()
+        
+        if validator(){
+            var sqlQuery: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, selectPerson, -1 , &sqlQuery, nil) == SQLITE_OK{
+                sqlite3_bind_text(sqlQuery, 1, email.utf8String, -1, nil)
+                
+                while sqlite3_step(sqlQuery) == SQLITE_ROW{
+                    
+                    let cemail = sqlite3_column_text(sqlQuery, 1)
+                    let cname = sqlite3_column_text(sqlQuery, 2)
+                    let age: Int = Int(sqlite3_column_int(sqlQuery, 3))
+                    let cpassword = sqlite3_column_text(sqlQuery, 4)
+                    let coccupation = sqlite3_column_text(sqlQuery, 5)
+                    
+                    let name = String(cString: cname!)
+                    let password = String(cString: cpassword!)
+                    let occupation = String(cString: coccupation!)
+                    let realemail = String(cString: cemail!)
+                    
+                   user.initWithData(email: realemail, name: name, age: age, password: password, occupation: occupation)
+                    
+                    print("Query Result")
+                }
+            }
+            sqlite3_finalize(sqlQuery)
+        }
+        sqlite3_close(db)
+        return user;
     }
     
     public func updatePerson(email:String) {

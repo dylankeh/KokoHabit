@@ -9,7 +9,6 @@ class DatabaseConnection: NSObject {
     
     private var docsDir : String?
     private var databasePath : String?
-    private var db : OpaquePointer? = nil
     
     //Initializing basic variables
     override init() {

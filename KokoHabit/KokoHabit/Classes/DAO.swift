@@ -78,6 +78,10 @@ class DAO: NSObject {
                     print("Query Result")
                 }
             }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("statement could not be prepared. \(errorMessage)")
+            }
             sqlite3_finalize(sqlQuery)
         }
         sqlite3_close(db)

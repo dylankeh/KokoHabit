@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-930.39999999999998" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-1174" y="-1791"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="B4D-kZ-99g">
@@ -131,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkF-xb-1l3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="134"/>
+            <point key="canvasLocation" x="-358" y="-1791"/>
         </scene>
         <!--Sign Controller-->
         <scene sceneID="C6H-7b-8hL">
@@ -240,7 +240,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDl-3H-I4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zzQ-HB-hoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-930" y="870"/>
+            <point key="canvasLocation" x="-1175" y="-997"/>
         </scene>
         <!--Add New Habit View Controller-->
         <scene sceneID="Yb9-k9-mSK">
@@ -322,7 +322,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqH-Kl-i2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Z8Y-8r-gBe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1472.8" y="150.67466266866569"/>
+            <point key="canvasLocation" x="1393" y="-1030"/>
         </scene>
         <!--Edit Habit View Controller-->
         <scene sceneID="AmO-pY-tF3">
@@ -404,69 +404,210 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4R-4F-Mu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8uS-xb-fNJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2196" y="147.97601199400302"/>
+            <point key="canvasLocation" x="2287" y="-1030"/>
         </scene>
-        <!--My Habits View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Coupons-->
+        <scene sceneID="Jva-q6-Ajp">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MyHabitsViewController" customModule="KokoHabit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="afU-NZ-itf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IM0-ab-fpm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JR5-t8-D9d">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTR-Ag-ClC">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.8781777024269104" green="0.46020978689193726" blue="0.45072364807128906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.88034796709999996" green="0.4633280635" blue="0.45058107380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="My habit" id="H9m-rq-lSS">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Ze0-Fu-k3t">
-                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <navigationItem title="My Coupons" id="T5a-9e-4PZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="Eap-pP-eXK"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tzJ-rX-8HP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Coupons" image="coupon.png" id="78L-PE-0s5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKt-Ml-LHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3241" y="-1446"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="bWj-bH-t5X">
+            <objects>
+                <viewController id="3j3-aK-eED" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GWm-Pi-NQk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3W8-n8-Icu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.88034796709999996" green="0.4633280635" blue="0.45058107380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="My Account" id="YVh-hv-2jJ">
+                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="wOu-fl-gJ2"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hwA-PA-Mz9"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="user.png" id="eSE-Tr-87e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TFa-gz-hwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3241" y="-2112"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7eX-iJ-qBm">
+            <objects>
+                <tabBarController id="IZE-y5-uhF" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nya-E1-LwP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3j3-aK-eED" kind="relationship" relationship="viewControllers" id="deG-1b-Izb"/>
+                        <segue destination="afU-NZ-itf" kind="relationship" relationship="viewControllers" id="xlu-vf-cnx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVo-5C-B14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2286" y="-1791"/>
+        </scene>
+        <!--Progress-->
+        <scene sceneID="mOb-uI-7a9">
+            <objects>
+                <viewController id="tv8-Ri-CDo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oxN-BB-imI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vlv-Qc-ff7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Progress" image="chart.png" id="VeP-9Q-3S1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbU-03-duS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="-1030"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="rRK-VP-60I">
+            <objects>
+                <viewController id="AWY-Y5-lsY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XPg-W6-dx3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wfa-6W-JpW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar.png" id="5te-ZQ-a4j"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u3i-6u-PNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1393" y="-2613"/>
+        </scene>
+        <!--Habits-->
+        <scene sceneID="2ar-rd-mAq">
+            <objects>
+                <viewController id="xfa-Jz-DVD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hik-6t-zj6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUv-jb-WuU">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.88034796709999996" green="0.4633280635" blue="0.45058107380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="My Habits" id="7fr-28-FqB">
+                                        <barButtonItem key="leftBarButtonItem" title="User Account" image="user.png" id="VMu-rk-s4y">
+                                            <connections>
+                                                <segue destination="IZE-y5-uhF" kind="presentation" id="ZUj-ou-R8n"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Points" id="LUx-hk-AAg">
-                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Add Habit" image="plus.png" id="Ykm-2C-V7m">
+                                            <connections>
+                                                <segue destination="uqs-6T-2uS" kind="presentation" id="SMD-fO-UbD"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i7D-9q-UJW">
-                                <rect key="frame" x="0.0" y="99" width="375" height="522"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJq-Kv-I6m">
-                                <rect key="frame" x="142" y="629" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Habit">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uqs-6T-2uS" kind="presentation" id="Giu-0o-J5u"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today point" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJy-dI-54g">
-                                <rect key="frame" x="16" y="70" width="101" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xlJ-05-oxS"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Habits" image="checkmark.png" id="beA-6d-Bbq"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Zm-Ct-Rlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="151"/>
+            <point key="canvasLocation" x="1393" y="-1791"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="noH-Hy-zfJ">
+            <objects>
+                <viewController id="rTr-ay-iUF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nUo-md-6ib">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7vc-W8-pTC"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="statistics.png" selectedImage="statistics.png" id="fZP-GH-NG3"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvn-ib-hEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1393" y="-3423"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="eBh-mf-Pv3">
+            <objects>
+                <tabBarController id="gCB-xp-LR3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QtH-qn-scN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.88034796714782715" green="0.46332806348800659" blue="0.45058107376098633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xfa-Jz-DVD" kind="relationship" relationship="viewControllers" id="agI-Hm-60C"/>
+                        <segue destination="tv8-Ri-CDo" kind="relationship" relationship="viewControllers" id="JY4-Si-zWm"/>
+                        <segue destination="AWY-Y5-lsY" kind="relationship" relationship="viewControllers" id="e0z-sp-tac"/>
+                        <segue destination="rTr-ay-iUF" kind="relationship" relationship="viewControllers" id="ydd-d0-A7X"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGK-e8-NJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="-1791"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar.png" width="30" height="30"/>
+        <image name="chart.png" width="30" height="30"/>
+        <image name="checkmark.png" width="30" height="30"/>
+        <image name="coupon.png" width="30" height="30"/>
+        <image name="plus.png" width="30" height="30"/>
+        <image name="statistics.png" width="30" height="30"/>
+        <image name="user.png" width="30" height="30"/>
+    </resources>
 </document>

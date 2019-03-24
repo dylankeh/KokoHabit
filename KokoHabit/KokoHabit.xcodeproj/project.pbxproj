@@ -16,6 +16,13 @@
 		0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD7223EFD45008AF1D6 /* MainController.swift */; };
 		0FC6DCDA223EFD63008AF1D6 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */; };
 		0FC6DCDC223EFD7A008AF1D6 /* SignController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */; };
+		6313E8202246F77300048E4F /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E81B2246F77200048E4F /* checkmark.png */; };
+		6313E8212246F77300048E4F /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E81C2246F77200048E4F /* calendar.png */; };
+		6313E8222246F77300048E4F /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E81D2246F77200048E4F /* chart.png */; };
+		6313E8232246F77300048E4F /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E81E2246F77300048E4F /* statistics.png */; };
+		6313E8372246FFE800048E4F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E8362246FFE800048E4F /* user.png */; };
+		6313E83B2247021A00048E4F /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E83A2247021900048E4F /* coupon.png */; };
+		6313E83D2247022E00048E4F /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E83C2247022E00048E4F /* plus.png */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
@@ -39,6 +46,13 @@
 		0FC6DCD7223EFD45008AF1D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignController.swift; sourceTree = "<group>"; };
+		6313E81B2246F77200048E4F /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
+		6313E81C2246F77200048E4F /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		6313E81D2246F77200048E4F /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart.png; sourceTree = "<group>"; };
+		6313E81E2246F77300048E4F /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
+		6313E8362246FFE800048E4F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		6313E83A2247021900048E4F /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
+		6313E83C2247022E00048E4F /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BA0D5B222D771A00ADF50B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +160,13 @@
 		CB6C080822346CD500CF4D4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6313E83C2247022E00048E4F /* plus.png */,
+				6313E83A2247021900048E4F /* coupon.png */,
+				6313E8362246FFE800048E4F /* user.png */,
+				6313E81C2246F77200048E4F /* calendar.png */,
+				6313E81B2246F77200048E4F /* checkmark.png */,
+				6313E81D2246F77200048E4F /* chart.png */,
+				6313E81E2246F77300048E4F /* statistics.png */,
 				63BA0D60222D771C00ADF50B /* Assets.xcassets */,
 			);
 			path = Images;
@@ -218,10 +239,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6313E8212246F77300048E4F /* calendar.png in Resources */,
+				6313E8222246F77300048E4F /* chart.png in Resources */,
+				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
 				63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */,
+				6313E8372246FFE800048E4F /* user.png in Resources */,
 				0F60634A2246B6BA0067AE5C /* IOSProject.db in Resources */,
+				6313E83D2247022E00048E4F /* plus.png in Resources */,
+				6313E8202246F77300048E4F /* checkmark.png in Resources */,
+				6313E8232246F77300048E4F /* statistics.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

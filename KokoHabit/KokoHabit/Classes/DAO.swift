@@ -17,7 +17,6 @@ class DAO: NSObject {
     override init() {
         super.init()
         databasePath = databaseCheck.getDataBasePath(databaseName: "IOSProject.db")
-        print(databasePath)
     }
     
     public func addPerson(email:NSString, name:NSString, age:Int32, password:NSString, occupation:NSString) {

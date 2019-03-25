@@ -25,7 +25,9 @@ class LoginController: UIViewController {
         
         //Login to menu
         if(password!.text == user.getPassword()) {
-            print("We in bitches");
+            
+            self.performSegue(withIdentifier: "mainMenu", sender : nil)
+            
         }
         // Alert Wrong password
         else {

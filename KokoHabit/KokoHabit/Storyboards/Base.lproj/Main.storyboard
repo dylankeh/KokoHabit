@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-839" y="-2516"/>
+            <point key="canvasLocation" x="-1174" y="-1791"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="B4D-kZ-99g">
@@ -79,6 +79,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KoKo Habit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebB-Qi-Cjo">
+                                <rect key="frame" x="84" y="76" width="206" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="30"/>
+                                <color key="textColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PASSWORD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jni-Ex-Sgt">
                                 <rect key="frame" x="84" y="295" width="206" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,10 +120,6 @@
                                     <action selector="loginWithSender:" destination="lTd-65-z1O" eventType="touchUpInside" id="NfB-Rg-KEU"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kokohabits logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="XzT-mx-7Bi">
-                                <rect key="frame" x="67" y="54" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CQk-FQ-ygD"/>
@@ -129,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkF-xb-1l3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-2515"/>
+            <point key="canvasLocation" x="-378" y="-1791"/>
         </scene>
         <!--Sign Controller-->
         <scene sceneID="C6H-7b-8hL">
@@ -230,17 +233,15 @@
                         <viewLayoutGuide key="safeArea" id="QRh-9Q-ziB"/>
                     </view>
                     <connections>
-                        <outlet property="confirmPassword" destination="P2w-bZ-VEK" id="HQ9-4x-bJf"/>
                         <outlet property="email" destination="HP1-bB-oRY" id="S8o-ze-tbA"/>
                         <outlet property="name" destination="cu9-bh-Wv5" id="PMQ-OW-j9H"/>
                         <outlet property="password" destination="pv9-DZ-1cK" id="fud-xA-N0j"/>
-                        <segue destination="O6f-Zd-RLE" kind="presentation" identifier="loginPage" id="Den-Qc-ZMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDl-3H-I4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zzQ-HB-hoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-839" y="-1791"/>
+            <point key="canvasLocation" x="-1175" y="-997"/>
         </scene>
         <!--Add New Habit View Controller-->
         <scene sceneID="Yb9-k9-mSK">
@@ -424,7 +425,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="My Coupons" id="T5a-9e-4PZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="Eap-pP-eXK"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="Eap-pP-eXK">
+                                            <connections>
+                                                <segue destination="aft-D2-gef" kind="unwind" unwindAction="unwindToMyHabitsVCWithSender:" id="fwq-Tg-MEY"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -435,6 +440,7 @@
                     <tabBarItem key="tabBarItem" title="Coupons" image="coupon.png" id="78L-PE-0s5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKt-Ml-LHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aft-D2-gef" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3241" y="-1446"/>
         </scene>
@@ -456,7 +462,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="My Account" id="YVh-hv-2jJ">
-                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="wOu-fl-gJ2"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Habits" id="wOu-fl-gJ2">
+                                            <connections>
+                                                <segue destination="nEB-LD-4Fv" kind="unwind" unwindAction="unwindToMyHabitsVCWithSender:" id="uQW-Ny-lAe"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -467,6 +477,7 @@
                     <tabBarItem key="tabBarItem" title="Account" image="user.png" id="eSE-Tr-87e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFa-gz-hwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nEB-LD-4Fv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3241" y="-2112"/>
         </scene>
@@ -525,7 +536,7 @@
         <!--Habits-->
         <scene sceneID="2ar-rd-mAq">
             <objects>
-                <viewController id="xfa-Jz-DVD" customClass="MainController" customModule="KokoHabit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xfa-Jz-DVD" customClass="MyHabitsViewController" customModule="KokoHabit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hik-6t-zj6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -553,6 +564,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="69O-4x-ZhA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xlJ-05-oxS"/>
@@ -607,12 +623,11 @@
         <image name="chart.png" width="24" height="24"/>
         <image name="checkmark.png" width="22.5" height="22.5"/>
         <image name="coupon.png" width="24" height="24"/>
-        <image name="kokohabits logo.png" width="2250" height="450"/>
         <image name="plus.png" width="22.5" height="22.5"/>
         <image name="statistics.png" width="22.5" height="22.5"/>
         <image name="user.png" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RPI-2G-YA9"/>
+        <segue reference="agI-Hm-60C"/>
     </inferredMetricsTieBreakers>
 </document>

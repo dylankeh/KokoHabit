@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1174" y="-1791"/>
+            <point key="canvasLocation" x="-839" y="-2516"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="B4D-kZ-99g">
@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkF-xb-1l3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-378" y="-1791"/>
+            <point key="canvasLocation" x="134" y="-2515"/>
         </scene>
         <!--Sign Controller-->
         <scene sceneID="C6H-7b-8hL">
@@ -233,15 +233,17 @@
                         <viewLayoutGuide key="safeArea" id="QRh-9Q-ziB"/>
                     </view>
                     <connections>
+                        <outlet property="confirmPassword" destination="P2w-bZ-VEK" id="HQ9-4x-bJf"/>
                         <outlet property="email" destination="HP1-bB-oRY" id="S8o-ze-tbA"/>
                         <outlet property="name" destination="cu9-bh-Wv5" id="PMQ-OW-j9H"/>
                         <outlet property="password" destination="pv9-DZ-1cK" id="fud-xA-N0j"/>
+                        <segue destination="O6f-Zd-RLE" kind="presentation" identifier="loginPage" id="Den-Qc-ZMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDl-3H-I4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zzQ-HB-hoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1175" y="-997"/>
+            <point key="canvasLocation" x="-839" y="-1791"/>
         </scene>
         <!--Add New Habit View Controller-->
         <scene sceneID="Yb9-k9-mSK">

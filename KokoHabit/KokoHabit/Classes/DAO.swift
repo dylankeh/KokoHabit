@@ -78,6 +78,7 @@ class DAO: NSObject {
                     
                     print("Query Result")
                 }
+                print(databasePath)
             }
             else {
                 let errorMessage = String.init(cString: sqlite3_errmsg(db))

@@ -13,6 +13,7 @@ class SignController: UIViewController {
     @IBOutlet var name: UITextField!
     @IBOutlet var email: UITextField!
     @IBOutlet var password: UITextField!
+    @IBOutlet var confirmPassword: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,12 @@ class SignController: UIViewController {
     @IBAction func createAccount(sender:UIButton) {
         let dao = DAO()
         let occupetion:NSString = "Unknown"
-        print(dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion))
+        
+        if (password.text! == confirmPassword.text! && password.text! != "") {
+            print(dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion))
+            
+            self.performSegue(withIdentifier: "loginPage", sender : nil)
+        }
     
         //Alert incase not inserted or error.. or alert to send them to the login page
     }

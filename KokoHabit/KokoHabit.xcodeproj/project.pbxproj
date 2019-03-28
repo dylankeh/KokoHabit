@@ -31,6 +31,7 @@
 		63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D62222D771C00ADF50B /* LaunchScreen.storyboard */; };
 		CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0957223EDADD00BF2B6C /* Habit.swift */; };
 		CB2E095A223EE72400BF2B6C /* MyHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */; };
+		CB4CC820224D799900D5FF94 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CC81F224D799900D5FF94 /* HabitCell.swift */; };
 		D03F9A1E22411B93006FB156 /* PointSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A1D22411B93006FB156 /* PointSystem.swift */; };
 		D03F9A2022413B2F006FB156 /* AddNewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */; };
 		D03F9A2222413B47006FB156 /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A2122413B47006FB156 /* EditHabitViewController.swift */; };
@@ -64,6 +65,7 @@
 		63BA0D65222D771C00ADF50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB2E0957223EDADD00BF2B6C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsViewController.swift; sourceTree = "<group>"; };
+		CB4CC81F224D799900D5FF94 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		D03F9A1D22411B93006FB156 /* PointSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointSystem.swift; sourceTree = "<group>"; };
 		D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitViewController.swift; sourceTree = "<group>"; };
 		D03F9A2122413B47006FB156 /* EditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				D080B22A223ECB4700852BF6 /* User.swift */,
 				D03F9A1D22411B93006FB156 /* PointSystem.swift */,
 				CB2E0957223EDADD00BF2B6C /* Habit.swift */,
+				CB4CC81F224D799900D5FF94 /* HabitCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */,
 				0F31324822373D7000B9B83A /* DAO.swift in Sources */,
 				0FC6DCDC223EFD7A008AF1D6 /* SignController.swift in Sources */,
+				CB4CC820224D799900D5FF94 /* HabitCell.swift in Sources */,
 				CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */,
 				63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */,
 				0FC6DCDA223EFD63008AF1D6 /* LoginController.swift in Sources */,

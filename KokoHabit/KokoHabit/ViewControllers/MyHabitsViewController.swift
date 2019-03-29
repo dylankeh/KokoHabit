@@ -24,7 +24,16 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete", handler: {
+            action, index in print("Favourite button tapped")
+        })
+        delete.backgroundColor = #colorLiteral(red: 0.7766154408, green: 0.2747580707, blue: 0.221539259, alpha: 1)
+        
+        return [delete]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

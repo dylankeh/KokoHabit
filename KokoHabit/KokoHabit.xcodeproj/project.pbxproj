@@ -12,7 +12,7 @@
 		0F3132442237315E00B9B83A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132432237315E00B9B83A /* libsqlite3.tbd */; };
 		0F3132462237316600B9B83A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132452237316600B9B83A /* WebKit.framework */; };
 		0F31324822373D7000B9B83A /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31324722373D7000B9B83A /* DAO.swift */; };
-		0F60634A2246B6BA0067AE5C /* IOSProject.db in Resources */ = {isa = PBXBuildFile; fileRef = 0F6063492246B6BA0067AE5C /* IOSProject.db */; };
+		0F6DEB72224E717A007AAE59 /* DatabaseIOS.db in Resources */ = {isa = PBXBuildFile; fileRef = 0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */; };
 		0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD7223EFD45008AF1D6 /* MainController.swift */; };
 		0FC6DCDA223EFD63008AF1D6 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */; };
 		0FC6DCDC223EFD7A008AF1D6 /* SignController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */; };
@@ -43,7 +43,7 @@
 		0F3132432237315E00B9B83A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0F3132452237316600B9B83A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0F31324722373D7000B9B83A /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
-		0F6063492246B6BA0067AE5C /* IOSProject.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = IOSProject.db; sourceTree = "<group>"; };
+		0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DatabaseIOS.db; sourceTree = "<group>"; };
 		0FC6DCD7223EFD45008AF1D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		0FC6DCD4223EEB53008AF1D6 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				0F6063492246B6BA0067AE5C /* IOSProject.db */,
+				0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -243,13 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6313E8212246F77300048E4F /* calendar.png in Resources */,
+				0F6DEB72224E717A007AAE59 /* DatabaseIOS.db in Resources */,
 				6313E8222246F77300048E4F /* chart.png in Resources */,
 				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
 				63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */,
 				6313E8372246FFE800048E4F /* user.png in Resources */,
-				0F60634A2246B6BA0067AE5C /* IOSProject.db in Resources */,
 				6313E83D2247022E00048E4F /* plus.png in Resources */,
 				6313E8202246F77300048E4F /* checkmark.png in Resources */,
 				631ADD74224E5F2E002FC6A3 /* kokohabits logo.png in Resources */,

@@ -25,6 +25,11 @@ class LoginController: UIViewController {
         
         //Login to menu
         if(password!.text == user.getPassword()) {
+            print("We in bitches");
+            
+            //Phoenix: store user info in AppDelegate for future use
+            let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+            mainDelegate.user = user
             
             self.performSegue(withIdentifier: "mainMenu", sender : nil)
             

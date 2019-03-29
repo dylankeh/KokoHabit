@@ -97,8 +97,33 @@ class DAO: NSObject {
         //Code
     }
     
-    public func addHabit() {
-        //Code
+    // Phoenix added
+    public func addHabit(userEmail: NSString, habitName: NSString, habitPoint: Int32) {
+        let addHabit = "INSERT INTO habit (userEmail, habitName, habitPoint) VALUES (?,?,?)"
+        
+        if validator(){
+            var sqlQuery: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, addHabit, -1 , &sqlQuery, nil) == SQLITE_OK{
+                
+                sqlite3_bind_text(sqlQuery, 1, userEmail.utf8String, -1, nil)
+                sqlite3_bind_text(sqlQuery, 2, habitName.utf8String, -1, nil)
+                sqlite3_bind_int(sqlQuery, 3, habitPoint)
+                
+                if sqlite3_step(sqlQuery) == SQLITE_DONE {
+                    print("Successful insertion habit")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlQuery)
+        }
+        sqlite3_close(db)
     }
     
     public func deleteHabit(email:String) {

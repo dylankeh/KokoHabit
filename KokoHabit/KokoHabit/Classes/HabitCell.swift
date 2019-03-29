@@ -10,6 +10,13 @@ import UIKit
 
 class HabitCell: UITableViewCell {
 
+    @IBOutlet weak var lblHabitName: UILabel!
+    
+    func setHabit(habit: Habit) {
+        print(habit)
+        lblHabitName.text = habit.getHabitName()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

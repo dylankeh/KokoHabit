@@ -30,4 +30,16 @@ class Habit: NSObject {
     func getCompletion() -> Bool {
         return completion
     }
+    
+    func setHabitName(habitName: String) {
+        self.habitName = habitName
+    }
+    
+    func setHabitValue(habitValue: Int) {
+        self.habitValue = habitValue
+    }
+    
+    func setCompletion(completion: Bool) {
+        self.completion = completion
+    }
 }

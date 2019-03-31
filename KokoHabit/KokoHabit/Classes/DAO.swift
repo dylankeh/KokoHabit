@@ -12,11 +12,14 @@ class DAO: NSObject {
     private var databasePath: String?
     private var db: OpaquePointer? = nil
     
+    let dateFormatter = DateFormatter()
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     override init() {
         super.init()
-        databasePath = "Database/DatabaseIOS.db"//databaseCheck.getDataBasePath(databaseName: "DatabaseIOS.db")
+        databasePath = "Database/KokoHabitDB.db"//databaseCheck.getDataBasePath(databaseName: "DatabaseIOS.db")
+        dateFormatter.dateFormat = "YYYY-MM-dd"
     }
     
     public func addPerson(email:NSString, name:NSString, age:Int32, password:NSString, occupation:NSString) {
@@ -102,8 +105,49 @@ class DAO: NSObject {
         //Code
     }
     
-    public func viewHabits(email:String) {
-        //Code
+    public func getHabits(date:Date) {
+        delegate.habits.removeAll();
+        
+        var db: OpaquePointer? = nil
+        
+        if validator() {
+            print("Successfully opened connection to database at \(self.databasePath)")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = ? AND h.email = ?;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: date) as NSString
+                sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 2, email.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let id: Int = Int(sqlite3_column_int(queryStatement, 0))
+                    let cname = sqlite3_column_text(queryStatement, 1)
+                    let habitValue: Int = Int(sqlite3_column_int(queryStatement, 2))
+                    let completion: Bool = (sqlite3_column_int(queryStatement, 3) == 0) ? false : true
+                    
+                    let name = String(cString: cname!)
+                    
+                    let data: Habit = Habit.init(habitId: id, habitName: name, habitValue: habitValue, completion: completion)
+                    delegate.habits.append(data)
+                    
+                    print("Query result")
+                    print("\(id) | \(name) | \(habitValue) | \(completion)")
+                }
+                print("finished selecting")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
     }
     
     private func validator()->Bool {

@@ -11,7 +11,7 @@ import UIKit
 class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var testHabit = Habit(habitName: "Eat an apple", habitValue: 40, completion: false)
+    var testHabit = Habit(habitId: 0, habitName: "Eat an apple", habitValue: 40, completion: false)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

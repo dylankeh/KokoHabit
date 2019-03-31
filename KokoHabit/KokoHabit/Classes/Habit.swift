@@ -9,11 +9,13 @@
 import UIKit
 
 class Habit: NSObject {
+    private var habitId: Int
     private var habitName: String
     private var habitValue: Int
     private var completion: Bool
     
-    init(habitName: String, habitValue: Int, completion: Bool) {
+    init(habitId: Int, habitName: String, habitValue: Int, completion: Bool) {
+        self.habitId = habitId
         self.habitName = habitName
         self.habitValue = habitValue
         self.completion = completion

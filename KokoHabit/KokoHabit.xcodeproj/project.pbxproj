@@ -12,7 +12,6 @@
 		0F3132442237315E00B9B83A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132432237315E00B9B83A /* libsqlite3.tbd */; };
 		0F3132462237316600B9B83A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3132452237316600B9B83A /* WebKit.framework */; };
 		0F31324822373D7000B9B83A /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31324722373D7000B9B83A /* DAO.swift */; };
-		0F6DEB72224E717A007AAE59 /* DatabaseIOS.db in Resources */ = {isa = PBXBuildFile; fileRef = 0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */; };
 		0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD7223EFD45008AF1D6 /* MainController.swift */; };
 		0FC6DCDA223EFD63008AF1D6 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */; };
 		0FC6DCDC223EFD7A008AF1D6 /* SignController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */; };
@@ -23,6 +22,7 @@
 		6313E8372246FFE800048E4F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E8362246FFE800048E4F /* user.png */; };
 		6313E83B2247021A00048E4F /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E83A2247021900048E4F /* coupon.png */; };
 		6313E83D2247022E00048E4F /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E83C2247022E00048E4F /* plus.png */; };
+		6316229C2250491800385F4E /* KokoHabitDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 6316229B2250491800385F4E /* KokoHabitDB.db */; };
 		631ADD74224E5F2E002FC6A3 /* kokohabits logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
@@ -44,7 +44,6 @@
 		0F3132432237315E00B9B83A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0F3132452237316600B9B83A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0F31324722373D7000B9B83A /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
-		0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DatabaseIOS.db; sourceTree = "<group>"; };
 		0FC6DCD7223EFD45008AF1D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0FC6DCD9223EFD63008AF1D6 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignController.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		6313E8362246FFE800048E4F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		6313E83A2247021900048E4F /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
 		6313E83C2247022E00048E4F /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		6316229B2250491800385F4E /* KokoHabitDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = KokoHabitDB.db; sourceTree = "<group>"; };
 		631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kokohabits logo.png"; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		0FC6DCD4223EEB53008AF1D6 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				0F6DEB71224E717A007AAE59 /* DatabaseIOS.db */,
+				6316229B2250491800385F4E /* KokoHabitDB.db */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -246,11 +246,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6313E8212246F77300048E4F /* calendar.png in Resources */,
-				0F6DEB72224E717A007AAE59 /* DatabaseIOS.db in Resources */,
 				6313E8222246F77300048E4F /* chart.png in Resources */,
 				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
+				6316229C2250491800385F4E /* KokoHabitDB.db in Resources */,
 				63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */,
 				6313E8372246FFE800048E4F /* user.png in Resources */,
 				6313E83D2247022E00048E4F /* plus.png in Resources */,

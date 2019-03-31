@@ -98,8 +98,8 @@ class DAO: NSObject {
     }
     
     // Phoenix added
-    public func addHabit(userEmail: NSString, habitName: NSString, habitPoint: Int32) {
-        let addHabit = "INSERT INTO habit (userEmail, habitName, habitPoint) VALUES (?,?,?)"
+    public func addHabit(userEmail: NSString, habitName: NSString, habitPoint: Int32, addedDate: NSString, status: Int32) {
+        let addHabit = "INSERT INTO habit (userEmail, habitName, habitPoint, addedDate, status) VALUES (?,?,?,?,?)"
         
         if validator(){
             var sqlQuery: OpaquePointer? = nil

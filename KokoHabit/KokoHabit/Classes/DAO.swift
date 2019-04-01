@@ -20,6 +20,7 @@ class DAO: NSObject {
         super.init()
         databasePath = databaseCheck.getDataBasePath(databaseName: "KokoHabitDB.db")
         dateFormatter.dateFormat = "YYYY-MM-dd"
+        print(databasePath)
     }
     
     public func addPerson(email:NSString, name:NSString, age:Int32, password:NSString, occupation:NSString) {

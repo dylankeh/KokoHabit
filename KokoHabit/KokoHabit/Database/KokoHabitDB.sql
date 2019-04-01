@@ -96,15 +96,7 @@ BEGIN
 	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 0 FROM day;
 END;
 
-
 INSERT INTO user VALUES ("koko","koko",22,"1234","Student");
-
-INSERT INTO habit VALUES (1, "koko", 20, "Eat healthy",1);
-INSERT INTO habit VALUES (2, "koko", 40, "Go to gym",1);
-INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
-INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
-INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
-INSERT INTO habit VALUES (6, "koko", 20, "Sleep Early",0);
 
 INSERT INTO coupon VALUES (NULL, "koko", 50);
 
@@ -114,15 +106,10 @@ INSERT INTO week VALUES ("2019-03-31","2019-04-06",0,60,0);
 INSERT INTO day VALUES ("2019-03-30","2019-03-24");
 INSERT INTO day VALUES ("2019-03-31","2019-03-31");
 
--- INSERT INTO week_habit VALUES ("2019-03-24", 1);
--- INSERT INTO week_habit VALUES ("2019-03-24", 2);
--- INSERT INTO week_habit VALUES ("2019-03-24", 3);
--- INSERT INTO week_habit VALUES ("2019-03-24", 4);
-
-INSERT INTO day VALUES ("2019-03-30", "2019-03-24");
-
--- INSERT INTO day_habit VALUES ("2019-03-30",1,20,1);
--- INSERT INTO day_habit VALUES ("2019-03-30",2,40,1);
--- INSERT INTO day_habit VALUES ("2019-03-30",3,10,1);
--- INSERT INTO day_habit VALUES ("2019-03-30",4,30,0);
+INSERT INTO habit VALUES (1, "koko", 20, "Eat healthy",1);
+INSERT INTO habit VALUES (2, "koko", 40, "Go to gym",1);
+INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
+INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
+INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
+INSERT INTO habit VALUES (6, "koko", 20, "Sleep Early",0);
 

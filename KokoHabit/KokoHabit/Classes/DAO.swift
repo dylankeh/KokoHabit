@@ -18,7 +18,7 @@ class DAO: NSObject {
     
     override init() {
         super.init()
-        databasePath = "Database/KokoHabitDB.db"//databaseCheck.getDataBasePath(databaseName: "DatabaseIOS.db")
+        databasePath = databaseCheck.getDataBasePath(databaseName: "KokoHabitDB.db")
         dateFormatter.dateFormat = "YYYY-MM-dd"
     }
     
@@ -81,7 +81,7 @@ class DAO: NSObject {
                     
                     print("Query Result")
                 }
-                print(databasePath)
+                print(databasePath!)
             }
             else {
                 let errorMessage = String.init(cString: sqlite3_errmsg(db))
@@ -108,10 +108,10 @@ class DAO: NSObject {
     public func getHabits(date:Date) {
         delegate.habits.removeAll();
         
-        var db: OpaquePointer? = nil
+        db = nil
         
         if validator() {
-            print("Successfully opened connection to database at \(self.databasePath)")
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
             let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = ? AND h.email = ?;"
@@ -122,7 +122,7 @@ class DAO: NSObject {
                 sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
                 
                 let emailStr = delegate.user.getEmail() as NSString
-                sqlite3_bind_text(queryStatement, 2, email.utf8String, -1, nil)
+                sqlite3_bind_text(queryStatement, 2, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     

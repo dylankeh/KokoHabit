@@ -88,6 +88,14 @@ BEGIN
     INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 0 FROM day;
 END;
 
+-- add habit to week_habit and day_habit if it is updated to active
+CREATE TRIGGER set_habit_to_active
+    AFTER UPDATE ON habit WHEN NEW.active=1
+BEGIN
+    INSERT INTO week_habit SELECT MAX(weekStartDate), OLD.id FROM week;
+	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 0 FROM day;
+END;
+
 
 INSERT INTO user VALUES ("koko","koko",22,"1234","Student");
 
@@ -96,6 +104,7 @@ INSERT INTO habit VALUES (2, "koko", 40, "Go to gym",1);
 INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
 INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
 INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
+INSERT INTO habit VALUES (6, "koko", 20, "Sleep Early",0);
 
 INSERT INTO coupon VALUES (NULL, "koko", 50);
 

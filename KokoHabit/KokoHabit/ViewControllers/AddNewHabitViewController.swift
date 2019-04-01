@@ -10,6 +10,19 @@ import UIKit
 
 class AddNewHabitViewController: UIViewController {
 
+    @IBOutlet var habitName: UITextField!
+    @IBOutlet var habitPoint: UITextField!
+    
+    
+    @IBAction func createAccount(sender:UIButton) {
+        let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+        let dao = DAO()
+        
+        print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
+        
+        //Alert incase not inserted or error.. or alert to send them to the login page
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -16,6 +16,14 @@ class EditHabitViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func createHabit(sender:UIButton) {
+        //let dao = DAO()
+        
+     
+        
+        //Alert incase not inserted or error.. or alert to send them to the login page
+    }
+    
 
     /*
     // MARK: - Navigation

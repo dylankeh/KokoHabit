@@ -18,7 +18,7 @@ class AddNewHabitViewController: UIViewController {
         let mainDelegate = UIApplication.shared.delegate as! AppDelegate
         let dao = DAO()
         
-        print(dao.addHabit(userEmail: mainDelegate.user.getEmail() as NSString, habitName:habitName.text! as NSString, habitPoint: Int32(habitPoint.text!)!))
+        print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
         
         //Alert incase not inserted or error.. or alert to send them to the login page
     }

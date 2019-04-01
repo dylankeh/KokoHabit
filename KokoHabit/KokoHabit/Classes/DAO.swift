@@ -98,16 +98,16 @@ class DAO: NSObject {
     }
     
     // Phoenix added
-    public func addHabit(id: Int32, habitName: NSString, habitPoint: Int32, addedDate: NSString, status: Int32) {
-        let addHabit = "INSERT INTO habit (id, email, pointValue, name) VALUES (NULL,?,?,?)"
+    public func addHabit(email: NSString, pointValue: Int32, name: NSString) {
+        let addHabit = "INSERT INTO habit (email, pointValue, name) VALUES (?,?,?)"
         
         if validator(){
             var sqlQuery: OpaquePointer? = nil
             if sqlite3_prepare_v2(db, addHabit, -1 , &sqlQuery, nil) == SQLITE_OK{
                 
-                sqlite3_bind_text(sqlQuery, 1, userEmail.utf8String, -1, nil)
-                sqlite3_bind_text(sqlQuery, 2, habitName.utf8String, -1, nil)
-                sqlite3_bind_int(sqlQuery, 3, habitPoint)
+                sqlite3_bind_text(sqlQuery, 1, email.utf8String, -1, nil)
+                sqlite3_bind_int(sqlQuery, 2, pointValue)
+                sqlite3_bind_text(sqlQuery, 3, name.utf8String, -1, nil)
                 
                 if sqlite3_step(sqlQuery) == SQLITE_DONE {
                     print("Successful insertion habit")

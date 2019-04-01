@@ -82,7 +82,7 @@ END;
 
 -- automatically insert into day_habit and week_habit table when new habit is added
 CREATE TRIGGER add_habit_to_dayweek_habit
-    AFTER INSERT ON habit
+    AFTER INSERT ON habit WHEN NEW.active=1
 BEGIN
     INSERT INTO week_habit SELECT MAX(weekStartDate), NEW.id FROM week;
     INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 0 FROM day;
@@ -111,5 +111,5 @@ INSERT INTO habit VALUES (2, "koko", 40, "Go to gym",1);
 INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
 INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
 INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
-INSERT INTO habit VALUES (6, "koko", 20, "Sleep Early",0);
+INSERT INTO habit VALUES (6, "koko", 20, "Stop Smoking",0);
 

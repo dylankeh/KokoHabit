@@ -75,10 +75,13 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // Phoenix: pass two values to Edit habit page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let editHabitController = segue.destination as! EditHabitViewController
-        //print("name is :\(selectedHabitName ?? "null")")
-        editHabitController.oldName = selectedHabitName
-        editHabitController.oldPoint = selectedHabitPoint
+        if segue.identifier == "goToEditHabitPage"
+        {
+            let editHabitController = segue.destination as! EditHabitViewController
+            //print("name is :\(selectedHabitName ?? "null")")
+            editHabitController.oldName = selectedHabitName
+            editHabitController.oldPoint = selectedHabitPoint
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

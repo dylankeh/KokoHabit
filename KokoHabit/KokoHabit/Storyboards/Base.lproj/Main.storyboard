@@ -127,7 +127,7 @@
                     <connections>
                         <outlet property="email" destination="j9c-2j-Ah0" id="0wK-Rm-MAq"/>
                         <outlet property="password" destination="hhJ-AX-T2a" id="Jx0-dz-OZn"/>
-                        <segue destination="xfa-Jz-DVD" kind="presentation" identifier="mainMenu" id="RPI-2G-YA9"/>
+                        <segue destination="gCB-xp-LR3" kind="presentation" identifier="mainMenu" id="meM-RL-zeP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkF-xb-1l3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -681,7 +681,4 @@
         <image name="statistics.png" width="22.5" height="22.5"/>
         <image name="user.png" width="22.5" height="22.5"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="RPI-2G-YA9"/>
-    </inferredMetricsTieBreakers>
 </document>

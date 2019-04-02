@@ -499,6 +499,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.88034796709999996" green="0.4633280635" blue="0.45058107380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.83752375840000004" green="0.37732699510000001" blue="0.3015639484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="3j3-aK-eED" kind="relationship" relationship="viewControllers" id="deG-1b-Izb"/>
@@ -659,6 +660,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.88034796714782715" green="0.46332806348800659" blue="0.45058107376098633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.83752375840000004" green="0.37732699510000001" blue="0.3015639484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="xfa-Jz-DVD" kind="relationship" relationship="viewControllers" id="agI-Hm-60C"/>

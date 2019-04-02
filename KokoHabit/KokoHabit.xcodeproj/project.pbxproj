@@ -25,6 +25,7 @@
 		6316229C2250491800385F4E /* KokoHabitDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 6316229B2250491800385F4E /* KokoHabitDB.db */; };
 		631ADD74224E5F2E002FC6A3 /* kokohabits logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */; };
 		6388C4B72253CFCD0007CD62 /* kokohabits logo alternate.png in Resources */ = {isa = PBXBuildFile; fileRef = 6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */; };
+		6388C4B92253D2250007CD62 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388C4B82253D2250007CD62 /* Coupon.swift */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		6316229B2250491800385F4E /* KokoHabitDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = KokoHabitDB.db; sourceTree = "<group>"; };
 		631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kokohabits logo.png"; sourceTree = "<group>"; };
 		6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kokohabits logo alternate.png"; sourceTree = "<group>"; };
+		6388C4B82253D2250007CD62 /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BA0D5B222D771A00ADF50B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				D03F9A1D22411B93006FB156 /* PointSystem.swift */,
 				CB2E0957223EDADD00BF2B6C /* Habit.swift */,
 				CB4CC81F224D799900D5FF94 /* HabitCell.swift */,
+				6388C4B82253D2250007CD62 /* Coupon.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6388C4B92253D2250007CD62 /* Coupon.swift in Sources */,
 				D03F9A2022413B2F006FB156 /* AddNewHabitViewController.swift in Sources */,
 				0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */,
 				0F31324822373D7000B9B83A /* DAO.swift in Sources */,

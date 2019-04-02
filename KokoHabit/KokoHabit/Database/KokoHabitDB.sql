@@ -18,7 +18,10 @@ CREATE TABLE coupon (
     id INTEGER PRIMARY KEY,
     email TEXT NOT NULL,
     pointValue INTEGER NOT NULL,
+    used BOOLEAN DEFAULT(FALSE),
+    dateUsed DATE,
     FOREIGN KEY (email) REFERENCES user (email)
+    FOREIGN KEY (dateUsed) REFERENCES day (date)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -35,9 +38,8 @@ CREATE TABLE habit (
 CREATE TABLE week (
 	weekStartDate DATE PRIMARY KEY,
 	weekEndDate DATE,
-	locked INTEGER,
-	minimumDayPointRequirement INTEGER, -- will be the same for whole week
-	weekPointProgress INTEGER DEFAULT(0)
+	locked BOOLEAN DEFAULT(FALSE),
+	minimumDayPointRequirement INTEGER -- will be the same for whole week
 );
 
 -- shows habits for week
@@ -106,10 +108,11 @@ END;
 
 INSERT INTO user VALUES ("koko","koko",22,"1234","Student");
 
-INSERT INTO coupon VALUES (NULL, "koko", 50);
+INSERT INTO coupon (id, email, pointValue) VALUES (NULL, "koko", 50);
+INSERT INTO coupon VALUES (NULL, "koko", 50, 1, "2019-04-02");
 
-INSERT INTO week VALUES ("2019-03-24","2019-03-30",1,60,500);
-INSERT INTO week VALUES ("2019-03-31","2019-04-06",0,60,0);
+INSERT INTO week VALUES ("2019-03-24","2019-03-30",1,60);
+INSERT INTO week VALUES ("2019-03-31","2019-04-06",0,60);
 
 INSERT INTO day VALUES ("2019-03-30","2019-03-24");
 INSERT INTO day VALUES ("2019-03-31","2019-03-31");
@@ -120,4 +123,3 @@ INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
 INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
 INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
 INSERT INTO habit VALUES (6, "koko", 20, "Stop Smoking",0);
-

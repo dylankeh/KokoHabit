@@ -353,7 +353,7 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT SUM(dh.pointsWorth) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 
@@ -381,9 +381,45 @@ class DAO: NSObject {
         return passed
     }
     
+    // created by Khoa Tran
+    public func checkUserDayPointTotal(day: Date) -> Int {
+        db = nil
+        
+        var totalPoints: Int = 0
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT COALESCE(SUM(pointsWorth),0) + (SELECT COALESCE(SUM(pointValue),0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date WHERE dateUsed=? AND used=1) From day_habit WHERE date=? AND completed = TRUE;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
+                sqlite3_bind_text(queryStatement, 2, dateStr.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    totalPoints = Int(sqlite3_column_int(queryStatement, 0))
+                    
+                }
+                print("finished selecting weekly points")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return totalPoints
+    }
+    
     // Created by Khoa Tran
     public func insertCoupon() {
-        let insertCouponStmt = "INSERT INTO coupon VALUES (NULL, ?, ?);"
+        let insertCouponStmt = "INSERT INTO coupon (id, email, pointValue) VALUES (NULL, ?, ?);"
         
         if validator(){
             var sqlInsert: OpaquePointer? = nil
@@ -409,6 +445,78 @@ class DAO: NSObject {
             sqlite3_finalize(sqlInsert)
         }
         sqlite3_close(db)
+    }
+    
+    // Created by Khoa Tran
+    public func useCoupon(day: Date, couponId: Int) {
+        
+        let useCouponStmt = "UPDATE coupon SET used=1 AND dateUsed=? WHERE id=?;"
+        
+        if validator(){
+            var sqlUpdate: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, useCouponStmt, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(sqlUpdate, 1, dateStr.utf8String, -1, nil)
+              
+                sqlite3_bind_int(sqlUpdate, 2, Int32(couponId))
+                
+                sqlite3_bind_int(sqlUpdate, 2, 50)
+                
+                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                    print("Successful insertion coupon")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
+    }
+    
+    // Created by Khoa Tran
+    public func getCoupons() {
+        delegate.coupons.removeAll();
+        
+        db = nil
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT id, pointValue FROM coupon WHERE email=? AND used=0;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let couponId: Int = Int(sqlite3_column_int(queryStatement, 0))
+                    let pointValue: Int = Int(sqlite3_column_int(queryStatement, 1))
+                    
+                    let data: Coupon = Coupon.init(couponId: couponId, pointValue: pointValue )
+                    delegate.coupons.append(data)
+                    
+                    print("Query result")
+                    print("\(couponId) | \(pointValue)")
+                }
+                print("finished selecting coupons")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
     }
     
     private func validator()->Bool {

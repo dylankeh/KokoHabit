@@ -26,6 +26,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
         
         cell.setHabit(habit: delegate.habits[indexPath.row])
+        if (delegate.habits[indexPath.row].getCompletion()) {
+            cell.setCompletedHabit()
+        }
         
         return cell
     }

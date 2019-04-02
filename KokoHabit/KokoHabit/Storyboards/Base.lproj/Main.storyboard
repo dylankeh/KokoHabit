@@ -350,7 +350,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="rye-9O-XqV">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <segue destination="8uS-xb-fNJ" kind="unwind" unwindAction="unwindToMyHabitsVCWithSender:" id="gEM-1d-wdW"/>
+                                                <segue destination="8uS-xb-fNJ" kind="unwind" unwindAction="unwindToMyHabitsVCWithSender:" id="RsI-dG-ZOC"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -406,6 +406,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wLQ-kd-plg"/>
                     </view>
+                    <connections>
+                        <outlet property="tfNewName" destination="ygs-ai-ffM" id="ZYa-ds-F40"/>
+                        <outlet property="tfNewPoint" destination="Pun-li-eBd" id="5U8-29-Rp3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4R-4F-Mu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8uS-xb-fNJ" userLabel="Exit" sceneMemberID="exit"/>
@@ -609,10 +613,13 @@
                         <viewLayoutGuide key="safeArea" id="xlJ-05-oxS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="checkmark.png" id="beA-6d-Bbq"/>
+                    <connections>
+                        <segue destination="fRp-lT-7d0" kind="presentation" identifier="goToEditHabitPage" id="wlg-eH-th4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zm-Ct-Rlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392.8" y="-1791.4542728635683"/>
+            <point key="canvasLocation" x="1393" y="-1791"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="noH-Hy-zfJ">

@@ -9,9 +9,17 @@
 import UIKit
 
 class EditHabitViewController: UIViewController {
+    
+    @IBOutlet var tfNewName : UITextField!
+    @IBOutlet var tfNewPoint : UITextField!
+    
+    var oldName : String!
+    var oldPoint : String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tfNewName.placeholder = oldName
+        tfNewPoint.placeholder = oldPoint
 
         // Do any additional setup after loading the view.
     }

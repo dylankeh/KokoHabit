@@ -10,6 +10,9 @@ import UIKit
 
 class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // Phoenix: get selected habit name&point,pass to Edit page,diplay in the placeholder
+    var selectedHabitName : String!
+    var selectedHabitPoint : String!
     
     var testHabit = Habit(habitId: 0, habitName: "Eat an apple", habitValue: 40, completion: false)
     
@@ -51,10 +54,27 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {
             ac, view, success in print("Modify button pressed")
             success(true)
+            
+            // Phoenix: get the current selected habit name and point
+            let cell = tableView.cellForRow(at: indexPath) as! HabitCell
+            self.selectedHabitName = cell.getHabitName()
+            self.selectedHabitPoint = cell.getHabitPoint()
+            print("name is :\(cell.getHabitName())")
+            print("point is :\(cell.getHabitPoint())")
+
+            self.performSegue(withIdentifier: "goToEditHabitPage", sender: self)
         })
         editAction.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.8784313725, blue: 0.6078431373, alpha: 1)
         
         return UISwipeActionsConfiguration(actions: [editAction])
+    }
+    
+    // Phoenix: pass two values to Edit habit page
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let editHabitController = segue.destination as! EditHabitViewController
+        //print("name is :\(selectedHabitName ?? "null")")
+        editHabitController.oldName = selectedHabitName
+        editHabitController.oldPoint = selectedHabitPoint
     }
     
     override func viewDidLoad() {

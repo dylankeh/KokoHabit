@@ -12,6 +12,9 @@ class HabitCell: UITableViewCell {
 
     @IBOutlet weak var lblHabitName: UILabel!
     
+    // Phoenix: point should be display on the habit panel as well
+    @IBOutlet weak var lblHabitPoint: UILabel!
+    
     func setHabit(habit: Habit) {
         print(habit)
         lblHabitName.text = habit.getHabitName()
@@ -24,6 +27,15 @@ class HabitCell: UITableViewCell {
     func setUncompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.7766154408, green: 0.2747580707, blue: 0.221539259, alpha: 1)
     }
+    
+    // Phoenix: add two gets functions
+    func getHabitName() -> String{
+        return lblHabitName.text!
+    }
+    func getHabitPoint() -> String{
+        return "0"
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

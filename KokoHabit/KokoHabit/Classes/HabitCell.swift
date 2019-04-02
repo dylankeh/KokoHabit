@@ -18,6 +18,7 @@ class HabitCell: UITableViewCell {
     func setHabit(habit: Habit) {
         print(habit)
         lblHabitName.text = habit.getHabitName()
+        lblHabitPoint.text = String(habit.getHabitValue())
     }
     
     func setCompletedHabit(){

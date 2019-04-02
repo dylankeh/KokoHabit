@@ -586,20 +586,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Fd-Fct">
-                                                    <rect key="frame" x="20" y="13.5" width="335" height="33"/>
+                                                    <rect key="frame" x="15" y="13.5" width="307" height="33"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                                    <color key="textColor" red="0.7766154408" green="0.27475807070000002" blue="0.22153925899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFz-NS-MSO">
+                                                    <rect key="frame" x="330" y="13.5" width="30" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Sye-66-bxX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                                     <color key="textColor" red="0.7766154408" green="0.27475807070000002" blue="0.22153925899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="caM-Fd-Fct" secondAttribute="trailing" constant="20" id="8rb-eC-IzX"/>
-                                                <constraint firstItem="caM-Fd-Fct" firstAttribute="centerY" secondItem="nNS-yp-dDN" secondAttribute="centerY" id="JnV-Cq-nvL"/>
-                                                <constraint firstItem="caM-Fd-Fct" firstAttribute="leading" secondItem="nNS-yp-dDN" secondAttribute="leading" constant="20" id="drk-tr-wnl"/>
+                                                <constraint firstItem="qFz-NS-MSO" firstAttribute="centerY" secondItem="nNS-yp-dDN" secondAttribute="centerY" id="10v-no-F0Z"/>
+                                                <constraint firstItem="qFz-NS-MSO" firstAttribute="trailing" secondItem="nNS-yp-dDN" secondAttribute="trailingMargin" id="4Ms-Gg-VLw"/>
+                                                <constraint firstItem="caM-Fd-Fct" firstAttribute="leading" secondItem="nNS-yp-dDN" secondAttribute="leadingMargin" id="7T2-tA-974"/>
+                                                <constraint firstItem="qFz-NS-MSO" firstAttribute="leading" secondItem="caM-Fd-Fct" secondAttribute="trailing" constant="8" id="d9g-1Z-uSh"/>
+                                                <constraint firstItem="caM-Fd-Fct" firstAttribute="centerY" secondItem="nNS-yp-dDN" secondAttribute="centerY" id="yg8-7G-bVz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblHabitName" destination="caM-Fd-Fct" id="Xpx-fa-nCc"/>
+                                            <outlet property="lblHabitPoint" destination="qFz-NS-MSO" id="gZQ-Po-DGd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -619,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zm-Ct-Rlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1393" y="-1791"/>
+            <point key="canvasLocation" x="1392.8" y="-1791.4542728635683"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="noH-Hy-zfJ">

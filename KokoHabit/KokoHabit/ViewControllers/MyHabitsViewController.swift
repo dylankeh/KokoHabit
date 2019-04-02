@@ -14,16 +14,18 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedHabitName : String!
     var selectedHabitPoint : String!
     
-    var testHabit = Habit(habitId: 0, habitName: "Eat an apple", habitValue: 40, completion: false)
+    
+    let dao = DAO()
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return delegate.habits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
         
-        cell.setHabit(habit: testHabit)
+        cell.setHabit(habit: delegate.habits[indexPath.row])
         
         return cell
     }
@@ -31,12 +33,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! HabitCell
         cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        if testHabit.getCompletion() {
-            testHabit.setCompletion(completion: false)
+        let today = Date.init()
+        if delegate.habits[indexPath.row].getCompletion() {
+            delegate.habits[indexPath.row].setCompletion(completion: false)
+            dao.setHabitUncompleted(day: today, habitId: delegate.habits[indexPath.row].getHabitId())
             cell.setUncompletedHabit()
         } else {
-            testHabit.setCompletion(completion: true)
+            delegate.habits[indexPath.row].setCompletion(completion: true)
+            dao.setHabitCompleted(day: today, habitId: delegate.habits[indexPath.row].getHabitId())
             cell.setCompletedHabit()
         }
     }
@@ -75,6 +79,33 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         //print("name is :\(selectedHabitName ?? "null")")
         editHabitController.oldName = selectedHabitName
         editHabitController.oldPoint = selectedHabitPoint
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let today = Date.init()
+        
+        // check if the current week is in the database
+        if (dao.checkIfWeekExists(day: today)) {
+            
+            // check if today is in the database
+            if (dao.checkIfDayExists(day: today)) {
+                dao.getHabits(day: today)
+            } else {
+                dao.insertDay(day: today)
+                dao.getHabits(day: today)
+            }
+        } else {
+    
+            if (dao.checkIfUserPassedWeeklyPoints()) {
+                dao.insertCoupon()
+            }
+            // insert new week
+            dao.insertWeek(day: today)
+            // insert new day
+            dao.insertDay(day: today)
+            dao.getHabits(day: today)
+        }
+        
     }
     
     override func viewDidLoad() {

@@ -131,7 +131,8 @@ class DAO: NSObject {
         //Code
     }
     
-    public func getHabits(date:Date) {
+    // Created by Khoa Tran
+    public func getHabits(day:Date) {
         delegate.habits.removeAll();
         
         db = nil
@@ -144,7 +145,7 @@ class DAO: NSObject {
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 
-                let dateStr = dateFormatter.string(from: date) as NSString
+                let dateStr = dateFormatter.string(from: day) as NSString
                 sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
                 
                 let emailStr = delegate.user.getEmail() as NSString
@@ -174,6 +175,268 @@ class DAO: NSObject {
         } else {
             print("Unable to open database")
         }
+    }
+    
+    // Created by Khoa Tran
+    public func setHabitCompleted(day: Date,habitId: Int) {
+        let updateHabitStmt = "UPDATE day_habit SET completed=1 WHERE date=? AND habitId=?;"
+        
+        if validator(){
+            var sqlUpdate: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, updateHabitStmt, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(sqlUpdate, 1, dateStr.utf8String, -1, nil)
+                
+                sqlite3_bind_int(sqlUpdate, 2, Int32(habitId))
+                
+                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                    print("Successful marked habit completed")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("UPDATE statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("UPDATE statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
+    }
+    
+    // Created by Khoa Tran
+    public func setHabitUncompleted(day: Date,habitId: Int) {
+        let updateHabitStmt = "UPDATE day_habit SET completed=0 WHERE date=? AND habitId=?;"
+        
+        if validator(){
+            var sqlUpdate: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, updateHabitStmt, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(sqlUpdate, 1, dateStr.utf8String, -1, nil)
+                
+                sqlite3_bind_int(sqlUpdate, 2, Int32(habitId))
+                
+                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                    print("Successful marked habit uncompleted")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("UPDATE statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("UPDATE statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
+    }
+    
+    // Created by Khoa Tran
+    // check the day is a new day
+    // if it is a new day insert day and get all habits otherwise just get all habits
+    public func checkIfDayExists(day: Date) -> Bool {
+        db = nil
+        
+        var exists: Bool = false
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT date FROM day WHERE date=?;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
+                
+                // the day has already been created
+                if sqlite3_step(queryStatement) == SQLITE_ROW {
+                    exists = true
+                } 
+                print("finished selecting")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return exists
+    }
+    
+    // created by Khoa Tran
+    public func checkIfWeekExists(day: Date) -> Bool {
+        db = nil
+        
+        var exists: Bool = false
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT JULIANDAY(?)-JULIANDAY(MAX(weekStartDate)) FROM week;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let dateDiff: Double = sqlite3_column_double(queryStatement, 0)
+                    
+                    // still in the same week
+                    if (dateDiff < 7) {
+                        // check if day has been created yet
+                        exists = true
+                        
+                    }
+                }
+                print("finished selecting")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return exists
+    }
+    
+    // Created by Khoa Tran
+    public func insertWeek(day: Date) {
+        let insertWeekStmt = "INSERT INTO week VALUES (?, DATE(?, \"+6 day\"), FALSE, 60);"
+        
+        if validator(){
+            var sqlInsert: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, insertWeekStmt, -1 , &sqlInsert, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(sqlInsert, 1, dateStr.utf8String, -1, nil)
+                sqlite3_bind_text(sqlInsert, 2, dateStr.utf8String, -1, nil)
+                
+                if sqlite3_step(sqlInsert) == SQLITE_DONE {
+                    print("Successful insertion week")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlInsert)
+        }
+        sqlite3_close(db)
+    }
+    
+    // Created by Khoa Tran
+    public func insertDay(day: Date) {
+        let insertDayStmt = "INSERT INTO day SELECT ? , MAX(weekStartDate) FROM week;"
+        
+        if validator(){
+            var sqlInsert: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, insertDayStmt, -1 , &sqlInsert, nil) == SQLITE_OK{
+                
+                let dateStr = dateFormatter.string(from: day) as NSString
+                sqlite3_bind_text(sqlInsert, 1, dateStr.utf8String, -1, nil)
+
+                if sqlite3_step(sqlInsert) == SQLITE_DONE {
+                    print("Successful insertion day")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlInsert)
+        }
+        sqlite3_close(db)
+    }
+    
+    // created by Khoa Tran
+    public func checkIfUserPassedWeeklyPoints() -> Bool {
+        db = nil
+        
+        var passed: Bool = false
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT SUM(dh.pointsWorth) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let totalPoints: Int = Int(sqlite3_column_int(queryStatement, 0))
+                    
+                    // still in the same week
+                    if (totalPoints >= 600) {
+                        // check if day has been created yet
+                        passed = true
+                        
+                    }
+                }
+                print("finished selecting weekly points")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return passed
+    }
+    
+    // Created by Khoa Tran
+    public func insertCoupon() {
+        let insertCouponStmt = "INSERT INTO coupon VALUES (NULL, ?, ?);"
+        
+        if validator(){
+            var sqlInsert: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, insertCouponStmt, -1 , &sqlInsert, nil) == SQLITE_OK{
+                
+                let userEmailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(sqlInsert, 1, userEmailStr.utf8String, -1, nil)
+                
+                sqlite3_bind_int(sqlInsert, 2, 50)
+                
+                if sqlite3_step(sqlInsert) == SQLITE_DONE {
+                    print("Successful insertion coupon")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("INSERT statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("INSERT statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlInsert)
+        }
+        sqlite3_close(db)
     }
     
     private func validator()->Bool {

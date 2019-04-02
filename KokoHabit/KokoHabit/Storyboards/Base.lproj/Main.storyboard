@@ -438,7 +438,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EcU-0E-0my" customClass="CouponCell" customModule="KokoHabit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponCell" id="EcU-0E-0my" customClass="CouponCell" customModule="KokoHabit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EcU-0E-0my" id="8gv-oj-Q02">
@@ -446,23 +446,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE8-Cb-gsK">
-                                                    <rect key="frame" x="20" y="10" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="10" width="100" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="jVI-ru-vbh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.7766154408" green="0.27475807070000002" blue="0.22153925899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uj6-os-JCb">
+                                                    <rect key="frame" x="140" y="10" width="215" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.7766154408" green="0.27475807070000002" blue="0.22153925899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="YE8-Cb-gsK" secondAttribute="trailing" constant="20" id="R9T-50-0q3"/>
-                                                <constraint firstItem="YE8-Cb-gsK" firstAttribute="leading" secondItem="8gv-oj-Q02" secondAttribute="leading" constant="20" id="VYH-1O-FYi"/>
-                                                <constraint firstItem="YE8-Cb-gsK" firstAttribute="centerY" secondItem="8gv-oj-Q02" secondAttribute="centerY" id="r9m-ke-H2Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="Uj6-os-JCb" secondAttribute="trailing" constant="20" id="BY0-bO-Tcd"/>
+                                                <constraint firstItem="Uj6-os-JCb" firstAttribute="centerY" secondItem="8gv-oj-Q02" secondAttribute="centerY" id="Ik5-Pi-zNE"/>
+                                                <constraint firstItem="YE8-Cb-gsK" firstAttribute="centerY" secondItem="8gv-oj-Q02" secondAttribute="centerY" id="Q4n-iX-MFr"/>
+                                                <constraint firstItem="YE8-Cb-gsK" firstAttribute="leading" secondItem="8gv-oj-Q02" secondAttribute="leading" constant="20" id="e2E-bL-sVC"/>
+                                                <constraint firstItem="Uj6-os-JCb" firstAttribute="leading" secondItem="YE8-Cb-gsK" secondAttribute="trailing" constant="20" id="mG1-BG-ELf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblCoupon" destination="YE8-Cb-gsK" id="N9h-AJ-avm"/>
+                                            <outlet property="lblCouponValue" destination="Uj6-os-JCb" id="t7h-4i-Q6P"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="afU-NZ-itf" id="gP7-ok-7Nv"/>
+                                    <outlet property="delegate" destination="afU-NZ-itf" id="tI9-Kl-yGT"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

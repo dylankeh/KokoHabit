@@ -24,6 +24,7 @@
 		6313E83D2247022E00048E4F /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313E83C2247022E00048E4F /* plus.png */; };
 		6316229C2250491800385F4E /* KokoHabitDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 6316229B2250491800385F4E /* KokoHabitDB.db */; };
 		631ADD74224E5F2E002FC6A3 /* kokohabits logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */; };
+		6388C4B72253CFCD0007CD62 /* kokohabits logo alternate.png in Resources */ = {isa = PBXBuildFile; fileRef = 6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		6313E83C2247022E00048E4F /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		6316229B2250491800385F4E /* KokoHabitDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = KokoHabitDB.db; sourceTree = "<group>"; };
 		631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kokohabits logo.png"; sourceTree = "<group>"; };
+		6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kokohabits logo alternate.png"; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BA0D5B222D771A00ADF50B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		CB6C080822346CD500CF4D4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */,
 				631ADD73224E5F2D002FC6A3 /* kokohabits logo.png */,
 				6313E83C2247022E00048E4F /* plus.png */,
 				6313E83A2247021900048E4F /* coupon.png */,
@@ -247,6 +250,7 @@
 			files = (
 				6313E8212246F77300048E4F /* calendar.png in Resources */,
 				6313E8222246F77300048E4F /* chart.png in Resources */,
+				6388C4B72253CFCD0007CD62 /* kokohabits logo alternate.png in Resources */,
 				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,

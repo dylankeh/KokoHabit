@@ -14,7 +14,7 @@ class AddNewHabitViewController: UIViewController {
     @IBOutlet var habitPoint: UITextField!
     
     
-    @IBAction func createAccount(sender:UIButton) {
+    @IBAction func createHabit(sender:UIButton) {
         let mainDelegate = UIApplication.shared.delegate as! AppDelegate
         let dao = DAO()
         

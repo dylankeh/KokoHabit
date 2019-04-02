@@ -36,11 +36,11 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         let today = Date.init()
         if delegate.habits[indexPath.row].getCompletion() {
             delegate.habits[indexPath.row].setCompletion(completion: false)
-            dao.setHabitUncompleted(day: today, habitId: delegate.habits[indexPath.row].getHabitId())
+            dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.row].getHabitId(), status: 0)
             cell.setUncompletedHabit()
         } else {
             delegate.habits[indexPath.row].setCompletion(completion: true)
-            dao.setHabitCompleted(day: today, habitId: delegate.habits[indexPath.row].getHabitId())
+            dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.row].getHabitId(), status: 1)
             cell.setCompletedHabit()
         }
     }

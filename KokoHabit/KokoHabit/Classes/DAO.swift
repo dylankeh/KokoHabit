@@ -178,50 +178,22 @@ class DAO: NSObject {
     }
     
     // Created by Khoa Tran
-    public func setHabitCompleted(day: Date,habitId: Int) {
-        let updateHabitStmt = "UPDATE day_habit SET completed=1 WHERE date=? AND habitId=?;"
+    public func setHabitCompletetionStatus(day: Date, habitId: Int, status: Int) {
+        let updateHabitStmt = "UPDATE day_habit SET completed=? WHERE date=? AND habitId=?;"
         
         if validator(){
             var sqlUpdate: OpaquePointer? = nil
             if sqlite3_prepare_v2(db, updateHabitStmt, -1 , &sqlUpdate, nil) == SQLITE_OK{
                 
-                let dateStr = dateFormatter.string(from: day) as NSString
-                sqlite3_bind_text(sqlUpdate, 1, dateStr.utf8String, -1, nil)
-                
-                sqlite3_bind_int(sqlUpdate, 2, Int32(habitId))
-                
-                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
-                    print("Successful marked habit completed")
-                }
-                else {
-                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
-                    print("UPDATE statement could not be prepared. \(errorMessage)")
-                }
-            }
-            else {
-                let errorMessage = String.init(cString: sqlite3_errmsg(db))
-                print("UPDATE statement could not be prepared. \(errorMessage)")
-            }
-            sqlite3_finalize(sqlUpdate)
-        }
-        sqlite3_close(db)
-    }
-    
-    // Created by Khoa Tran
-    public func setHabitUncompleted(day: Date,habitId: Int) {
-        let updateHabitStmt = "UPDATE day_habit SET completed=0 WHERE date=? AND habitId=?;"
-        
-        if validator(){
-            var sqlUpdate: OpaquePointer? = nil
-            if sqlite3_prepare_v2(db, updateHabitStmt, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                sqlite3_bind_int(sqlUpdate, 1, Int32(status))
                 
                 let dateStr = dateFormatter.string(from: day) as NSString
-                sqlite3_bind_text(sqlUpdate, 1, dateStr.utf8String, -1, nil)
+                sqlite3_bind_text(sqlUpdate, 2, dateStr.utf8String, -1, nil)
                 
-                sqlite3_bind_int(sqlUpdate, 2, Int32(habitId))
+                sqlite3_bind_int(sqlUpdate, 3, Int32(habitId))
                 
                 if sqlite3_step(sqlUpdate) == SQLITE_DONE {
-                    print("Successful marked habit uncompleted")
+                    print("Successful changed habit completion status")
                 }
                 else {
                     let errorMessage = String.init(cString: sqlite3_errmsg(db))

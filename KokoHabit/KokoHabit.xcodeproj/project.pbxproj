@@ -31,6 +31,8 @@
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
 		63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D60222D771C00ADF50B /* Assets.xcassets */; };
 		63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D62222D771C00ADF50B /* LaunchScreen.storyboard */; };
+		CB186DFF225417BD0030A51B /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186DFE225417BD0030A51B /* CouponCell.swift */; };
+		CB186E01225419B90030A51B /* CouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186E00225419B90030A51B /* CouponController.swift */; };
 		CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0957223EDADD00BF2B6C /* Habit.swift */; };
 		CB2E095A223EE72400BF2B6C /* MyHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */; };
 		CB4CC820224D799900D5FF94 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CC81F224D799900D5FF94 /* HabitCell.swift */; };
@@ -67,6 +69,8 @@
 		63BA0D60222D771C00ADF50B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63BA0D63222D771C00ADF50B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63BA0D65222D771C00ADF50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB186DFE225417BD0030A51B /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
+		CB186E00225419B90030A51B /* CouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponController.swift; sourceTree = "<group>"; };
 		CB2E0957223EDADD00BF2B6C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsViewController.swift; sourceTree = "<group>"; };
 		CB4CC81F224D799900D5FF94 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				CB2E0957223EDADD00BF2B6C /* Habit.swift */,
 				CB4CC81F224D799900D5FF94 /* HabitCell.swift */,
 				6388C4B82253D2250007CD62 /* Coupon.swift */,
+				CB186DFE225417BD0030A51B /* CouponCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				0FC6DCDB223EFD7A008AF1D6 /* SignController.swift */,
 				D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */,
 				D03F9A2122413B47006FB156 /* EditHabitViewController.swift */,
+				CB186E00225419B90030A51B /* CouponController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 				0FC6DCD8223EFD45008AF1D6 /* MainController.swift in Sources */,
 				0F31324822373D7000B9B83A /* DAO.swift in Sources */,
 				0FC6DCDC223EFD7A008AF1D6 /* SignController.swift in Sources */,
+				CB186E01225419B90030A51B /* CouponController.swift in Sources */,
 				CB4CC820224D799900D5FF94 /* HabitCell.swift in Sources */,
 				CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */,
 				63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */,
@@ -289,6 +296,7 @@
 				D03F9A2222413B47006FB156 /* EditHabitViewController.swift in Sources */,
 				63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */,
 				D03F9A1E22411B93006FB156 /* PointSystem.swift in Sources */,
+				CB186DFF225417BD0030A51B /* CouponCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

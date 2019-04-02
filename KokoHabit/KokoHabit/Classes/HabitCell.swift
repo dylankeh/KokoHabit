@@ -34,7 +34,7 @@ class HabitCell: UITableViewCell {
         return lblHabitName.text!
     }
     func getHabitPoint() -> String{
-        return "0"
+        return lblHabitPoint.text!
     }
     
     

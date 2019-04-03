@@ -417,6 +417,39 @@ class DAO: NSObject {
         return totalPoints
     }
     
+    // created by Khoa Tran
+    public func getDaysWhereUserPassedMinPoints() -> [Date] {
+        db = nil
+        
+        var dates: [Date] = []
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "select dh.DATE from day_habit dh INNER JOIN day d ON dh.date = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE dh.completed=1 GROUP BY dh.date HAVING SUM(dh.pointsWorth) > w.minimumDayPointRequirement;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let cday = sqlite3_column_text(queryStatement, 0)!
+                    dates.append(dateFormatter.date(from: String(cString: cday))!)
+                    
+                }
+                print("finished selecting days where user passed min points")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return dates
+    }
+    
     // Created by Khoa Tran
     public func insertCoupon() {
         let insertCouponStmt = "INSERT INTO coupon (id, email, pointValue) VALUES (NULL, ?, ?);"

@@ -16,6 +16,8 @@ class EditHabitViewController: UIViewController {
     var oldName : String!
     var oldPoint : String!
     var habitId : Int!
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBAction func updateHabit(sender:UIButton) {
         let dao = DAO()
@@ -24,6 +26,7 @@ class EditHabitViewController: UIViewController {
             print(dao.updateHabit(id: Int32(habitId),
                             pointValue: Int32(tfNewPoint.text!)!,
                             name: tfNewName.text! as NSString))
+            //delegate.habits[]
         }
         else if tfNewName.text == "" && tfNewPoint.text != ""
         {

@@ -796,6 +796,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="checkmark.png" id="beA-6d-Bbq"/>
                     <connections>
+                        <outlet property="tableView" destination="69O-4x-ZhA" id="5Si-mB-raR"/>
                         <segue destination="fRp-lT-7d0" kind="presentation" identifier="goToEditHabitPage" id="wlg-eH-th4"/>
                     </connections>
                 </viewController>

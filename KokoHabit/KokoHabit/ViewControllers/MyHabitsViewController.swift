@@ -10,6 +10,7 @@ import UIKit
 
 class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     // Phoenix: get selected habit name&point,pass to Edit page,diplay in the placeholder
     var selectedHabitName : String!
     var selectedHabitPoint : String!
@@ -51,6 +52,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: {
             action, index in print("Delete button tapped")
+            
+            print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.row].getHabitId())))
+            self.load()
         })
         deleteAction.backgroundColor = #colorLiteral(red: 0.7764705882, green: 0.2745098039, blue: 0.2196078431, alpha: 1)
         
@@ -89,8 +93,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("===========view will appear called")
+        load()
+    }
+    
+    func load()
+    {
         let today = Date.init()
-        
         // check if the current week is in the database
         if (dao.checkIfWeekExists(day: today)) {
             // check if today is in the database
@@ -107,15 +117,13 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.insertDay(day: today)
         }
         dao.getHabits(day: today)
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {
-        
-    }
-    
+    @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}
 
 }

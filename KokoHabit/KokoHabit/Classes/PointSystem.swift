@@ -19,6 +19,11 @@ class PointSystem: NSObject {
         return user;
     }
     
+    func randomPoints()
+    {
+        
+    }
+    
     // what will it return?
     func checkNotifications() ->Notification
     {

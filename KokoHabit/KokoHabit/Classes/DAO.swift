@@ -127,8 +127,31 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    public func deleteHabit(email:String) {
-        //Code
+    public func deleteHabit(habitId: Int32) {
+        let updateHabitNamePoint = "DELETE FROM week_habit WHERE habitId=? AND weekStartDate = (SELECT MAX(weekStartDate) FROM week_habit);"
+        if validator(){
+            var sqlUpdate: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, updateHabitNamePoint, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                
+                sqlite3_bind_int(sqlUpdate, 1, habitId)
+                
+                //print("point is \(pointValue), name is \(name)")
+                
+                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                    print("Successful deleted habit")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("DELETE statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("DELETE statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
     }
     
     // Phoenix added
@@ -215,6 +238,7 @@ class DAO: NSObject {
         } else {
             print("Unable to open database")
         }
+        print(delegate.habits.count)
     }
     
     // Created by Khoa Tran

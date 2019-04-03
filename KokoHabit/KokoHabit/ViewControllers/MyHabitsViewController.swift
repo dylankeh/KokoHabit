@@ -92,16 +92,11 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         
         // check if the current week is in the database
         if (dao.checkIfWeekExists(day: today)) {
-            
             // check if today is in the database
-            if (dao.checkIfDayExists(day: today)) {
-                dao.getHabits(day: today)
-            } else {
+            if (!dao.checkIfDayExists(day: today)) {
                 dao.insertDay(day: today)
-                dao.getHabits(day: today)
             }
         } else {
-    
             if (dao.checkIfUserPassedWeeklyPoints()) {
                 dao.insertCoupon()
             }
@@ -109,9 +104,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.insertWeek(day: today)
             // insert new day
             dao.insertDay(day: today)
-            dao.getHabits(day: today)
         }
-        
+        dao.getHabits(day: today)
     }
     
     override func viewDidLoad() {

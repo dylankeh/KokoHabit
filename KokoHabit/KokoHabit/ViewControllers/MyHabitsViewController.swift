@@ -50,7 +50,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: {
-            action, index in print("Favourite button tapped")
+            action, index in print("Delete button tapped")
         })
         deleteAction.backgroundColor = #colorLiteral(red: 0.7764705882, green: 0.2745098039, blue: 0.2196078431, alpha: 1)
         
@@ -59,7 +59,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {
-            ac, view, success in print("Modify button pressed")
+            ac, view, success in print("Edit button pressed")
             success(true)
             
             // Phoenix: get the current selected habit name and point

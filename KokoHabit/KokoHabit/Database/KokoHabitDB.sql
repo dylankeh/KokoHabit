@@ -49,6 +49,7 @@ CREATE TABLE week_habit (
 	habitId INTEGER NOT NULL,
 	FOREIGN KEY (weekStartDate) REFERENCES week (weekStartDate)
 	FOREIGN KEY (habitId) REFERENCES habit (id)
+    PRIMARY KEY (weekStartDate, habitId)
 );
 
 CREATE TABLE day (
@@ -65,6 +66,7 @@ CREATE TABLE day_habit (
 	completed BOOLEAN DEFAULT(FALSE),
 	FOREIGN KEY (date) REFERENCES day (date)
 	FOREIGN KEY (habitId) REFERENCES habit (id)
+    PRIMARY KEY (date, habitId)
 );
 
 CREATE TABLE logs (logString TEXT);

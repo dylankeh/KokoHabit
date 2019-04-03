@@ -131,10 +131,50 @@ class DAO: NSObject {
         //Code
     }
     
+    // Phoenix added
+    public func updateHabit(id: Int32, pointValue: Int32, name: NSString)
+    {
+        let updateHabitNamePoint = "UPDATE habit SET pointValue=?, name=? WHERE id=?;"
+        if validator(){
+            var sqlUpdate: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, updateHabitNamePoint, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                
+                sqlite3_bind_int(sqlUpdate, 1, pointValue)
+                
+                sqlite3_bind_text(sqlUpdate, 2, name.utf8String, -1, nil)
+                
+                sqlite3_bind_int(sqlUpdate, 3, id)
+                print("point is \(pointValue), name is \(name)")
+                
+                if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                    print("Successful updated habit information")
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("UPDATE statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("UPDATE statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
+    }
+    
+    
     // Created by Khoa Tran
     public func getHabits(day:Date) {
         delegate.habits.removeAll();
-        
+        if(delegate.habits.count == 0)
+        {
+            print("habit is empty now")
+        }
+        else
+        {
+            print("there are \(delegate.habits.count) in the habit list")
+        }
         db = nil
         
         if validator() {
@@ -515,7 +555,7 @@ class DAO: NSObject {
     // Created by Khoa Tran
     public func useCoupon(day: Date, couponId: Int) {
         
-        let useCouponStmt = "UPDATE coupon SET used=1 AND dateUsed=? WHERE id=?;"
+        let useCouponStmt = "UPDATE coupon SET used=1, dateUsed=? WHERE id=?;"
         
         if validator(){
             var sqlUpdate: OpaquePointer? = nil

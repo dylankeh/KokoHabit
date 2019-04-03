@@ -13,7 +13,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     // Phoenix: get selected habit name&point,pass to Edit page,diplay in the placeholder
     var selectedHabitName : String!
     var selectedHabitPoint : String!
-    
+    var selectedHabitId : Int!
     
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -66,9 +66,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.cellForRow(at: indexPath) as! HabitCell
             self.selectedHabitName = cell.getHabitName()
             self.selectedHabitPoint = cell.getHabitPoint()
-            print("name is :\(cell.getHabitName())")
-            print("point is :\(cell.getHabitPoint())")
-
+            print("id is: \(self.delegate.habits[indexPath.row].getHabitId())")
+            self.selectedHabitId = self.delegate.habits[indexPath.row].getHabitId()
+            
             self.performSegue(withIdentifier: "goToEditHabitPage", sender: self)
         })
         editAction.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.8784313725, blue: 0.6078431373, alpha: 1)
@@ -84,6 +84,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             //print("name is :\(selectedHabitName ?? "null")")
             editHabitController.oldName = selectedHabitName
             editHabitController.oldPoint = selectedHabitPoint
+            editHabitController.habitId = selectedHabitId
         }
     }
     
@@ -112,5 +113,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
     }
     
-    @IBAction func unwindToMyHabitsVC(sender : UIStoryboardSegue){ }
+    @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {
+        
+    }
+    
+
 }

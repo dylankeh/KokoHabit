@@ -15,7 +15,31 @@ class EditHabitViewController: UIViewController {
     
     var oldName : String!
     var oldPoint : String!
+    var habitId : Int!
 
+    @IBAction func updateHabit(sender:UIButton) {
+        let dao = DAO()
+        if tfNewName.text != "" && tfNewPoint.text != ""
+        {
+            print(dao.updateHabit(id: Int32(habitId),
+                            pointValue: Int32(tfNewPoint.text!)!,
+                            name: tfNewName.text! as NSString))
+        }
+        else if tfNewName.text == "" && tfNewPoint.text != ""
+        {
+            print(dao.updateHabit(id: Int32(habitId),
+                                  pointValue: Int32(tfNewPoint.text!)!,
+                                  name: tfNewName.placeholder! as NSString))
+        }
+        else if tfNewPoint.text == "" && tfNewName.text != ""
+        {
+            print(dao.updateHabit(id: Int32(habitId),
+                                  pointValue: Int32(tfNewPoint.placeholder!)!,
+                                  name: tfNewName.text! as NSString))
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tfNewName.placeholder = oldName
@@ -24,13 +48,7 @@ class EditHabitViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func createHabit(sender:UIButton) {
-        //let dao = DAO()
-        
-     
-        
-        //Alert incase not inserted or error.. or alert to send them to the login page
-    }
+    
     
 
     /*

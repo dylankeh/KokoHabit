@@ -573,18 +573,43 @@
         <!--Progress-->
         <scene sceneID="mOb-uI-7a9">
             <objects>
-                <viewController id="tv8-Ri-CDo" sceneMemberID="viewController">
+                <viewController id="tv8-Ri-CDo" customClass="PieChartViewController" customModule="KokoHabit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxN-BB-imI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkx-hy-0s7" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="69" width="375" height="549"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-m6-SAc">
+                                <rect key="frame" x="0.0" y="25" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.87817770240000004" green="0.46020978689999997" blue="0.45072364809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Add New Habit" id="GGE-qw-Jf0">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="eOT-Qj-FBd">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vlv-Qc-ff7"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Progress" image="chart.png" id="VeP-9Q-3S1"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="nkx-hy-0s7" id="Yts-P8-Zte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbU-03-duS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="-1005"/>
+            <point key="canvasLocation" x="480.80000000000001" y="-1005.2473763118442"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="rRK-VP-60I">
@@ -843,7 +868,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Month Progress" id="eds-4u-zcb">
+                                    <navigationItem title="Week Progress" id="eds-4u-zcb">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="wGj-f3-aBg">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>

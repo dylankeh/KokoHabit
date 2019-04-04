@@ -20,6 +20,8 @@ class AddNewHabitViewController: UIViewController {
         
         print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
         
+        dismiss(animated: true, completion: nil)
+        
         //Alert incase not inserted or error.. or alert to send them to the login page
     }
     

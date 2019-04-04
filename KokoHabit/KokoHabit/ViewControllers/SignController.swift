@@ -25,12 +25,35 @@ class SignController: UIViewController {
         let dao = DAO()
         let occupetion:NSString = "Unknown"
         
-        if (password.text! == confirmPassword.text! && password.text! != "") {
-            print(dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion))
+        if (password.text! == confirmPassword.text! && password.text! != ""
+            && email.text! != "" && name.text != "") {
+            dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion)
             
-            self.performSegue(withIdentifier: "loginPage", sender : nil)
+            dismiss(animated: true, completion: nil)
         }
-    
-        //Alert incase not inserted or error.. or alert to send them to the login page
+        else if(password.text! != confirmPassword.text!) {
+            let alertController = UIAlertController(title: "Invalid Password", message: "The password does not match", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
+            
+        }
+        else if(password.text! == "") {
+            let alertController = UIAlertController(title: "Invalid Password", message: "Password cannot be empty", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
+            
+        }
+        else {
+            let alertController = UIAlertController(title: "Invalid Login", message: "All the fields have to be filled up", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
+            
+        }
     }
 }

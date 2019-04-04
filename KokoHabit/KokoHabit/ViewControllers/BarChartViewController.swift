@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Charts
 
 class BarChartViewController: UIViewController {
     
-    @IBOutlet weak var barChartView: BarChartView!
+   /* @IBOutlet weak var barChartView: BarChartView!
     var months: [String]!
 
     override func viewDidLoad() {
@@ -63,5 +62,5 @@ class BarChartViewController: UIViewController {
         
         //Setting the height of the graph
         barChartView.leftAxis.axisMaximum = 710;
-    }
+    }*/
 }

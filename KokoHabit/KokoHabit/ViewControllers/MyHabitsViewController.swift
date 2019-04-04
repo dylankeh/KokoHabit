@@ -16,6 +16,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedHabitPoint : String!
     var selectedHabitId : Int!
     
+    var isSameDay : Bool!
+    
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -106,6 +108,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             // check if today is in the database
             if (!dao.checkIfDayExists(day: today)) {
                 dao.insertDay(day: today)
+                isSameDay = false;
+                print("It's a new day")
+            }
+            else
+            {
+                // same day
+                isSameDay = true;
+                print("It's the same day")
             }
         } else {
             if (dao.checkIfUserPassedWeeklyPoints()) {
@@ -116,7 +126,22 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             // insert new day
             dao.insertDay(day: today)
         }
+        
+        // first, get all the active habits
         dao.getHabits(day: today)
+        
+        // if it is a different day, pass all the active habits to point system
+        if isSameDay == false
+        {
+            let pointSystem = PointSystem()
+            
+            // shuffle the habit points and return it back and assign to habits in delegate
+            delegate.habits = pointSystem.randomPoints(habits: delegate.habits)
+            
+            // change database value
+            dao.updatePointsAfterRandom(habits: delegate.habits)
+            print("Random Point finished")
+        }
         tableView.reloadData()
     }
     

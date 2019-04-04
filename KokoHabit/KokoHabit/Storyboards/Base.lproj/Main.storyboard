@@ -19,12 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmQ-se-vOz">
-                                <rect key="frame" x="116" y="325" width="126" height="30"/>
+                                <rect key="frame" x="116" y="305" width="126" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="amR-4U-6GO" kind="presentation" id="N7M-eY-iVY"/>
@@ -52,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1174" y="-1791"/>
+            <point key="canvasLocation" x="-1175.2" y="-1791.4542728635683"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="B4D-kZ-99g">
@@ -511,7 +512,7 @@
                                     <navigationItem title="My Account" id="YVh-hv-2jJ">
                                         <barButtonItem key="leftBarButtonItem" title="Habits" id="wOu-fl-gJ2">
                                             <connections>
-                                                <segue destination="nEB-LD-4Fv" kind="unwind" unwindAction="unwindToMyHabitsVCWithSender:" id="uQW-Ny-lAe"/>
+                                                <segue destination="nEB-LD-4Fv" kind="unwind" unwindAction="unWindToMyHabitVCWithSender:" id="R4r-QL-70l"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

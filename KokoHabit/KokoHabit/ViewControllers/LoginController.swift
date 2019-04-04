@@ -17,6 +17,13 @@ class LoginController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let dao = DAO()
+        let list: [String] = dao.getAllStartWeeks()
+        
+        for week in list {
+            print(dao.checkUserWeeklyPointTotal(week: week))
+        }
+        
     }
     
     @IBAction func login(sender:UIButton) {

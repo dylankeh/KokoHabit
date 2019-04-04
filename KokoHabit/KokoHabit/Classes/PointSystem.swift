@@ -19,9 +19,22 @@ class PointSystem: NSObject {
         return user;
     }
     
-    func randomPoints()
+    func randomPoints(habits: [Habit]) ->[Habit]
     {
+        // create a new array to record the points of all the active habits
+        var points: [Int] = []
         
+        for habit in habits
+        {
+            points.append(habit.getHabitValue())
+        }
+        
+        points.shuffle()
+        
+        for index in 0..<habits.count {
+            habits[index].setHabitValue(habitValue: points[index])
+        }
+        return habits
     }
     
     // what will it return?

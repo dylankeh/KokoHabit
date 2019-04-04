@@ -127,6 +127,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
+    // Phoenix added
     public func deleteHabit(habitId: Int32) {
         let updateHabitNamePoint = "DELETE FROM week_habit WHERE habitId=? AND weekStartDate = (SELECT MAX(weekStartDate) FROM week_habit);"
         if validator(){
@@ -182,6 +183,40 @@ class DAO: NSObject {
                 print("UPDATE statement could not be prepared. \(errorMessage)")
             }
             sqlite3_finalize(sqlUpdate)
+        }
+        sqlite3_close(db)
+    }
+    
+    public func updatePointsAfterRandom(habits: [Habit])
+    {
+        let updateRandomPoint = "UPDATE day_habit SET pointsWorth=? WHERE date=? AND id=?;"
+        let today = Date.init()
+        // use a loop to update every record in the day_habit table
+        for index in 0..<habits.count {
+            
+            if validator(){
+                var sqlUpdate: OpaquePointer? = nil
+                if sqlite3_prepare_v2(db, updateRandomPoint, -1 , &sqlUpdate, nil) == SQLITE_OK{
+                    sqlite3_bind_int(sqlUpdate, 1, Int32(delegate.habits[index].getHabitValue()))
+                    let dateStr = dateFormatter.string(from: today) as NSString
+                    sqlite3_bind_text(sqlUpdate, 2, dateStr.utf8String, -1, nil)
+                    sqlite3_bind_int(sqlUpdate, 3, Int32(delegate.habits[index].getHabitId()))
+                    
+                    if sqlite3_step(sqlUpdate) == SQLITE_DONE {
+                        print("Successful updated day_habit pointsValue")
+                    }
+                    else {
+                        let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                        print("UPDATE statement could not be prepared. \(errorMessage)")
+                    }
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("UPDATE statement could not be prepared. \(errorMessage)")
+                }
+                sqlite3_finalize(sqlUpdate)
+            }
+            
         }
         sqlite3_close(db)
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignController: UIViewController {
+class SignController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var name: UITextField!
     @IBOutlet var email: UITextField!
@@ -21,15 +21,28 @@ class SignController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
     @IBAction func createAccount(sender:UIButton) {
         let dao = DAO()
         let occupetion:NSString = "Unknown"
         
         if (password.text! == confirmPassword.text! && password.text! != ""
             && email.text! != "" && name.text != "") {
-            dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion)
-            
-            dismiss(animated: true, completion: nil)
+            if (email.text!.matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
+                dao.addPerson(email: email!.text! as NSString, name: name!.text! as NSString, age: -1, password: password!.text! as NSString, occupation: occupetion)
+                
+                dismiss(animated: true, completion: nil)
+            }
+            else {
+                let alertController = UIAlertController(title: "Invalid Sign Up", message: "Not a valid email address", preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                present(alertController, animated: true)
+            }
         }
         else if(password.text! != confirmPassword.text!) {
             let alertController = UIAlertController(title: "Invalid Password", message: "The password does not match", preferredStyle: .alert)
@@ -55,5 +68,11 @@ class SignController: UIViewController {
             present(alertController, animated: true)
             
         }
+    }
+}
+
+extension String {
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
 }

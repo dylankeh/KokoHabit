@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var email:UITextField!
     @IBOutlet var password:UITextField!
@@ -24,6 +24,10 @@ class LoginController: UIViewController {
             print(dao.checkUserWeeklyPointTotal(week: week))
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
     
     @IBAction func login(sender:UIButton) {
@@ -57,5 +61,9 @@ class LoginController: UIViewController {
             alertController.addAction(cancelAction)
             present(alertController, animated: true)
         }
+    }
+    
+    @IBAction func backHome(sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

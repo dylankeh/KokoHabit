@@ -12,10 +12,16 @@ class LoginController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var email:UITextField!
     @IBOutlet var password:UITextField!
-
+    @IBOutlet weak var loginBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loginBtn.layer.cornerRadius = 22.5
+        loginBtn.layer.shadowRadius = 3.0
+        loginBtn.layer.shadowColor = UIColor.black.cgColor
+        loginBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
+        loginBtn.layer.shadowOpacity = 0.25
+        loginBtn.layer.masksToBounds = false
         // Do any additional setup after loading the view.
         let dao = DAO()
         let list: [String] = dao.getAllStartWeeks()

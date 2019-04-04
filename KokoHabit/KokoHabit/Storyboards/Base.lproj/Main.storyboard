@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmQ-se-vOz">
-                                <rect key="frame" x="116" y="305" width="126" height="50"/>
+                                <rect key="frame" x="92" y="462" width="191" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="amR-4U-6GO" kind="presentation" id="N7M-eY-iVY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDi-gb-Y65">
-                                <rect key="frame" x="116" y="394" width="126" height="43"/>
+                                <rect key="frame" x="92" y="544" width="191" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -43,13 +42,17 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kokohabits logo alternate.png" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-wd-FJ5">
-                                <rect key="frame" x="67" y="61" width="240" height="128"/>
+                                <rect key="frame" x="67" y="119" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568627450982" green="0.37254901960784315" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="m8L-b2-U0a"/>
                     </view>
+                    <connections>
+                        <outlet property="loginBtn" destination="uDi-gb-Y65" id="rNW-Uw-jUw"/>
+                        <outlet property="signupBtn" destination="WmQ-se-vOz" id="ORn-pL-c3s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,6 +109,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backHomeWithSender:" destination="lTd-65-z1O" eventType="touchUpInside" id="g3d-W3-xbg"/>
+                                    <segue destination="amR-4U-6GO" kind="presentation" id="VHa-2a-cKV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-mF-8KS">
@@ -130,6 +134,7 @@
                     </view>
                     <connections>
                         <outlet property="email" destination="j9c-2j-Ah0" id="0wK-Rm-MAq"/>
+                        <outlet property="loginBtn" destination="0Pa-mF-8KS" id="ciA-uq-jQE"/>
                         <outlet property="password" destination="hhJ-AX-T2a" id="Jx0-dz-OZn"/>
                         <segue destination="gCB-xp-LR3" kind="presentation" identifier="mainMenu" id="meM-RL-zeP"/>
                     </connections>
@@ -205,7 +210,7 @@
                                     <color key="titleColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zzQ-HB-hoY" kind="unwind" unwindAction="unWindToHomeWithSender:" id="4W2-K0-XXc"/>
+                                    <segue destination="lTd-65-z1O" kind="presentation" id="ru3-JT-aaw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxA-IB-Z87">
@@ -250,10 +255,10 @@
                         <outlet property="email" destination="HP1-bB-oRY" id="S8o-ze-tbA"/>
                         <outlet property="name" destination="cu9-bh-Wv5" id="PMQ-OW-j9H"/>
                         <outlet property="password" destination="pv9-DZ-1cK" id="fud-xA-N0j"/>
+                        <outlet property="signupBtn" destination="pxA-IB-Z87" id="UYe-Y1-E0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDl-3H-I4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="zzQ-HB-hoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1175" y="-997"/>
         </scene>
@@ -923,15 +928,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar.png" width="30" height="30"/>
-        <image name="chart.png" width="30" height="30"/>
-        <image name="checkmark.png" width="30" height="30"/>
-        <image name="coupon.png" width="30" height="30"/>
+        <image name="calendar.png" width="22.5" height="22.5"/>
+        <image name="chart.png" width="24" height="24"/>
+        <image name="checkmark.png" width="22.5" height="22.5"/>
+        <image name="coupon.png" width="24" height="24"/>
         <image name="coupon_row.png" width="952" height="574"/>
         <image name="kokohabits logo alternate.png" width="2250" height="450"/>
         <image name="kokohabits logo.png" width="2250" height="450"/>
-        <image name="plus.png" width="30" height="30"/>
-        <image name="statistics.png" width="30" height="30"/>
-        <image name="user.png" width="30" height="30"/>
+        <image name="plus.png" width="22.5" height="22.5"/>
+        <image name="statistics.png" width="22.5" height="22.5"/>
+        <image name="user.png" width="22.5" height="22.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VHa-2a-cKV"/>
+        <segue reference="ru3-JT-aaw"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,45 +12,46 @@ import Charts
 class PieChartViewController: UIViewController {
 
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet var output: UILabel!
+     private var habitPoints = [PieChartDataEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        let months = ["Jan", "Feb", "Mar", "Apr", "May"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
-        
-        setChart(dataPoints: months, values: unitsSold)
-        
     }
     
-    func setChart(dataPoints: [String], values: [Double]) {
+    override func viewWillAppear(_ animated: Bool) {
+        let months = ["Jan", "Feb", "Mar", "Apr", "May"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
+        habitPoints.removeAll()
         
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
+        for i in 0..<unitsSold.count {
+            let pointEntry = PieChartDataEntry(value: unitsSold[i])
+            pointEntry.label = months[i]
+            habitPoints.append(pointEntry)
         }
+        setChart()
+    }
+    
+    func setChart() {
         
-        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "Daily Habits")
+        let pieChartDataSet = PieChartDataSet(entries: habitPoints, label: nil)
         pieChartDataSet.drawIconsEnabled = false
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
-        //var colors: [UIColor] = []
+        var colors: [UIColor] = []
         
-        /* for _ in 0..<dataPoints.count {
+        for _ in 0..<habitPoints.count {
          let red = Double(arc4random_uniform(256))
          let green = Double(arc4random_uniform(256))
          let blue = Double(arc4random_uniform(256))
          
          let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
          colors.append(color)
-         }*/
+         }
         
-        pieChartDataSet.colors = ChartColorTemplates.colorful()//ChartColorTemplates.vordiplom()
+        pieChartDataSet.colors = colors//ChartColorTemplates.colorful()//ChartColorTemplates.vordiplom()
         
     }
 

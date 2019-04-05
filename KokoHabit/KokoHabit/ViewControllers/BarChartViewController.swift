@@ -42,7 +42,7 @@ class BarChartViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Weeks")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.data = chartData
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -596,11 +596,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Add New Habit" id="GGE-qw-Jf0">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="eOT-Qj-FBd">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Day Progress" id="GGE-qw-Jf0"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -873,14 +869,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Week Progress" id="eds-4u-zcb">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="wGj-f3-aBg">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <segue destination="D13-8d-1xI" kind="unwind" unwindAction="unWindToMyHabitVCWithSender:" id="fUY-LC-YNN"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Week Progress" id="eds-4u-zcb"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-nF-BwS" customClass="BarChartView" customModule="Charts">
@@ -900,7 +889,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvn-ib-hEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="D13-8d-1xI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1392.8" y="-3423.2383808095956"/>
         </scene>
@@ -928,16 +916,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar.png" width="22.5" height="22.5"/>
-        <image name="chart.png" width="24" height="24"/>
-        <image name="checkmark.png" width="22.5" height="22.5"/>
-        <image name="coupon.png" width="24" height="24"/>
+        <image name="calendar.png" width="30" height="30"/>
+        <image name="chart.png" width="30" height="30"/>
+        <image name="checkmark.png" width="30" height="30"/>
+        <image name="coupon.png" width="30" height="30"/>
         <image name="coupon_row.png" width="952" height="574"/>
         <image name="kokohabits logo alternate.png" width="2250" height="450"/>
         <image name="kokohabits logo.png" width="2250" height="450"/>
-        <image name="plus.png" width="22.5" height="22.5"/>
-        <image name="statistics.png" width="22.5" height="22.5"/>
-        <image name="user.png" width="22.5" height="22.5"/>
+        <image name="plus.png" width="30" height="30"/>
+        <image name="statistics.png" width="30" height="30"/>
+        <image name="user.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VHa-2a-cKV"/>

@@ -90,7 +90,7 @@ END;
 CREATE TRIGGER insert_into_day_habit
 	AFTER INSERT ON day
 BEGIN
-	INSERT INTO day_habit SELECT NEW.date, wh.habitId, h.pointValue, 0
+	INSERT INTO day_habit SELECT NEW.date, wh.habitId, h.pointValue, 1
 	    FROM week_habit wh INNER JOIN  habit h ON wh.habitId = h.id
 	    WHERE wh.weekStartDate=NEW.weekStartDate;
     INSERT INTO logs VALUES ("TRIGGERED insert_into_day_habit");
@@ -110,7 +110,7 @@ CREATE TRIGGER add_habit_to_dayweek_habit
     AFTER INSERT ON habit WHEN NEW.active=1
 BEGIN
     INSERT INTO week_habit SELECT MAX(weekStartDate), NEW.id FROM week;
-    INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 0 FROM day;
+    INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 1 FROM day;
     INSERT INTO logs VALUES ("TRIGGERED add_habit_to_dayweek_habit");
 END;
 
@@ -119,7 +119,7 @@ CREATE TRIGGER set_habit_to_active
     AFTER UPDATE ON habit WHEN NEW.active=1 AND OLD.active=0
 BEGIN
     INSERT INTO week_habit SELECT MAX(weekStartDate), OLD.id FROM week;
-	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 0 FROM day;
+	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 1 FROM day;
     INSERT INTO logs VALUES ("TRIGGERED set_habit_to_active");
 END;
 
@@ -136,9 +136,22 @@ INSERT INTO user VALUES ("koko","koko",22,"1234","Student");
 INSERT INTO coupon (id, email, pointValue) VALUES (NULL, "koko", 50);
 INSERT INTO coupon VALUES (NULL, "koko", 50, 1, "2019-04-02");
 
+INSERT INTO week VALUES ("2019-03-10","2019-03-16",1,60);
+INSERT INTO week VALUES ("2019-03-17","2019-03-23",1,60);
 INSERT INTO week VALUES ("2019-03-24","2019-03-30",1,60);
 INSERT INTO week VALUES ("2019-03-31","2019-04-06",0,60);
 
+INSERT INTO day VALUES ("2019-03-10","2019-03-10");
+INSERT INTO day VALUES ("2019-03-11","2019-03-10");
+INSERT INTO day VALUES ("2019-03-12","2019-03-10");
+INSERT INTO day VALUES ("2019-03-13","2019-03-10");
+INSERT INTO day VALUES ("2019-03-17","2019-03-17");
+INSERT INTO day VALUES ("2019-03-18","2019-03-17");
+INSERT INTO day VALUES ("2019-03-19","2019-03-17");
+INSERT INTO day VALUES ("2019-03-21","2019-03-17");
+INSERT INTO day VALUES ("2019-03-24","2019-03-24");
+INSERT INTO day VALUES ("2019-03-25","2019-03-24");
+INSERT INTO day VALUES ("2019-03-27","2019-03-24");
 INSERT INTO day VALUES ("2019-03-30","2019-03-24");
 INSERT INTO day VALUES ("2019-03-31","2019-03-31");
 INSERT INTO day VALUES ("2019-04-01","2019-03-31");
@@ -149,3 +162,16 @@ INSERT INTO habit VALUES (3, "koko", 10, "Read a book",1);
 INSERT INTO habit VALUES (4, "koko", 30, "Wake up early",1);
 INSERT INTO habit VALUES (5, "koko", 20, "Sleep Early",1);
 INSERT INTO habit VALUES (6, "koko", 20, "Stop Smoking",0);
+
+INSERT INTO day_habit VALUES('2019-03-10', 1, 100, 1);
+INSERT INTO day_habit VALUES('2019-03-11', 1, 80, 1);
+INSERT INTO day_habit VALUES('2019-03-12', 1, 20, 1);
+INSERT INTO day_habit VALUES('2019-03-13', 1, 70, 1);
+INSERT INTO day_habit VALUES('2019-03-17', 1, 100, 1);
+INSERT INTO day_habit VALUES('2019-03-18', 1, 50, 1);
+INSERT INTO day_habit VALUES('2019-03-19', 1, 60, 1);
+INSERT INTO day_habit VALUES('2019-03-21', 1, 40, 1);
+INSERT INTO day_habit VALUES('2019-03-24', 1, 60, 1);
+INSERT INTO day_habit VALUES('2019-03-25', 1, 100, 1);
+INSERT INTO day_habit VALUES('2019-03-27', 1, 90, 1);
+INSERT INTO day_habit VALUES('2019-03-30', 1, 100, 1);

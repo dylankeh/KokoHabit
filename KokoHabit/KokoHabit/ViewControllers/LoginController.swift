@@ -22,13 +22,6 @@ class LoginController: UIViewController, UITextFieldDelegate{
         loginBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
         loginBtn.layer.shadowOpacity = 0.25
         loginBtn.layer.masksToBounds = false
-        // Do any additional setup after loading the view.
-        let dao = DAO()
-        let list: [String] = dao.getAllStartWeeks()
-        
-        for week in list {
-            print(dao.checkUserWeeklyPointTotal(week: week))
-        }
         
     }
     

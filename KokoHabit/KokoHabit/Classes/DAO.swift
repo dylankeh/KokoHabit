@@ -688,22 +688,22 @@ class DAO: NSObject {
     }
     
     // created partially by Khoa Tran
-    public func checkUserWeeklyPointTotal(week: String) -> Int {
+    public func checkUserWeeklyPointTotal(week: String) -> Double! {
         db = nil
         
-        var totalPoints: Int = 0
+        var totalPoints: Double = 0.0
         
         if validator() {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = " + week + " AND dh.completed=1;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = '" + week + "' AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = '" + week + "' AND dh.completed=1;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
-                    totalPoints = Int(sqlite3_column_int(queryStatement, 0))
+                    totalPoints = Double(sqlite3_column_int(queryStatement, 0))
                     
                 }
                 print("finished selecting weekly points")

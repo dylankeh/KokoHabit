@@ -12,17 +12,24 @@ import Charts
 class BarChartViewController: UIViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
-    var months: [String]!
+    var weeks: [String] = []
+    var points: [Double] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        months = ["12-02-2019", "20-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019", "30-02-2019"]
-        let unitsSold = [700.0, 400.0, 600.0, 300.0, 120.0, 600.0, 400.0, 500.0, 200.0, 400.0, 600.0, 300.0, 102.0, 160.0, 400.0, 700.0]
         
-        setChart(dataPoints: months, values: unitsSold)
+        let dao = DAO()
+        weeks = dao.getAllStartWeeks()
+        
+        for week in weeks {
+            print(week)
+            points.append(dao.checkUserWeeklyPointTotal(week: week))
+        }
+        
+        setChart(dataPoints: weeks, values: points)
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -52,7 +59,7 @@ class BarChartViewController: UIViewController {
         //Animations and making it look pretty
         barChartView.xAxis.labelPosition = .bottom
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:weeks)
         barChartView.xAxis.granularity = 1
         
         //Getting rid of lines

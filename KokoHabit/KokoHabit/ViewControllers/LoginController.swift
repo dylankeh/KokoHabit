@@ -17,24 +17,28 @@ class LoginController: UIViewController, UITextFieldDelegate{
             email.borderStyle = UITextField.BorderStyle.roundedRect
         }
     }
+    
     @IBOutlet var password:UITextFieldIcon! {
         didSet {
             password.tintColor = UIColor.lightGray
             password.setIcon(UIImage(named: "lock")!)
             password.borderStyle = UITextField.BorderStyle.roundedRect
-
         }
     }
-    @IBOutlet weak var loginBtn: UIButton!
+    
+    @IBOutlet weak var loginBtn: UIButton! {
+        didSet {
+            loginBtn.layer.cornerRadius = 22.5
+            loginBtn.layer.shadowRadius = 3.0
+            loginBtn.layer.shadowColor = UIColor.black.cgColor
+            loginBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
+            loginBtn.layer.shadowOpacity = 0.25
+            loginBtn.layer.masksToBounds = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginBtn.layer.cornerRadius = 22.5
-        loginBtn.layer.shadowRadius = 3.0
-        loginBtn.layer.shadowColor = UIColor.black.cgColor
-        loginBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
-        loginBtn.layer.shadowOpacity = 0.25
-        loginBtn.layer.masksToBounds = false
         
     }
     

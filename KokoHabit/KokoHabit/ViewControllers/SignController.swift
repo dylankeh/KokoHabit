@@ -14,17 +14,20 @@ class SignController: UIViewController, UITextFieldDelegate {
     @IBOutlet var email: UITextField!
     @IBOutlet var password: UITextField!
     @IBOutlet var confirmPassword: UITextField!
-    @IBOutlet weak var signupBtn: UIButton!
+    @IBOutlet weak var signupBtn: UIButton! {
+        didSet {
+            signupBtn.layer.cornerRadius = 22.5
+            signupBtn.layer.shadowRadius = 3.0
+            signupBtn.layer.shadowColor = UIColor.black.cgColor
+            signupBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
+            signupBtn.layer.shadowOpacity = 0.25
+            signupBtn.layer.masksToBounds = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signupBtn.layer.cornerRadius = 22.5
-        signupBtn.layer.shadowRadius = 3.0
-        signupBtn.layer.shadowColor = UIColor.black.cgColor
-        signupBtn.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
-        signupBtn.layer.shadowOpacity = 0.25
-        signupBtn.layer.masksToBounds = false
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -57,6 +57,9 @@
 		63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D62222D771C00ADF50B /* LaunchScreen.storyboard */; };
 		63E1A3B822567CC4000A296E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E1A3B522567CA4000A296E /* Charts.framework */; };
 		63E1A3B922567CC4000A296E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63E1A3B522567CA4000A296E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63E4E4822256C2D400E8AECC /* UITextFieldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4E4812256C2D400E8AECC /* UITextFieldIcon.swift */; };
+		63E4E4892256FDFD00E8AECC /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4E4872256FDFC00E8AECC /* user-icon.png */; };
+		63E4E48A2256FDFD00E8AECC /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4E4882256FDFC00E8AECC /* lock.png */; };
 		CB186DFF225417BD0030A51B /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186DFE225417BD0030A51B /* CouponCell.swift */; };
 		CB186E01225419B90030A51B /* CouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186E00225419B90030A51B /* CouponController.swift */; };
 		CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0957223EDADD00BF2B6C /* Habit.swift */; };
@@ -159,6 +162,9 @@
 		63BA0D63222D771C00ADF50B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63BA0D65222D771C00ADF50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E1A3AF22567CA4000A296E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
+		63E4E4812256C2D400E8AECC /* UITextFieldIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldIcon.swift; sourceTree = "<group>"; };
+		63E4E4872256FDFC00E8AECC /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
+		63E4E4882256FDFC00E8AECC /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		CB186DFE225417BD0030A51B /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		CB186E00225419B90030A51B /* CouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponController.swift; sourceTree = "<group>"; };
 		CB2E0957223EDADD00BF2B6C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
@@ -283,6 +289,7 @@
 				CB4CC81F224D799900D5FF94 /* HabitCell.swift */,
 				6388C4B82253D2250007CD62 /* Coupon.swift */,
 				CB186DFE225417BD0030A51B /* CouponCell.swift */,
+				63E4E4812256C2D400E8AECC /* UITextFieldIcon.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -308,6 +315,8 @@
 		CB6C080822346CD500CF4D4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				63E4E4882256FDFC00E8AECC /* lock.png */,
+				63E4E4872256FDFC00E8AECC /* user-icon.png */,
 				6388C4DF225450630007CD62 /* coupon_row_used.png */,
 				6388C4DD2254504A0007CD62 /* coupon_row.png */,
 				6388C4B62253CFCD0007CD62 /* kokohabits logo alternate.png */,
@@ -428,11 +437,13 @@
 				6313E8372246FFE800048E4F /* user.png in Resources */,
 				6388C50122548BB50007CD62 /* Info-tvOS.plist in Resources */,
 				6388C4E0225450630007CD62 /* coupon_row_used.png in Resources */,
+				63E4E48A2256FDFD00E8AECC /* lock.png in Resources */,
 				6313E83D2247022E00048E4F /* plus.png in Resources */,
 				6388C4F722548BB50007CD62 /* Info-iOS.plist in Resources */,
 				6313E8202246F77300048E4F /* checkmark.png in Resources */,
 				631ADD74224E5F2E002FC6A3 /* kokohabits logo.png in Resources */,
 				6313E8232246F77300048E4F /* statistics.png in Resources */,
+				63E4E4892256FDFD00E8AECC /* user-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +486,7 @@
 				0F7C21DA2255A6BF0023A0BB /* BarChartViewController.swift in Sources */,
 				D03F9A2222413B47006FB156 /* EditHabitViewController.swift in Sources */,
 				6388C4FF22548BB50007CD62 /* UIScrollViewDelegates.swift in Sources */,
+				63E4E4822256C2D400E8AECC /* UITextFieldIcon.swift in Sources */,
 				0F3B2D10225694DD006119C4 /* PieChartViewController.swift in Sources */,
 				63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */,
 				D03F9A1E22411B93006FB156 /* PointSystem.swift in Sources */,

@@ -10,8 +10,21 @@ import UIKit
 
 class LoginController: UIViewController, UITextFieldDelegate{
     
-    @IBOutlet var email:UITextField!
-    @IBOutlet var password:UITextField!
+    @IBOutlet var email:UITextFieldIcon! {
+        didSet {
+            email.tintColor = UIColor.lightGray
+            email.setIcon(UIImage(named: "user-icon")!)
+            email.borderStyle = UITextField.BorderStyle.roundedRect
+        }
+    }
+    @IBOutlet var password:UITextFieldIcon! {
+        didSet {
+            password.tintColor = UIColor.lightGray
+            password.setIcon(UIImage(named: "lock")!)
+            password.borderStyle = UITextField.BorderStyle.roundedRect
+
+        }
+    }
     @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
@@ -64,5 +77,19 @@ class LoginController: UIViewController, UITextFieldDelegate{
     
     @IBAction func backHome(sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UITextField {
+    
+    func setIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame:
+            CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = image
+        let iconContainerView: UIView = UIView(frame:
+            CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
     }
 }

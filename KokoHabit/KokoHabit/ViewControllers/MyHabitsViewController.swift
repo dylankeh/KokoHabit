@@ -48,6 +48,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
+        if (cell.subviews.first != nil && cell.subviews.count > 2) {
+            cell.subviews.first?.removeFromSuperview()
+        }
         
         var cellFrame: CGRect = cell.frame
         let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
@@ -182,6 +185,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.updatePointsAfterRandom(habits: delegate.habits)
             print("Random Point finished")
         }
+        var habits = delegate.habits
+        var num = habits.count
         tableView.reloadData()
     }
     

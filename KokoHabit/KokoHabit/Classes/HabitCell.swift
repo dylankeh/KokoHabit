@@ -9,6 +9,8 @@
 import UIKit
 
 class HabitCell: UITableViewCell {
+    
+    
 
     @IBOutlet weak var lblHabitName: UILabel!
     
@@ -23,10 +25,12 @@ class HabitCell: UITableViewCell {
     
     func setCompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        lblHabitPoint.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     }
     
     func setUncompletedHabit(){
-        lblHabitName.textColor = #colorLiteral(red: 0.7766154408, green: 0.2747580707, blue: 0.221539259, alpha: 1)
+        lblHabitName.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        lblHabitPoint.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     }
     
     // Phoenix: add two gets functions
@@ -44,9 +48,16 @@ class HabitCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        //layoutSubviews()
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
 
 }

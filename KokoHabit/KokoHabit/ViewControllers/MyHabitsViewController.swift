@@ -48,7 +48,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
-        if (cell.subviews.first != nil && cell.subviews.count > 2) {
+        var count = cell.subviews.count
+        if (cell.subviews.first != nil && cell.subviews.count == 3 && indexPath.section==0) {
             cell.subviews.first?.removeFromSuperview()
         }
         
@@ -185,8 +186,6 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.updatePointsAfterRandom(habits: delegate.habits)
             print("Random Point finished")
         }
-        var habits = delegate.habits
-        var num = habits.count
         tableView.reloadData()
     }
     

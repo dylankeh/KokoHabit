@@ -90,7 +90,7 @@ END;
 CREATE TRIGGER insert_into_day_habit
 	AFTER INSERT ON day
 BEGIN
-	INSERT INTO day_habit SELECT NEW.date, wh.habitId, h.pointValue, 1
+	INSERT INTO day_habit SELECT NEW.date, wh.habitId, h.pointValue, 0
 	    FROM week_habit wh INNER JOIN  habit h ON wh.habitId = h.id
 	    WHERE wh.weekStartDate=NEW.weekStartDate;
     INSERT INTO logs VALUES ("TRIGGERED insert_into_day_habit");
@@ -110,7 +110,7 @@ CREATE TRIGGER add_habit_to_dayweek_habit
     AFTER INSERT ON habit WHEN NEW.active=1
 BEGIN
     INSERT INTO week_habit SELECT MAX(weekStartDate), NEW.id FROM week;
-    INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 1 FROM day;
+    INSERT INTO day_habit SELECT MAX(date), NEW.id, NEW.pointValue, 0 FROM day;
     INSERT INTO logs VALUES ("TRIGGERED add_habit_to_dayweek_habit");
 END;
 
@@ -119,7 +119,7 @@ CREATE TRIGGER set_habit_to_active
     AFTER UPDATE ON habit WHEN NEW.active=1 AND OLD.active=0
 BEGIN
     INSERT INTO week_habit SELECT MAX(weekStartDate), OLD.id FROM week;
-	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 1 FROM day;
+	INSERT INTO day_habit SELECT MAX(date), OLD.id, OLD.pointValue, 0 FROM day;
     INSERT INTO logs VALUES ("TRIGGERED set_habit_to_active");
 END;
 

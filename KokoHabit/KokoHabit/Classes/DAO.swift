@@ -189,7 +189,7 @@ class DAO: NSObject {
     
     public func updatePointsAfterRandom(habits: [Habit])
     {
-        let updateRandomPoint = "UPDATE day_habit SET pointsWorth=? WHERE date=? AND id=?;"
+        let updateRandomPoint = "UPDATE day_habit SET pointsWorth=? WHERE date=? AND habitId=?;"
         let today = Date.init()
         // use a loop to update every record in the day_habit table
         for index in 0..<habits.count {

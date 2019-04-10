@@ -48,28 +48,28 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
-        var count = cell.subviews.count
-        if (cell.subviews.first != nil && cell.subviews.count == 3 && indexPath.section==0) {
-            cell.subviews.first?.removeFromSuperview()
-        }
+        
+//        if (cell.subviews.count > 3) {
+//            cell.subviews.first?.removeFromSuperview()
+//            cell.subviews.first?.removeFromSuperview()
+//        }
         
         var cellFrame: CGRect = cell.frame
         let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
         cellFrame.origin.x = 0
         cellFrame.size.width = cell.frame.size.width - (cell.frame.size.width * CGFloat(percentage))
-        let bg : UIView = UIView(frame: cellFrame)
+        cell.setFrame(frame: cellFrame)
+//        var bg : UIView
+//        bg = UIView(frame: cellFrame)
         if (delegate.habits[indexPath.section].getCompletion()) {
-            bg.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
+            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
         }
         else {
-            bg.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
+            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
         }
-        bg.tag = indexPath.section
-        cell.addSubview(bg)
-        cell.sendSubviewToBack(bg)
+        //cell.addSubview(bg)
         cell.layer.cornerRadius = 10
         cell.contentView.layoutMargins.bottom = 20
-        
         cell.setHabit(habit: delegate.habits[indexPath.section])
         
         if (delegate.habits[indexPath.section].getCompletion()) {
@@ -87,12 +87,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         if delegate.habits[indexPath.section].getCompletion() {
             delegate.habits[indexPath.section].setCompletion(completion: false)
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 0)
-            cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
+            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
+            //cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
             cell.setUncompletedHabit()
         } else {
             delegate.habits[indexPath.section].setCompletion(completion: true)
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 1)
-            cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
+            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
+            //cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
             cell.setCompletedHabit()
         }
     }
@@ -100,9 +102,10 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: {
             action, index in print("Delete button tapped")
-            
             print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.section].getHabitId())))
-            self.load()
+            self.delegate.habits.remove(at: indexPath.section)
+            let indexSet = IndexSet(arrayLiteral: indexPath.section)
+            self.tableView.deleteSections(indexSet, with: .none)
         })
         deleteAction.backgroundColor = #colorLiteral(red: 0.7764705882, green: 0.2745098039, blue: 0.2196078431, alpha: 1)
         

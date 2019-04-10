@@ -13,9 +13,9 @@ class HabitCell: UITableViewCell {
     
 
     @IBOutlet weak var lblHabitName: UILabel!
-    
-    // Phoenix: point should be display on the habit panel as well
     @IBOutlet weak var lblHabitPoint: UILabel!
+    @IBOutlet var pointPercentageView: UIView!
+    
     
     func setHabit(habit: Habit) {
         print(habit)
@@ -31,6 +31,10 @@ class HabitCell: UITableViewCell {
     func setUncompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         lblHabitPoint.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+    }
+    
+    func setFrame(frame:CGRect) {
+        pointPercentageView = UIView(frame: frame)
     }
     
     // Phoenix: add two gets functions

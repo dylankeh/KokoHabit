@@ -14,7 +14,7 @@ class HabitCell: UITableViewCell {
 
     @IBOutlet weak var lblHabitName: UILabel!
     @IBOutlet weak var lblHabitPoint: UILabel!
-    @IBOutlet var pointPercentageView: UIView!
+    @IBOutlet weak var percentageView: UIView!
     
     
     func setHabit(habit: Habit) {
@@ -26,15 +26,17 @@ class HabitCell: UITableViewCell {
     func setCompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         lblHabitPoint.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        percentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
     }
     
     func setUncompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         lblHabitPoint.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        percentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
     }
     
-    func setFrame(frame:CGRect) {
-        pointPercentageView = UIView(frame: frame)
+    func setPercentageViewFrame(frame: CGRect) {
+        percentageView.frame = frame
     }
     
     // Phoenix: add two gets functions
@@ -60,8 +62,6 @@ class HabitCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-    }
+            }
 
 }

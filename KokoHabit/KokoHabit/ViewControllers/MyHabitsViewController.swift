@@ -49,12 +49,6 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
         
-        
-//        cell.layer.shadowRadius = 3.0
-//        cell.layer.shadowColor = UIColor.black.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
-//        cell.layer.shadowOpacity = 0.25
-//        //cell.layer.masksToBounds = false
         cell.contentView.layoutMargins.bottom = 20
         cell.layer.cornerRadius = 10
         cell.setHabit(habit: delegate.habits[indexPath.section])
@@ -72,7 +66,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
         cellFrame.origin.x = 0
         cellFrame.size.width = cell.frame.size.width - (cell.frame.size.width * CGFloat(percentage))
-        cell.setPercentageViewWidth(width: cellFrame.size.width)
+        cell.setPercentageViewFrame(frame: cellFrame)
     }
     
     

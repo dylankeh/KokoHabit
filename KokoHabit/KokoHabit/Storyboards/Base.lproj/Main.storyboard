@@ -796,10 +796,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swV-ne-Cbl">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfN-7F-RhH">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.89155226949999999" green="0.5346416235" blue="0.52716416119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Fd-Fct">
                                                     <rect key="frame" x="15" y="25.5" width="231" height="33"/>
@@ -829,7 +829,7 @@
                                         <connections>
                                             <outlet property="lblHabitName" destination="caM-Fd-Fct" id="Xpx-fa-nCc"/>
                                             <outlet property="lblHabitPoint" destination="qFz-NS-MSO" id="gZQ-Po-DGd"/>
-                                            <outlet property="pointPercentageView" destination="swV-ne-Cbl" id="8gS-a2-v9T"/>
+                                            <outlet property="percentageView" destination="DfN-7F-RhH" id="8Gc-8a-ltk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

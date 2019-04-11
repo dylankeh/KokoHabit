@@ -748,4 +748,45 @@ class DAO: NSObject {
         return listDate
     }
     
+    public func getHabitProgress() -> [Habit] {
+        db = nil
+        var habits: [Habit] = []
+        let today = Date.init()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = '" + formatter.string(from: today) + "';"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let id: Int = Int(sqlite3_column_int(queryStatement, 0))
+                    let cname = sqlite3_column_text(queryStatement, 1)
+                    let points: Int = Int(sqlite3_column_int(queryStatement, 2))
+                    let completed: Int = Int(sqlite3_column_int(queryStatement, 3))
+                    
+                    let name = String(cString: cname!)
+                    
+                    let habit:Habit = Habit.init(habitId: id, habitName: name, habitValue: points, completion: Bool(truncating: completed as NSNumber))
+                    habits.append(habit)
+                    
+                }
+                print("finished selecting days where user passed min points")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return habits
+    }
+    
 }

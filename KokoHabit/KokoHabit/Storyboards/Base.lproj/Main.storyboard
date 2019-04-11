@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O6f-Zd-RLE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -584,7 +584,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkx-hy-0s7" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="69" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="510"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -599,6 +599,20 @@
                                     <navigationItem title="Day Progress" id="GGE-qw-Jf0"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daily Total Points:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-Fe-rud">
+                                <rect key="frame" x="16" y="587" width="131" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeH-EM-fyy">
+                                <rect key="frame" x="155" y="587" width="138" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.83921568629999999" green="0.37254901959999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vlv-Qc-ff7"/>
@@ -606,6 +620,7 @@
                     <tabBarItem key="tabBarItem" title="Progress" image="chart.png" id="VeP-9Q-3S1"/>
                     <connections>
                         <outlet property="pieChartView" destination="nkx-hy-0s7" id="Yts-P8-Zte"/>
+                        <outlet property="totalPoints" destination="ZeH-EM-fyy" id="0cz-2Y-JLN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbU-03-duS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -874,7 +889,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-nF-BwS" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="74" width="375" height="544"/>
+                                <rect key="frame" x="8" y="74" width="367" height="544"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -917,16 +932,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar.png" width="22.5" height="22.5"/>
-        <image name="chart.png" width="24" height="24"/>
-        <image name="checkmark.png" width="22.5" height="22.5"/>
-        <image name="coupon.png" width="24" height="24"/>
+        <image name="calendar.png" width="30" height="30"/>
+        <image name="chart.png" width="30" height="30"/>
+        <image name="checkmark.png" width="30" height="30"/>
+        <image name="coupon.png" width="30" height="30"/>
         <image name="coupon_row.png" width="952" height="574"/>
         <image name="kokohabits logo alternate.png" width="2250" height="450"/>
         <image name="kokohabits logo.png" width="2250" height="450"/>
-        <image name="plus.png" width="22.5" height="22.5"/>
-        <image name="statistics.png" width="22.5" height="22.5"/>
-        <image name="user.png" width="22.5" height="22.5"/>
+        <image name="plus.png" width="30" height="30"/>
+        <image name="statistics.png" width="30" height="30"/>
+        <image name="user.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VHa-2a-cKV"/>

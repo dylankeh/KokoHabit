@@ -12,8 +12,9 @@ import Charts
 class BarChartViewController: UIViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
-    var weeks: [String] = []
-    var points: [Double] = []
+    private var weeks: [String] = []
+    private var points: [Double] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class BarChartViewController: UIViewController {
         
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
         let chartData = BarChartData(dataSet: chartDataSet)
+        chartData.setDrawValues(false)
         barChartView.data = chartData
         
         //No Zoomin in manually
@@ -53,8 +55,17 @@ class BarChartViewController: UIViewController {
         barChartView.setVisibleXRangeMaximum(4)
         barChartView.moveViewToX(0)
         
+        //Clean colors
+        chartDataSet.colors.removeAll()
+        
         //Setting the color for thr bars
-        chartDataSet.colors = [UIColor(red: 255/255, green: 80/255, blue: 65/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue: 65/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue: 65/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue: 65/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue:  115/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue:  115/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue:  115/255, alpha: 1), UIColor(red: 255/255, green: 80/255, blue:  115/255, alpha: 1)]
+        for i in 0..<ChartColorTemplates.vordiplom().count {
+            //For 4 weeks each color pattern
+            chartDataSet.colors.append(ChartColorTemplates.vordiplom()[i])
+            chartDataSet.colors.append(ChartColorTemplates.vordiplom()[i])
+            chartDataSet.colors.append(ChartColorTemplates.vordiplom()[i])
+            chartDataSet.colors.append(ChartColorTemplates.vordiplom()[i])
+        }
         
         //Animations and making it look pretty
         barChartView.xAxis.labelPosition = .bottom
@@ -64,7 +75,7 @@ class BarChartViewController: UIViewController {
         
         //Getting rid of lines
         barChartView.xAxis.drawGridLinesEnabled = false
-        barChartView.leftAxis.drawGridLinesEnabled = false
+        barChartView.leftAxis.drawGridLinesEnabled = true
         barChartView.rightAxis.drawGridLinesEnabled = false
         barChartView.rightAxis.enabled = false
         

@@ -12,8 +12,9 @@ import Charts
 class PieChartViewController: UIViewController {
 
     @IBOutlet weak var pieChartView: PieChartView!
-    @IBOutlet var output: UILabel!
-     private var habitPoints = [PieChartDataEntry]()
+    @IBOutlet var totalPoints: UILabel!
+    private var habitPoints = [PieChartDataEntry]()
+    private var habits: [Habit] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +22,20 @@ class PieChartViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let months = ["Jan", "Feb", "Mar", "Apr", "May"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
+        pieChartView.noDataText = "No progress data available yet."
+        let dao = DAO()
+        habits = dao.getHabitProgress()
+        var dailyPointMax: Int = 0;
+        
         habitPoints.removeAll()
         
-        for i in 0..<unitsSold.count {
-            let pointEntry = PieChartDataEntry(value: unitsSold[i])
-            pointEntry.label = months[i]
+        for i in 0..<habits.count {
+            let pointEntry = PieChartDataEntry(value: Double(habits[i].getHabitValue()))
+            pointEntry.label = habits[i].getHabitName()
             habitPoints.append(pointEntry)
+            dailyPointMax += habits[i].getHabitValue()
         }
+        totalPoints.text = String(dao.checkUserDayPointTotal(day: Date())) + "/" + String(dailyPointMax)
         setChart()
     }
     
@@ -40,19 +46,19 @@ class PieChartViewController: UIViewController {
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
-        var colors: [UIColor] = []
+        var colors: [NSUIColor] = []
         
-        for _ in 0..<habitPoints.count {
-         let red = Double(arc4random_uniform(256))
-         let green = Double(arc4random_uniform(256))
-         let blue = Double(arc4random_uniform(256))
-         
-         let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-         colors.append(color)
+        for i in 0..<habitPoints.count {
+            if (!habits[i].getCompletion()) {
+                colors.append(NSUIColor(red: 169/255.0, green: 169/255.0, blue: 169/255.0, alpha: 1.0))
+            }
+            else {
+                colors.append(ChartColorTemplates.vordiplom()[i])
+            }
          }
-        
-        pieChartDataSet.colors = colors//ChartColorTemplates.colorful()//ChartColorTemplates.vordiplom()
-        
+            
+        pieChartDataSet.colors = colors
+        pieChartDataSet.entryLabelColor = UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1)
+        pieChartDataSet.valueColors = [UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1)]
     }
-
 }

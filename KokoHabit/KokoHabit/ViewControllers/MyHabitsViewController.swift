@@ -84,7 +84,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             let indexSet = IndexSet(arrayLiteral: indexPath.section)
             self.tableView.deleteSections(indexSet, with: .none)
         })
-        deleteAction.backgroundColor = #colorLiteral(red: 0.7764705882, green: 0.2745098039, blue: 0.2196078431, alpha: 1)
+        deleteAction.backgroundColor = .red
         
         return [deleteAction]
     }
@@ -103,7 +103,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.performSegue(withIdentifier: "goToEditHabitPage", sender: self)
         })
-        editAction.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.8784313725, blue: 0.6078431373, alpha: 1)
+        editAction.backgroundColor = .blue
         
         return UISwipeActionsConfiguration(actions: [editAction])
     }

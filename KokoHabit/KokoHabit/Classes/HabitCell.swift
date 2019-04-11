@@ -32,7 +32,7 @@ class HabitCell: UITableViewCell {
     func setUncompletedHabit(){
         lblHabitName.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         lblHabitPoint.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        percentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
+        percentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xEB7667)
     }
     
     func setPercentageViewFrame(frame: CGRect) {

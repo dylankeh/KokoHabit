@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.88034796709999996" green="0.4633280635" blue="0.45058107380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.46274509800000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2UH-ah-PDM" secondAttribute="trailing" id="5jI-jG-TRa"/>
                             <constraint firstItem="2UH-ah-PDM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="93V-QM-gdL"/>
@@ -33,6 +33,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="LogoImageVIew" destination="2UH-ah-PDM" id="R8k-iI-pil"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

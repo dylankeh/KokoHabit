@@ -49,33 +49,30 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
         
-//        if (cell.subviews.count > 3) {
-//            cell.subviews.first?.removeFromSuperview()
-//            cell.subviews.first?.removeFromSuperview()
-//        }
         
-        var cellFrame: CGRect = cell.frame
-        let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
-        cellFrame.origin.x = 0
-        cellFrame.size.width = cell.frame.size.width - (cell.frame.size.width * CGFloat(percentage))
-        cell.setFrame(frame: cellFrame)
-//        var bg : UIView
-//        bg = UIView(frame: cellFrame)
-        if (delegate.habits[indexPath.section].getCompletion()) {
-            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
-        }
-        else {
-            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
-        }
-        //cell.addSubview(bg)
-        cell.layer.cornerRadius = 10
+//        cell.layer.shadowRadius = 3.0
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
+//        cell.layer.shadowOpacity = 0.25
+//        //cell.layer.masksToBounds = false
         cell.contentView.layoutMargins.bottom = 20
+        cell.layer.cornerRadius = 10
         cell.setHabit(habit: delegate.habits[indexPath.section])
         
         if (delegate.habits[indexPath.section].getCompletion()) {
             cell.setCompletedHabit()
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
+        
+        var cellFrame: CGRect = cell.frame
+        let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
+        cellFrame.origin.x = 0
+        cellFrame.size.width = cell.frame.size.width - (cell.frame.size.width * CGFloat(percentage))
+        cell.setPercentageViewWidth(width: cellFrame.size.width)
     }
     
     
@@ -87,14 +84,10 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         if delegate.habits[indexPath.section].getCompletion() {
             delegate.habits[indexPath.section].setCompletion(completion: false)
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 0)
-            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
-            //cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xE18988)
             cell.setUncompletedHabit()
         } else {
             delegate.habits[indexPath.section].setCompletion(completion: true)
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 1)
-            cell.pointPercentageView.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
-            //cell.subviews.first!.backgroundColor = UIColor.init(colorWithHexValue: 0xCCCCCC)
             cell.setCompletedHabit()
         }
     }
@@ -147,24 +140,23 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         load()
     }
     
-    func load()
-    {
+    func load() {
         let today = Date.init()
-        // check if the current week is in the database
+        
+        // if the current week is in the database
         if (dao.checkIfWeekExists(day: today)) {
-            // check if today is in the database
-            if (!dao.checkIfDayExists(day: today)) {
+            
+            // if "today" is not in the database
+            if (!dao.checkIfDayExists(day: today)){
                 dao.insertDay(day: today)
-                isSameDay = false;
-                print("It's a new day")
+                
+                let pointSystem = PointSystem()
+                // shuffle the habit points 
+                pointSystem.randomPoints(habits: dao.getHabits(day: today))
             }
-            else
-            {
-                // same day
-                isSameDay = true;
-                print("It's the same day")
-            }
+        // its a new week
         } else {
+            // if the user reached their weekly point goal give them a coupon
             if (dao.checkIfUserPassedWeeklyPoints()) {
                 dao.insertCoupon()
             }
@@ -173,27 +165,18 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             // insert new day
             dao.insertDay(day: today)
         }
-        
-        // first, get all the active habits
-        dao.getHabits(day: today)
-        
-        // if it is a different day, pass all the active habits to point system
-        if isSameDay == false
-        {
-            let pointSystem = PointSystem()
-            
-            // shuffle the habit points and return it back and assign to habits in delegate
-            delegate.habits = pointSystem.randomPoints(habits: delegate.habits)
-            
-            // change database value
-            dao.updatePointsAfterRandom(habits: delegate.habits)
-            print("Random Point finished")
-        }
+        let pointSystem = PointSystem()
+        // shuffle the habit points
+        pointSystem.randomPoints(habits: dao.getHabits(day: today))
+        // get all the active habits
+        delegate.habits = dao.getHabits(day: today)
         tableView.reloadData()
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}

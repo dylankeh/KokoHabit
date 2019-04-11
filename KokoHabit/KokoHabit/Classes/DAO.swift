@@ -197,10 +197,10 @@ class DAO: NSObject {
             if validator(){
                 var sqlUpdate: OpaquePointer? = nil
                 if sqlite3_prepare_v2(db, updateRandomPoint, -1 , &sqlUpdate, nil) == SQLITE_OK{
-                    sqlite3_bind_int(sqlUpdate, 1, Int32(delegate.habits[index].getHabitValue()))
+                    sqlite3_bind_int(sqlUpdate, 1, Int32(habits[index].getHabitValue()))
                     let dateStr = dateFormatter.string(from: today) as NSString
                     sqlite3_bind_text(sqlUpdate, 2, dateStr.utf8String, -1, nil)
-                    sqlite3_bind_int(sqlUpdate, 3, Int32(delegate.habits[index].getHabitId()))
+                    sqlite3_bind_int(sqlUpdate, 3, Int32(habits[index].getHabitId()))
                     
                     if sqlite3_step(sqlUpdate) == SQLITE_DONE {
                         print("Successful updated day_habit pointsValue")
@@ -223,16 +223,10 @@ class DAO: NSObject {
     
     
     // Created by Khoa Tran
-    public func getHabits(day:Date) {
-        delegate.habits.removeAll();
-        if(delegate.habits.count == 0)
-        {
-            print("habit is empty now")
-        }
-        else
-        {
-            print("there are \(delegate.habits.count) in the habit list")
-        }
+    public func getHabits(day:Date) -> [Habit] {
+        
+        var habitList : [Habit] = []
+        
         db = nil
         
         if validator() {
@@ -259,7 +253,7 @@ class DAO: NSObject {
                     let name = String(cString: cname!)
                     
                     let data: Habit = Habit.init(habitId: id, habitName: name, habitValue: habitValue, completion: completion)
-                    delegate.habits.append(data)
+                    habitList.append(data)
                     
                     print("Query result")
                     print("\(id) | \(name) | \(habitValue) | \(completion)")
@@ -273,7 +267,7 @@ class DAO: NSObject {
         } else {
             print("Unable to open database")
         }
-        print(delegate.habits.count)
+        return habitList
     }
     
     // Created by Khoa Tran

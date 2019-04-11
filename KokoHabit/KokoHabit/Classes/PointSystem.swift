@@ -19,8 +19,9 @@ class PointSystem: NSObject {
         return user;
     }
     
-    func randomPoints(habits: [Habit]) ->[Habit]
+    func randomPoints(habits: [Habit])
     {
+        dao = DAO.init()
         // create a new array to record the points of all the active habits
         var points: [Int] = []
         
@@ -34,7 +35,9 @@ class PointSystem: NSObject {
         for index in 0..<habits.count {
             habits[index].setHabitValue(habitValue: points[index])
         }
-        return habits
+        
+        // change database value
+        dao.updatePointsAfterRandom(habits: habits)
     }
     
     // what will it return?

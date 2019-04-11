@@ -39,6 +39,10 @@ class HabitCell: UITableViewCell {
         percentageView.frame = frame
     }
     
+    func setPercentageViewWidth(width: CGFloat) {
+        percentageView.frame = CGRect(x: self.percentageView.frame.minX, y: self.percentageView.frame.minY, width: width, height: self.percentageView.frame.size.height)
+    }
+    
     // Phoenix: add two gets functions
     func getHabitName() -> String{
         return lblHabitName.text!

@@ -52,23 +52,13 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.contentView.layoutMargins.bottom = 20
         cell.layer.cornerRadius = 10
         cell.setHabit(habit: delegate.habits[indexPath.section])
+        cell.setPercentageViewWidth(width: cell.frame.size.width - (cell.frame.size.width * CGFloat((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)))
         
         if (delegate.habits[indexPath.section].getCompletion()) {
             cell.setCompletedHabit()
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
-        
-        var cellFrame: CGRect = cell.frame
-        let percentage = ((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)
-        cellFrame.origin.x = 0
-        cellFrame.size.width = cell.frame.size.width - (cell.frame.size.width * CGFloat(percentage))
-        cell.setPercentageViewFrame(frame: cellFrame)
-    }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -159,9 +149,6 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             // insert new day
             dao.insertDay(day: today)
         }
-        let pointSystem = PointSystem()
-        // shuffle the habit points
-        pointSystem.randomPoints(habits: dao.getHabits(day: today))
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)
         tableView.reloadData()

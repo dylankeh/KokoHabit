@@ -893,7 +893,8 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add Habit" image="plus.png" id="Ykm-2C-V7m">
                                             <connections>
-                                                <segue destination="uqs-6T-2uS" kind="presentation" id="SMD-fO-UbD"/>
+                                                <action selector="addNewHabitWithSnder:" destination="xfa-Jz-DVD" id="h65-mT-VYt"/>
+                                                <segue destination="uqs-6T-2uS" kind="presentation" identifier="addHabit" id="SZg-tZ-LRN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

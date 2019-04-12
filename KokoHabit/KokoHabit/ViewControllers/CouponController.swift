@@ -38,10 +38,6 @@ class CouponController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                         cell.setUsedCoupon();
                                         self.dao.useCoupon(day: Date.init(), couponId: self.delegate.coupons[indexPath.row].getCouponId());
         })
-        
-                                        
-        
-        
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)

@@ -74,7 +74,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 1)
             cell.setCompletedHabit()
         }
-        delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {$0.getCompletion() == false} .count)
+        delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -152,7 +152,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)
-        delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {$0.getCompletion() == false} .count)
+        delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
         tableView.reloadData()
     }
 
@@ -163,6 +163,27 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}
+    
+    @IBAction func addNewHabit(snder: Any){
+        if delegate.habits.count < 5 {
+            self.performSegue(withIdentifier: "addHabit", sender : nil)
+        } else {
+            let alertController = UIAlertController(title: "Habit Limit Reached", message: "You can only have 5 active habits on a free account. Do you want to pay $1.99 to unlock 5 more.", preferredStyle: .alert)
+            
+            let yesAction = UIAlertAction(title: "Buy", style: .default, handler: { (alert: UIAlertAction!) in
+                
+                let alertController = UIAlertController(title: "Payment Error", message: "There was an error with your payment method please try again later.", preferredStyle: .alert);
+                    let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
+                    alertController.addAction(cancelAction);
+                self.present(alertController, animated: true);}
+                )
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(yesAction)
+            present(alertController, animated: true)
+        }
+    }
 
 }
-

@@ -281,8 +281,8 @@
 		CB6C080622346C9600CF4D4B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6388C50722548BF90007CD62 /* DateCell.swift */,
 				63BA0D59222D771A00ADF50B /* AppDelegate.swift */,
+				6388C50722548BF90007CD62 /* DateCell.swift */,
 				0F31323E22372C2D00B9B83A /* DatabaseConnection.swift */,
 				0F31324722373D7000B9B83A /* DAO.swift */,
 				D080B22A223ECB4700852BF6 /* User.swift */,

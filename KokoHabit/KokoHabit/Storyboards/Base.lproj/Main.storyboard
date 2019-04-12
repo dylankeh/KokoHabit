@@ -894,7 +894,6 @@
                                         <barButtonItem key="rightBarButtonItem" title="Add Habit" image="plus.png" id="Ykm-2C-V7m">
                                             <connections>
                                                 <action selector="addNewHabitWithSnder:" destination="xfa-Jz-DVD" id="h65-mT-VYt"/>
-                                                <segue destination="uqs-6T-2uS" kind="presentation" identifier="addHabit" id="SZg-tZ-LRN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -908,6 +907,7 @@
                     <connections>
                         <outlet property="tableView" destination="69O-4x-ZhA" id="5Si-mB-raR"/>
                         <segue destination="fRp-lT-7d0" kind="presentation" identifier="goToEditHabitPage" id="wlg-eH-th4"/>
+                        <segue destination="uqs-6T-2uS" kind="presentation" identifier="addHabit" id="bSY-46-y84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zm-Ct-Rlc" userLabel="First Responder" sceneMemberID="firstResponder"/>

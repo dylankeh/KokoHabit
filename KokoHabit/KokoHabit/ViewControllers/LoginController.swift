@@ -23,6 +23,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
             password.tintColor = UIColor.lightGray
             password.setIcon(UIImage(named: "lock")!)
             password.borderStyle = UITextField.BorderStyle.roundedRect
+            password.isSecureTextEntry = true
+
         }
     }
     

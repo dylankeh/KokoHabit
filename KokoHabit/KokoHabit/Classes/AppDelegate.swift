@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var habits: [Habit] = []
     var coupons: [Coupon] = []
+    
+    func setBadgeNumber(badgeNumber : Int) {
+        UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (granted, error) in
+                UIApplication.shared.applicationIconBadgeNumber = badgeNumber
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

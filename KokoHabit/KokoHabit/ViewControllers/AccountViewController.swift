@@ -9,7 +9,9 @@
 import UIKit
 
 class AccountViewController: UIViewController {
-
+    
+    let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var logoutBtn: UIButton! {
         didSet {
             logoutBtn.layer.cornerRadius = 22.5
@@ -31,6 +33,7 @@ class AccountViewController: UIViewController {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
+        mainDelegate.setBadgeNumber(badgeNumber: 0)
         self.performSegue(withIdentifier: "logout", sender : nil)
     }
     

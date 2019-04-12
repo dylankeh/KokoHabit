@@ -9,7 +9,10 @@
 import UIKit
 import QuartzCore
 class MainController: UIViewController {
-
+    
+    let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+    let dao = DAO()
+    
     @IBOutlet weak var signupBtn: UIButton! {
         didSet {
             signupBtn.layer.borderColor = UIColor.white.cgColor
@@ -32,6 +35,14 @@ class MainController: UIViewController {
             loginBtn.layer.masksToBounds = false
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        if let currentUserEmail = defaults.object(forKey: "currentUserEmail") as? String {
+            mainDelegate.user = dao.viewPerson(email: currentUserEmail as NSString)
+            self.performSegue(withIdentifier: "habitSegue", sender : nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

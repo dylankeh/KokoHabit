@@ -57,7 +57,9 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 //Phoenix: store user info in AppDelegate for future use
                 let mainDelegate = UIApplication.shared.delegate as! AppDelegate
                 mainDelegate.user = user
-                
+                let defaults = UserDefaults.standard
+                defaults.set(user.getEmail(), forKey: "currentUserEmail")
+                defaults.synchronize()
                 self.performSegue(withIdentifier: "mainMenu", sender : nil)
                 
             }
@@ -70,7 +72,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 present(alertController, animated: true)
             }
             
-        }else {
+        } else {
             let alertController = UIAlertController(title: "Failed Login", message: "Fields must be filled up", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)

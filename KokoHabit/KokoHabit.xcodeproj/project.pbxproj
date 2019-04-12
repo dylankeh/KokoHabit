@@ -50,6 +50,7 @@
 		6388C50622548BB50007CD62 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388C4F322548BB40007CD62 /* GlobalFunctionsAndExtensions.swift */; };
 		6388C50822548BF90007CD62 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388C50722548BF90007CD62 /* DateCell.swift */; };
 		6388C50A22548CC20007CD62 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388C50922548CC20007CD62 /* CalendarViewController.swift */; };
+		63B055CF2260579C000062FD /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B055CE2260579C000062FD /* AccountViewController.swift */; };
 		63BA0D5A222D771A00ADF50B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D59222D771A00ADF50B /* AppDelegate.swift */; };
 		63BA0D5C222D771A00ADF50B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA0D5B222D771A00ADF50B /* ViewController.swift */; };
 		63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BA0D5D222D771A00ADF50B /* Main.storyboard */; };
@@ -154,6 +155,7 @@
 		6388C4F422548BB40007CD62 /* JTAppleCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTAppleCalendar.h; sourceTree = "<group>"; };
 		6388C50722548BF90007CD62 /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		6388C50922548CC20007CD62 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		63B055CE2260579C000062FD /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		63BA0D56222D771A00ADF50B /* KokoHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokoHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA0D59222D771A00ADF50B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BA0D5B222D771A00ADF50B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				6388C50922548CC20007CD62 /* CalendarViewController.swift */,
 				0F7C21D92255A6BF0023A0BB /* BarChartViewController.swift */,
 				0F3B2D0F225694DD006119C4 /* PieChartViewController.swift */,
+				63B055CE2260579C000062FD /* AccountViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			files = (
 				6388C4FB22548BB50007CD62 /* JTAppleCalendarDelegateProtocol.swift in Sources */,
 				6388C50222548BB50007CD62 /* JTAppleCell.swift in Sources */,
+				63B055CF2260579C000062FD /* AccountViewController.swift in Sources */,
 				6388C4FC22548BB50007CD62 /* JTCalendarProtocols.swift in Sources */,
 				6388C4F822548BB50007CD62 /* JTAppleCalendarLayoutProtocol.swift in Sources */,
 				6388C4B92253D2250007CD62 /* Coupon.swift in Sources */,

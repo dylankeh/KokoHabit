@@ -52,6 +52,7 @@
                     <connections>
                         <outlet property="loginBtn" destination="uDi-gb-Y65" id="rNW-Uw-jUw"/>
                         <outlet property="signupBtn" destination="WmQ-se-vOz" id="ORn-pL-c3s"/>
+                        <segue destination="gCB-xp-LR3" kind="presentation" identifier="habitSegue" modalTransitionStyle="crossDissolve" id="n0l-fl-0Gc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cT4-Eh-oaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -523,7 +524,7 @@
         <!--Account-->
         <scene sceneID="bWj-bH-t5X">
             <objects>
-                <viewController id="3j3-aK-eED" sceneMemberID="viewController">
+                <viewController id="3j3-aK-eED" customClass="AccountViewController" customModule="KokoHabit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GWm-Pi-NQk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -547,16 +548,32 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-L5-Or6">
+                                <rect key="frame" x="84" y="510" width="206" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.46274509800000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout" destination="3j3-aK-eED" eventType="touchDown" id="VvL-EY-S7Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hwA-PA-Mz9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="user.png" id="eSE-Tr-87e"/>
+                    <connections>
+                        <outlet property="logoutBtn" destination="v2g-L5-Or6" id="bph-n6-OSc"/>
+                        <segue destination="O6f-Zd-RLE" kind="presentation" identifier="logout" id="VdD-SR-O4d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFa-gz-hwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nEB-LD-4Fv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="-2112"/>
+            <point key="canvasLocation" x="3240.8000000000002" y="-2112.5937031484259"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7eX-iJ-qBm">
@@ -955,7 +972,8 @@
         <image name="user.png" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="meM-RL-zeP"/>
         <segue reference="VHa-2a-cKV"/>
-        <segue reference="ru3-JT-aaw"/>
+        <segue reference="wRh-Hs-dMM"/>
     </inferredMetricsTieBreakers>
 </document>

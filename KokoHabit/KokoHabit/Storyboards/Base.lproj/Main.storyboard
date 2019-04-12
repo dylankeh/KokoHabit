@@ -548,8 +548,22 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vY-2b-tZj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="81v-4x-JxN">
+                                <rect key="frame" x="170" y="276" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.92156862750000001" green="0.46274509800000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-L5-Or6">
-                                <rect key="frame" x="84" y="510" width="206" height="48"/>
+                                <rect key="frame" x="84" y="551" width="206" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.46274509800000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -566,7 +580,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="user.png" id="eSE-Tr-87e"/>
                     <connections>
+                        <outlet property="activity" destination="81v-4x-JxN" id="vgW-k1-2IE"/>
                         <outlet property="logoutBtn" destination="v2g-L5-Or6" id="bph-n6-OSc"/>
+                        <outlet property="wbPage" destination="1vY-2b-tZj" id="VnM-P5-1UC"/>
                         <segue destination="O6f-Zd-RLE" kind="presentation" identifier="logout" id="VdD-SR-O4d"/>
                     </connections>
                 </viewController>

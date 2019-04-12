@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import WebKit
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, WKNavigationDelegate {
     
     let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBOutlet weak var wbPage: WKWebView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     @IBOutlet weak var logoutBtn: UIButton! {
         didSet {
@@ -25,7 +29,10 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let urlAddress = URL(string: "https://www.quotesthatmotivate.com/random_quote.php")
+        let url = URLRequest(url: urlAddress!)
+        wbPage.load(url)
+        wbPage.navigationDelegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -35,6 +42,18 @@ class AccountViewController: UIViewController {
         UserDefaults.standard.synchronize()
         mainDelegate.setBadgeNumber(badgeNumber: 0)
         self.performSegue(withIdentifier: "logout", sender : nil)
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        
+        activity.isHidden = false
+        activity.startAnimating()
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activity.isHidden = true
+        activity.stopAnimating()
     }
     
 

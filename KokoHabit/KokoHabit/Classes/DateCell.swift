@@ -2,7 +2,7 @@
 //  CustomCell.swift
 //  KokoHabit
 //
-//  Created by Arthur Tran on 2019-04-02.
+//  Created by Khoa Tran on 2019-04-02.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

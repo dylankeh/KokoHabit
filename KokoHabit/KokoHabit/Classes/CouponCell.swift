@@ -1,8 +1,9 @@
 //
 //  CouponCell.swift
+// This is a class for a coupon cell
 //  KokoHabit
 //
-//  Created by Xiaoyu Liang on 2019/4/2.
+//  Created by Khoa Tran on 2019/4/2.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

@@ -2,6 +2,9 @@
 //  CalendarViewController.swift
 //  KokoHabit
 //
+//  This view controller shows a month calendar with the days colored in where they met their minimum point requirement
+//  Users are able to swipe back and forth to see other months
+//
 //  Created by Khoa Tran on 2019-04-03.
 //  Copyright © 2019 koko. All rights reserved.
 //
@@ -14,21 +17,21 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     
-    let outsideMonthColor = UIColor.gray
-    let monthColor = UIColor.black
-    let selectedMonthColor = UIColor.white
-    let currentDateSelectedViewColor = UIColor.red
+    // setting some color styling
+    let outsideMonthColor = UIColor.gray // the color for label of the day number that are outside of the current month
+    let monthColor = UIColor.black // the color for label of the day number that are inside of the current month
+    let selectedMonthColor = UIColor.white // the color for label of the day number that are selected
+    let currentDateSelectedViewColor = UIColor.red // the color for label of the day number of the current date
     
     var formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupCalendarView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        calendarView.scrollToDate(Date.init(),animateScroll: false)
+        calendarView.scrollToDate(Date.init(),animateScroll: false) // scroll to the current date when the calendar page appears
     }
     
     func setupCalendarView() {
@@ -41,6 +44,7 @@ class CalendarViewController: UIViewController {
             self.setupViewsOfCalendar(from: visibleDates)
         }
         calendarView.allowsMultipleSelection = true
+        // select the days where users passed their minimum point requirement for the day, this will style the cell
         calendarView.selectDates(dao.getDaysWhereUserPassedMinPoints(), triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
 
     }
@@ -48,12 +52,16 @@ class CalendarViewController: UIViewController {
     func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
         guard let validCell = view as? DateCell else {return}
         
+        // show a color if the cell is selected
         if cellState.isSelected {
             validCell.dateLabel.textColor = selectedMonthColor
         } else {
+            
             if cellState.dateBelongsTo == .thisMonth {
+                // set the color of the day number label if the day is inside the current month
                 validCell.dateLabel.textColor = monthColor
             } else {
+                 // set the color of the day number label if the day is outside the current month
                 validCell.dateLabel.textColor = outsideMonthColor
             }
         }
@@ -62,8 +70,10 @@ class CalendarViewController: UIViewController {
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
         guard let validCell = view as? DateCell else {return}
         if cellState.isSelected {
+            // show the color background if a cell is selected
             validCell.selectedBackgroundView?.isHidden = false
         } else {
+            // otherwise the background will just be white
             validCell.selectedBackgroundView?.isHidden = true
         }
         
@@ -71,9 +81,15 @@ class CalendarViewController: UIViewController {
     
     func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         let date = visibleDates.monthDates.first!.date
+        
+        // headers for the calendar
+        // this is the current year which will show ontop of the month calendar
+        // this will update as user scrolls
         formatter.dateFormat = "yyyy"
         year.text = formatter.string(from: date)
         
+        // this is the current month which will show ontop of the month calendar
+        // this will update as user scrolls
         formatter.dateFormat = "MMM"
         month.text = formatter.string(from: date)
     }
@@ -85,12 +101,14 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
     }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        // some calendar date configurations
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         
-        let startDate = formatter.date(from: "2019-01-01")!
-        let endDate = formatter.date(from: "2019-12-31")!
+        // the range of the calendar
+        let startDate = formatter.date(from: "2018-01-01")!
+        let endDate = formatter.date(from: "2030-12-31")!
         
         let parameters = ConfigurationParameters.init(startDate: startDate, endDate: endDate)
         return parameters

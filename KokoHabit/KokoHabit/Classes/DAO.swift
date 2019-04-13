@@ -803,4 +803,75 @@ class DAO: NSObject {
         return habits
     }
     
+    // created by Khoa Tran
+    // get the total cumulative points for the current user
+    public func getUserTotalPoints() -> Int {
+        db = nil
+        
+        var totalPoints: Int = 0
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT COALESCE(SUM(pointsWorth),0) + (SELECT COALESCE(SUM(pointValue),0) FROM coupon c WHERE used=1) From day_habit dh INNER JOIN habit h ON h.id = dh.habitId WHERE dh.completed = TRUE AND h.email=?;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    totalPoints = Int(sqlite3_column_int(queryStatement, 0))
+                    
+                }
+                print("finished selecting total points")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return totalPoints
+    }
+    
+    // created by Khoa Tran
+    // get the total cumulative habits completed for the current user
+    public func getUserTotalHabitsCompleted() -> Int {
+        db = nil
+        
+        var totalCompleted: Int = 0
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT COALESCE(COUNT(*),0) FROM day_habit dh INNER JOIN habit h ON h.id = dh.habitId WHERE dh.completed = TRUE AND h.email=?;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    totalCompleted = Int(sqlite3_column_int(queryStatement, 0))
+                    
+                }
+                print("finished selecting total habits completed")
+                    sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return totalCompleted
+    }
 }

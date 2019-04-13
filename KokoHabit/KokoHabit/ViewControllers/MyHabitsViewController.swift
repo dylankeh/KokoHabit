@@ -18,6 +18,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var isSameDay : Bool!
     
+    var numberOfNotFinishedHabits : Int = 0
+    
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -83,12 +85,22 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             //change the completion status of the habit in the database
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 0)
             cell.setUncompletedHabit()
+            numberOfNotFinishedHabits += 1
+            
+            // remove the effect maybe
+            
         } else {
             //change the habit to completed in the habit array
             delegate.habits[indexPath.section].setCompletion(completion: true)
             //change the completion status of the habit in the database
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 1)
             cell.setCompletedHabit()
+            numberOfNotFinishedHabits -= 1
+            if numberOfNotFinishedHabits == 0
+            {
+                // show animation and sound here
+                
+            }
         }
         // update the badge count
         delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
@@ -188,10 +200,20 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
 
+    func getNumOfNotFinishedHabits()
+    {
+        for habit in delegate.habits
+        {
+            if habit.getCompletion() == false
+            {
+                numberOfNotFinishedHabits += 1
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getNumOfNotFinishedHabits()
     }
     
     @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}

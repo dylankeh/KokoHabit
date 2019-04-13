@@ -2,7 +2,7 @@
 //  CouponController.swift
 //  KokoHabit
 //
-//  Created by Xiaoyu Liang on 2019/4/2.
+//  Created by Khoa Tran on 2019/4/2.
 //  Copyright © 2019 koko. All rights reserved.
 //
 
@@ -29,8 +29,8 @@ class CouponController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CouponCell
+        
         let alertController = UIAlertController(title: "Use Coupon", message: "Are you sure you want to use this coupon?", preferredStyle: .alert)
-       
         
         let yesAction = UIAlertAction(title: "Yes",
                                       style: .default ,

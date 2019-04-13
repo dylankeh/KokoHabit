@@ -770,7 +770,7 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = '" + formatter.string(from: today) + " AND h.email = ?';"
+            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = '" + formatter.string(from: today) + "' AND h.email = ?;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 

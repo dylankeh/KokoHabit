@@ -2,6 +2,8 @@
 //  CouponController.swift
 //  KokoHabit
 //
+//  This controller shows a list of the user's unused coupons
+//
 //  Created by Khoa Tran on 2019/4/2.
 //  Copyright © 2019 koko. All rights reserved.
 //
@@ -30,12 +32,14 @@ class CouponController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CouponCell
         
+        // if the user decides to use a coupon show them alert asking for confirmation since once coupons are used they cant be "unused" or redeemed again
         let alertController = UIAlertController(title: "Use Coupon", message: "Are you sure you want to use this coupon?", preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "Yes",
                                       style: .default ,
                                       handler:  { (alert: UIAlertAction!) in
-                                        cell.setUsedCoupon();
+                                        cell.setUsedCoupon(); // style the coupon as used
+                                        // set the coupon as used today in the database
                                         self.dao.useCoupon(day: Date.init(), couponId: self.delegate.coupons[indexPath.row].getCouponId());
         })
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  KokoHabit
 //
-//  Created by Arthur Tran on 2019-03-04.
+//  Created by Xiaoyu Liang on 2019-03-04.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

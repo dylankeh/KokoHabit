@@ -2,7 +2,7 @@
 //  AccountViewController.swift
 //  KokoHabit
 //
-//  Created by Arthur Tran on 2019-04-12.
+//  Created by Xiaoyu Liang on 2019-04-12.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

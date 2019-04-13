@@ -95,12 +95,25 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: {
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Remove", handler: {
             action, index in print("Delete button tapped")
-            print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.section].getHabitId())))
-            self.delegate.habits.remove(at: indexPath.section)
-            let indexSet = IndexSet(arrayLiteral: indexPath.section)
-            self.tableView.deleteSections(indexSet, with: .none)
+            let alertController = UIAlertController(title: "Remove Habit", message: "Are you sure you want to remove this habit?", preferredStyle: .alert)
+            
+            // user chooses to purchase more habits
+            let yesAction = UIAlertAction(title: "Remove", style: .default, handler: { (alert: UIAlertAction!) in
+                
+                print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.section].getHabitId())))
+                self.delegate.habits.remove(at: indexPath.section)
+                let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                self.tableView.deleteSections(indexSet, with: .none)
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(yesAction)
+            self.present(alertController, animated: true)
+            
         })
         deleteAction.backgroundColor = .red
         

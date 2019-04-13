@@ -27,7 +27,7 @@ class BarChartViewController: UIViewController {
         
         for week in weeks {
             print(week)
-            points.append(dao.checkUserWeeklyPointTotal(week: week))
+            points.append(dao.getUserWeeklyPointTotal(week: week))
         }
         
         setChart(dataPoints: weeks, values: points)

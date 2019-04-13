@@ -75,6 +75,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.setCompletedHabit()
         }
         delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
+        delegate.habits = dao.getHabits(day: Date.init())
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

@@ -35,7 +35,7 @@ class PieChartViewController: UIViewController {
             habitPoints.append(pointEntry)
             dailyPointMax += habits[i].getHabitValue()
         }
-        totalPoints.text = String(dao.checkUserDayPointTotal(day: Date())) + "/" + String(dailyPointMax)
+        totalPoints.text = String(dao.getUserDayPointTotal(day: Date())) + "/" + String(dailyPointMax)
         setChart()
     }
     

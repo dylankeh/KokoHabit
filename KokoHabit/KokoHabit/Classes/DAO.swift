@@ -223,6 +223,7 @@ class DAO: NSObject {
     
     
     // Created by Khoa Tran
+    // get all habits for a specific day for the current user
     public func getHabits(day:Date) -> [Habit] {
         
         var habitList : [Habit] = []
@@ -271,6 +272,7 @@ class DAO: NSObject {
     }
     
     // Created by Khoa Tran
+    // change the completion status of a habit to either complete or incomplete
     public func setHabitCompletetionStatus(day: Date, habitId: Int, status: Int) {
         let updateHabitStmt = "UPDATE day_habit SET completed=? WHERE date=? AND habitId=?;"
         
@@ -303,8 +305,6 @@ class DAO: NSObject {
     }
     
     // Created by Khoa Tran
-    // check the day is a new day
-    // if it is a new day insert day and get all habits otherwise just get all habits
     public func checkIfDayExists(day: Date) -> Bool {
         db = nil
         
@@ -361,7 +361,6 @@ class DAO: NSObject {
                     
                     // still in the same week
                     if (dateDiff < 7) {
-                        // check if day has been created yet
                         exists = true
                         
                     }
@@ -437,6 +436,7 @@ class DAO: NSObject {
     }
     
     // created by Khoa Tran
+    // check if the current user met their weekly point goal
     public func checkIfUserPassedWeeklyPoints() -> Bool {
         db = nil
         
@@ -446,9 +446,12 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date INNER JOIN habit h ON h.id = dh.habitId WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1 AND h.email = ?;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
@@ -475,7 +478,8 @@ class DAO: NSObject {
     }
     
     // created by Khoa Tran
-    public func checkUserWeeklyPointTotal() -> Int {
+    // get the current weekly point total for the current user
+    public func getUserWeeklyPointTotal() -> Int {
         db = nil
         
         var totalPoints: Int = 0
@@ -484,9 +488,12 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date INNER JOIN habit h ON h.id = dh.habitId WHERE w.weekStartDate = (SELECT MAX(weekStartDate) FROM week) AND dh.completed=1 and h.email = ?;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
@@ -507,7 +514,8 @@ class DAO: NSObject {
     }
     
     // created by Khoa Tran
-    public func checkUserDayPointTotal(day: Date) -> Int {
+    // get the specific day point total for the current user
+    public func getUserDayPointTotal(day: Date) -> Int {
         db = nil
         
         var totalPoints: Int = 0
@@ -516,13 +524,15 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT COALESCE(SUM(pointsWorth),0) + (SELECT COALESCE(SUM(pointValue),0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date WHERE dateUsed=? AND used=1) From day_habit WHERE date=? AND completed = TRUE;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(pointsWorth),0) + (SELECT COALESCE(SUM(pointValue),0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date WHERE dateUsed=? AND used=1) From day_habit dh INNER JOIN habit h ON h.id = dh.habitId WHERE dh.date=? AND dh.completed = TRUE AND h.email=?;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 
                 let dateStr = dateFormatter.string(from: day) as NSString
                 sqlite3_bind_text(queryStatement, 1, dateStr.utf8String, -1, nil)
                 sqlite3_bind_text(queryStatement, 2, dateStr.utf8String, -1, nil)
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 3, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
@@ -543,6 +553,7 @@ class DAO: NSObject {
     }
     
     // created by Khoa Tran
+    // get the days where the current user passed their daily minimum point requirement
     public func getDaysWhereUserPassedMinPoints() -> [Date] {
         db = nil
         
@@ -552,9 +563,12 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "select dh.DATE from day_habit dh INNER JOIN day d ON dh.date = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE dh.completed=1 GROUP BY dh.date HAVING SUM(dh.pointsWorth) > w.minimumDayPointRequirement;"
+            let queryStatementString: String = "select dh.DATE from day_habit dh INNER JOIN day d ON dh.date = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate INNER JOIN habit h ON h.id = dh.habitId WHERE dh.completed=1 AND h.email = ? GROUP BY dh.date HAVING SUM(dh.pointsWorth) > w.minimumDayPointRequirement;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
@@ -681,8 +695,8 @@ class DAO: NSObject {
         return sqlite3_open(self.databasePath, &db) == SQLITE_OK
     }
     
-    // created partially by Khoa Tran
-    public func checkUserWeeklyPointTotal(week: String) -> Double! {
+    
+    public func getUserWeeklyPointTotal(week: String) -> Double! {
         db = nil
         
         var totalPoints: Double = 0.0
@@ -691,9 +705,12 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = '" + week + "' AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date WHERE w.weekStartDate = '" + week + "' AND dh.completed=1;"
+            let queryStatementString: String = "SELECT COALESCE(SUM(dh.pointsWorth), 0) + (SELECT COALESCE(SUM(pointValue), 0) FROM coupon c INNER JOIN day d ON c.dateUsed = d.date INNER JOIN week w ON d.weekStartDate = w.weekStartDate WHERE w.weekStartDate = '" + week + "' AND used=1) FROM Week w INNER JOIN Day d ON w.weekStartDate = d.weekStartDate INNER JOIN day_habit dh ON d.date = dh.date INNER JOIN habit h ON h.id = dh.habitId WHERE w.weekStartDate = '" + week + "' AND dh.completed=1 AND h.email = ?;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     
@@ -753,9 +770,12 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = '" + formatter.string(from: today) + "';"
+            let queryStatementString: String = "SELECT h.id, h.name, dh.pointsWorth, dh.completed FROM habit h INNER JOIN day_habit dh ON h.id = dh.habitId WHERE dh.date = '" + formatter.string(from: today) + " AND h.email = ?';"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(queryStatement, 1, emailStr.utf8String, -1, nil)
                 
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     

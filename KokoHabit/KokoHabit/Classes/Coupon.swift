@@ -1,6 +1,9 @@
 //
 //  Coupon.swift
-// Class to represent a coupon
+//  Class to represent a coupon
+//  Coupons allow users to meet their daily minimum point requirement when they're falling behind
+//  Coupons are given out once a week, at the beginning of the week, if the user has met the daily minimum point requirement for the entire week
+//
 //  KokoHabit
 //
 //  Created by Khoa Tran on 2019-04-02.
@@ -11,12 +14,11 @@ import UIKit
 
 class Coupon: NSObject {
     private var couponId: Int
-    private var pointValue: Int
+    private var pointValue: Int // how much points the coupon is worth, this is equivalent to a habit point value
     
     init(couponId: Int, pointValue: Int) {
         self.couponId = couponId
         self.pointValue = pointValue
-
     }
     
     func getCouponId() -> Int {

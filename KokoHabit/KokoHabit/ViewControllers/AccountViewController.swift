@@ -12,9 +12,26 @@ import WebKit
 class AccountViewController: UIViewController, WKNavigationDelegate {
     
     let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+    let dao = DAO()
     
     @IBOutlet weak var wbPage: WKWebView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
+    
+    @IBOutlet weak var lblTotalHabits: UILabel!
+    @IBOutlet weak var lblTotalPoints: UILabel!
+    
+    @IBOutlet weak var tfNewPassword: UITextFieldIcon!
+    
+    @IBOutlet weak var btnChangePassword: UIButton! {
+        didSet {
+            btnChangePassword.layer.cornerRadius = 22.5
+            btnChangePassword.layer.shadowRadius = 3.0
+            btnChangePassword.layer.shadowColor = UIColor.black.cgColor
+            btnChangePassword.layer.shadowOffset = CGSize(width: 0.0,height:  1.0)
+            btnChangePassword.layer.shadowOpacity = 0.25
+            btnChangePassword.layer.masksToBounds = false
+        }
+    }
     
     @IBOutlet weak var logoutBtn: UIButton! {
         didSet {
@@ -33,7 +50,14 @@ class AccountViewController: UIViewController, WKNavigationDelegate {
         let url = URLRequest(url: urlAddress!)
         wbPage.load(url)
         wbPage.navigationDelegate = self
+        lblTotalHabits.text = String(dao.getUserTotalHabitsCompleted())
+        lblTotalPoints.text = String(dao.getUserTotalPoints())
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func changePassword(_ sender: Any) {
+        let newPassword = tfNewPassword.text!
+        
     }
     
     @IBAction func logout() {

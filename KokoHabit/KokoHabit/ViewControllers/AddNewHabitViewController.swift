@@ -25,7 +25,7 @@ class AddNewHabitViewController: UIViewController {
             alert.addAction(noAction)
             present(alert, animated: true)
         }
-        else if Int(habitPoint.text!) == nil
+        else if Int(habitPoint.text!) == nil || Int(habitPoint.text!)! <= 0
         {
             let alert = UIAlertController(title: "Warning!"
                 , message: "Point should be a positive integer number."

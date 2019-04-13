@@ -23,24 +23,55 @@ class EditHabitViewController: UIViewController {
         let dao = DAO()
         if tfNewName.text != "" && tfNewPoint.text != ""
         {
-            print(dao.updateHabit(id: Int32(habitId),
-                            pointValue: Int32(tfNewPoint.text!)!,
-                            name: tfNewName.text! as NSString))
-            //delegate.habits[]
+            if Int(tfNewPoint.text!) == nil || Int(tfNewPoint.text!)! <= 0
+            {
+                let alertTitle : String = "Warning!";
+                let alertMessage : String = "Point should be a positive integer number.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
+            else
+            {
+                print(dao.updateHabit(id: Int32(habitId),
+                                      pointValue: Int32(tfNewPoint.text!)!,
+                                      name: tfNewName.text! as NSString))
+                let alertTitle : String = "Success!";
+                let alertMessage : String = "You updated the habit point and point successfully.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
         }
         else if tfNewName.text == "" && tfNewPoint.text != ""
         {
-            print(dao.updateHabit(id: Int32(habitId),
-                                  pointValue: Int32(tfNewPoint.text!)!,
-                                  name: tfNewName.placeholder! as NSString))
+            if Int(tfNewPoint.text!) == nil || Int(tfNewPoint.text!)! <= 0
+            {
+                let alertTitle : String = "Warning!";
+                let alertMessage : String = "Point should be a positive integer number.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
+            else
+            {
+                print(dao.updateHabit(id: Int32(habitId),
+                                      pointValue: Int32(tfNewPoint.text!)!,
+                                      name: tfNewName.placeholder! as NSString))
+                let alertTitle : String = "Success!";
+                let alertMessage : String = "You updated the habit point successfully.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
         }
         else if tfNewPoint.text == "" && tfNewName.text != ""
         {
             print(dao.updateHabit(id: Int32(habitId),
                                   pointValue: Int32(tfNewPoint.placeholder!)!,
                                   name: tfNewName.text! as NSString))
+            let alertTitle : String = "Success!";
+            let alertMessage : String = "You updated the habit name successfully.";
+            popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
         }
-        
+        else
+        {
+            let alertTitle : String = "Warning!";
+            let alertMessage : String = "Please enter the new name and/or the new point for this habit.";
+            popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+        }
     }
     
     override func viewDidLoad() {
@@ -49,6 +80,16 @@ class EditHabitViewController: UIViewController {
         tfNewPoint.placeholder = oldPoint
 
         // Do any additional setup after loading the view.
+    }
+    
+    func popUpAlert(alertTitle: String, alertMessage: String)
+    {
+        let alert = UIAlertController(title: alertTitle
+            , message: alertMessage
+            , preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(noAction)
+        present(alert, animated: true)
     }
     
     

@@ -21,6 +21,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
+    // putting the cells into sections instead of rows so that we can use cell margins to have spacing between cells
     func numberOfSections(in tableView: UITableView) -> Int {
         return delegate.habits.count
     }
@@ -51,11 +52,19 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.contentView.layoutMargins.bottom = 20
         cell.layer.cornerRadius = 10
+        
+        // setting the cell for sections instead of rows this way there will be a space (margin) between them
         cell.setHabit(habit: delegate.habits[indexPath.section])
+        
+        // setting how much of the cell should be colored
+        // this shows the proportion of the habit in the cell's point value and the total for the day
         cell.setPercentageViewWidth(width: cell.frame.size.width - (cell.frame.size.width * CGFloat((100 - Double(delegate.habits[indexPath.section].getHabitValue())) / 100)))
         
+        // if the habit in the cell is completed
         if (delegate.habits[indexPath.section].getCompletion()) {
-            cell.setCompletedHabit()
+            cell.setCompletedHabit() // style the cell as completed
+        } else {
+            cell.setUncompletedHabit() // style the cell as uncompleted
         }
         return cell
     }
@@ -65,17 +74,24 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.cellForRow(at: indexPath) as! HabitCell
         
         let today = Date.init()
+        
+        // check if the habit in the cell is completed
+        // if the cell is already completed
         if delegate.habits[indexPath.section].getCompletion() {
+            //change the habit to uncompleted in the habit array
             delegate.habits[indexPath.section].setCompletion(completion: false)
+            //change the completion status of the habit in the database
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 0)
             cell.setUncompletedHabit()
         } else {
+            //change the habit to completed in the habit array
             delegate.habits[indexPath.section].setCompletion(completion: true)
+            //change the completion status of the habit in the database
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 1)
             cell.setCompletedHabit()
         }
+        // update the badge count
         delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
-        delegate.habits = dao.getHabits(day: Date.init())
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -153,7 +169,9 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)
+        // update the badge count
         delegate.setBadgeNumber(badgeNumber: delegate.habits.filter {!$0.getCompletion()} .count)
+        // refresh table
         tableView.reloadData()
     }
 
@@ -165,14 +183,19 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}
     
-    @IBAction func addNewHabit(snder: Any){
+    @IBAction func addNewHabit(sender: Any){
+        
+        // free users can only have 5 active habits at a time
         if delegate.habits.count < 5 {
             self.performSegue(withIdentifier: "addHabit", sender : nil)
         } else {
+            // show an alert asking if they want to buy more habits
             let alertController = UIAlertController(title: "Habit Limit Reached", message: "You can only have 5 active habits on a free account. Do you want to pay $1.99 to unlock 5 more.", preferredStyle: .alert)
             
+            // user chooses to purchase more habits
             let yesAction = UIAlertAction(title: "Buy", style: .default, handler: { (alert: UIAlertAction!) in
                 
+                // oh no theres a problems with the payment
                 let alertController = UIAlertController(title: "Payment Error", message: "There was an error with your payment method please try again later.", preferredStyle: .alert);
                     let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
                     alertController.addAction(cancelAction);

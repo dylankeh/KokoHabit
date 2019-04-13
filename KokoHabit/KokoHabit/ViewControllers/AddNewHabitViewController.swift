@@ -15,14 +15,34 @@ class AddNewHabitViewController: UIViewController {
     
     
     @IBAction func createHabit(sender:UIButton) {
-        let mainDelegate = UIApplication.shared.delegate as! AppDelegate
-        let dao = DAO()
         
-        print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
-        
-        dismiss(animated: true, completion: nil)
-        
-        //Alert incase not inserted or error.. or alert to send them to the login page
+        if habitName.text == "" || habitPoint.text == ""
+        {
+            let alert = UIAlertController(title: "Warning!"
+                , message: "Please enter both the habit name and the point value."
+                , preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            present(alert, animated: true)
+        }
+        else if Int(habitPoint.text!) == nil
+        {
+            let alert = UIAlertController(title: "Warning!"
+                , message: "Point should be a positive integer number."
+                , preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            present(alert, animated: true)
+        }
+        else
+        {
+            let mainDelegate = UIApplication.shared.delegate as! AppDelegate
+            let dao = DAO()
+            
+            print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
+            
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {

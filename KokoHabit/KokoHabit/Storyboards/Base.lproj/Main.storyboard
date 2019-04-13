@@ -984,7 +984,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add Habit" image="plus.png" id="Ykm-2C-V7m">
                                             <connections>
-                                                <action selector="addNewHabitWithSnder:" destination="xfa-Jz-DVD" id="h65-mT-VYt"/>
+                                                <action selector="addNewHabitWithSender:" destination="xfa-Jz-DVD" id="FzV-CU-ho2"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

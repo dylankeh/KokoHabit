@@ -100,7 +100,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             let alertController = UIAlertController(title: "Remove Habit", message: "Are you sure you want to remove this habit?", preferredStyle: .alert)
             
             // user chooses to purchase more habits
-            let yesAction = UIAlertAction(title: "Remove", style: .default, handler: { (alert: UIAlertAction!) in
+            let yesAction = UIAlertAction(title: "Remove", style: .destructive, handler: { (alert: UIAlertAction!) in
                 
                 print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.section].getHabitId())))
                 self.delegate.habits.remove(at: indexPath.section)
@@ -203,7 +203,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             self.performSegue(withIdentifier: "addHabit", sender : nil)
         } else {
             // show an alert asking if they want to buy more habits
-            let alertController = UIAlertController(title: "Habit Limit Reached", message: "You can only have 5 active habits on a free account. Do you want to pay $1.99 to unlock 5 more.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Habit Limit Reached", message: "You can only have 5 active habits on a free account. Do you want to pay $1.99 to unlock 5 more.", preferredStyle: .actionSheet)
             
             // user chooses to purchase more habits
             let yesAction = UIAlertAction(title: "Buy", style: .default, handler: { (alert: UIAlertAction!) in

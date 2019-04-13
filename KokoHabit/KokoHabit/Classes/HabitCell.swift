@@ -70,6 +70,7 @@ class HabitCell: UITableViewCell {
 
 }
 
+// this UIColor extension allows us to use hex values for the color
 extension UIColor {
     convenience init(colorWithHexValue value: Int, alpha: CGFloat = 1.0) {
         self.init(

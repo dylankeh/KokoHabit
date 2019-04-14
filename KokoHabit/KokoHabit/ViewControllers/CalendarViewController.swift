@@ -122,6 +122,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         cell.dateLabel.text = cellState.text
         formatter.dateFormat = "yyyy-MM-dd"
+        // show the start of the week
         if formatter.string(from: date) == formatter.string(from: dao.getLatestWeek()){
             cell.viewWithTag(1000)?.isHidden = false
         }

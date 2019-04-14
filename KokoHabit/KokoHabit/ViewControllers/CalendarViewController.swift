@@ -17,6 +17,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
     // setting some color styling
     let outsideMonthColor = UIColor.gray // the color for label of the day number that are outside of the current month
     let monthColor = UIColor.black // the color for label of the day number that are inside of the current month
@@ -96,9 +98,6 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        
-    }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         // some calendar date configurations
@@ -116,20 +115,30 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDelegate {
+    
+    // setting the cell style in willDisplay as recommended by the developer here https://github.com/patchthecode/JTAppleCalendar/issues/553
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        let myCustomCell = cell as! DateCell
+        myCustomCell.dateLabel.text = cellState.text
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        // highlight the start of the current week
+        // there is an issue with scrolling as referenced here https://github.com/patchthecode/JTAppleCalendar/issues/1022
+        // the recommend solution doesn't fix the issue so the code is commented for now until a fix is issued in the future
+//        if formatter.string(from: date) == formatter.string(from: dao.getLatestWeek()){
+//            myCustomCell.viewWithTag(1000)?.isHidden = false
+//        }
+        
+        handleCellSelected(view: myCustomCell, cellState: cellState)
+        handleCellTextColor(view: myCustomCell, cellState: cellState)
+        
+    }
+    
     // Display the cell
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
-        self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
-        cell.dateLabel.text = cellState.text
-        formatter.dateFormat = "yyyy-MM-dd"
-        // show the start of the week
-        if formatter.string(from: date) == formatter.string(from: dao.getLatestWeek()){
-            cell.viewWithTag(1000)?.isHidden = false
-        }
-        
-        handleCellSelected(view: cell, cellState: cellState)
-        handleCellTextColor(view: cell, cellState: cellState)
-        return cell
+        let myCustomCell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
+        self.calendar(calendar, willDisplay: myCustomCell, forItemAt: date, cellState: cellState, indexPath: indexPath)
+        return myCustomCell
     }
     
     //    func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {

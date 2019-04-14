@@ -386,7 +386,7 @@ class DAO: NSObject {
             print("Successfully opened connection to database at \(String(describing: self.databasePath))")
             
             var queryStatement: OpaquePointer? = nil
-            let queryStatementString: String = "SELECT weekStartDate FROM day ORDER BY date DESC LIMIT 1;;"
+            let queryStatementString: String = "SELECT weekStartDate FROM day ORDER BY date DESC LIMIT 1;"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
                 

@@ -8,6 +8,20 @@
 
 import UIKit
 
+enum Colors {
+    static let red = UIColor(red: 1.0, green: 0.0, blue: 77.0/255.0, alpha: 1.0)
+    static let blue = UIColor.blue
+    static let green = UIColor(red: 35.0/255.0 , green: 233/255, blue: 173/255.0, alpha: 1.0)
+    static let yellow = UIColor(red: 1, green: 209/255, blue: 77.0/255.0, alpha: 1.0)
+}
+
+enum Images {
+    static let box = UIImage(named: "Box.imageset/Box")!
+    static let triangle = UIImage(named: "Triangle.imageset/Triangle")!
+    static let circle = UIImage(named: "Circle.imageset/Circle")!
+    static let swirl = UIImage(named: "Spiral.imageset/Spiral")!
+}
+
 class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView! 
@@ -18,10 +32,33 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var isSameDay : Bool!
     
-    var numberOfNotFinishedHabits : Int = 0
+    var numberOfNotFinishedHabits : Int! = 0
     
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // anim
+    var emitter = CAEmitterLayer()
+    var layerIsAdded : Bool! = false
+    
+    var colors:[UIColor] = [
+        Colors.red,
+        Colors.blue,
+        Colors.green,
+        Colors.yellow
+    ]
+    var images:[UIImage] = [
+        Images.box,
+        Images.triangle,
+        Images.circle,
+        Images.swirl
+    ]
+    var velocities:[Int] = [
+        100,
+        90,
+        150,
+        200
+    ]
     
     // putting the cells into sections instead of rows so that we can use cell margins to have spacing between cells
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,8 +123,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.setHabitCompletetionStatus(day: today, habitId: delegate.habits[indexPath.section].getHabitId(), status: 0)
             cell.setUncompletedHabit()
             numberOfNotFinishedHabits += 1
-            
             // remove the effect maybe
+            
             
         } else {
             //change the habit to completed in the habit array
@@ -98,7 +135,25 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             numberOfNotFinishedHabits -= 1
             if numberOfNotFinishedHabits == 0
             {
-                // show animation and sound here
+                if layerIsAdded == false
+                {
+                    // show animation and sound here
+                    emitter.emitterPosition = CGPoint(x: self.view.frame.size.width / 2, y: -10)
+                    emitter.emitterShape = CAEmitterLayerEmitterShape.line
+                    emitter.emitterSize = CGSize(width: self.view.frame.size.width, height: 2.0)
+                    emitter.emitterCells = generateEmitterCells()
+                    
+                    self.view.layer.addSublayer(emitter)
+                    print("added emitter layer")
+                    layerIsAdded = true
+                }
+                print("num is \(String(numberOfNotFinishedHabits))")
+                
+                self.startParticles(emitterLayer: self.emitter)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                    
+                    self.endParticles(emitterLayer: self.emitter)
+                })
                 
             }
         }
@@ -165,6 +220,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         load()
+        getNumOfNotFinishedHabits()
     }
     
     func load() {
@@ -202,18 +258,26 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
 
     func getNumOfNotFinishedHabits()
     {
+        print(delegate.habits.count)
         for habit in delegate.habits
         {
             if habit.getCompletion() == false
             {
                 numberOfNotFinishedHabits += 1
+                print("num is \(String(describing: numberOfNotFinishedHabits))")
             }
         }
     }
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getNumOfNotFinishedHabits()
+        print(delegate.habits.count)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.emitter.removeFromSuperlayer()
+        self.layerIsAdded = false
     }
     
     @IBAction func unWindToMyHabitVC(sender: UIStoryboardSegue) {}
@@ -244,5 +308,60 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             present(alertController, animated: true)
         }
     }
-
+    
+    // Phoenix: emitter animation
+    private func generateEmitterCells() -> [CAEmitterCell] {
+        var cells:[CAEmitterCell] = [CAEmitterCell]()
+        for index in 0..<16 {
+            let cell = CAEmitterCell()
+            
+            cell.birthRate = 4.0
+            cell.lifetime = 14.0
+            cell.lifetimeRange = 0
+            cell.velocity = CGFloat(getRandomVelocity())
+            cell.velocityRange = 0
+            cell.emissionLongitude = CGFloat(Double.pi)
+            cell.emissionRange = 0.5
+            cell.spin = 3.5
+            cell.spinRange = 0
+            cell.color = getNextColor(i: index)
+            cell.contents = getNextImage(i: index)
+            cell.scaleRange = 0.25
+            cell.scale = 0.1
+            
+            cells.append(cell)
+        }
+        return cells
+    }
+    
+    private func getRandomVelocity() -> Int {
+        return velocities[getRandomNumber()]
+    }
+    
+    private func getRandomNumber() -> Int {
+        return Int(arc4random_uniform(4))
+    }
+    
+    private func getNextColor(i:Int) -> CGColor {
+        if i <= 4 {
+            return colors[0].cgColor
+        } else if i <= 8 {
+            return colors[1].cgColor
+        } else if i <= 12 {
+            return colors[2].cgColor
+        } else {
+            return colors[3].cgColor
+        }
+    }
+    
+    private func getNextImage(i:Int) -> CGImage {
+        return images[i % 4].cgImage!
+    }
+    
+    func endParticles(emitterLayer:CAEmitterLayer) {
+        emitterLayer.lifetime = 0.0
+    }
+    func startParticles(emitterLayer:CAEmitterLayer) {
+        emitterLayer.lifetime = 14.0
+    }
 }

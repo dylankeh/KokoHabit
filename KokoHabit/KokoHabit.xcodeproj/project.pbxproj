@@ -69,6 +69,10 @@
 		D03F9A2022413B2F006FB156 /* AddNewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */; };
 		D03F9A2222413B47006FB156 /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A2122413B47006FB156 /* EditHabitViewController.swift */; };
 		D080B22B223ECB4700852BF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080B22A223ECB4700852BF6 /* User.swift */; };
+		D0ACCED022629AC4002B9B8D /* Circle.imageset in Resources */ = {isa = PBXBuildFile; fileRef = D0ACCECB22629AC4002B9B8D /* Circle.imageset */; };
+		D0ACCED122629AC4002B9B8D /* Box.imageset in Resources */ = {isa = PBXBuildFile; fileRef = D0ACCECD22629AC4002B9B8D /* Box.imageset */; };
+		D0ACCED222629AC4002B9B8D /* Triangle.imageset in Resources */ = {isa = PBXBuildFile; fileRef = D0ACCECE22629AC4002B9B8D /* Triangle.imageset */; };
+		D0ACCED322629AC4002B9B8D /* Spiral.imageset in Resources */ = {isa = PBXBuildFile; fileRef = D0ACCECF22629AC4002B9B8D /* Spiral.imageset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +178,10 @@
 		D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitViewController.swift; sourceTree = "<group>"; };
 		D03F9A2122413B47006FB156 /* EditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		D080B22A223ECB4700852BF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D0ACCECB22629AC4002B9B8D /* Circle.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Circle.imageset; sourceTree = "<group>"; };
+		D0ACCECD22629AC4002B9B8D /* Box.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Box.imageset; sourceTree = "<group>"; };
+		D0ACCECE22629AC4002B9B8D /* Triangle.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Triangle.imageset; sourceTree = "<group>"; };
+		D0ACCECF22629AC4002B9B8D /* Spiral.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Spiral.imageset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +337,10 @@
 				6313E81D2246F77200048E4F /* chart.png */,
 				6313E81E2246F77300048E4F /* statistics.png */,
 				63BA0D60222D771C00ADF50B /* Assets.xcassets */,
+				D0ACCECD22629AC4002B9B8D /* Box.imageset */,
+				D0ACCECB22629AC4002B9B8D /* Circle.imageset */,
+				D0ACCECF22629AC4002B9B8D /* Spiral.imageset */,
+				D0ACCECE22629AC4002B9B8D /* Triangle.imageset */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -426,15 +438,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6313E8212246F77300048E4F /* calendar.png in Resources */,
+				D0ACCED122629AC4002B9B8D /* Box.imageset in Resources */,
 				6313E8222246F77300048E4F /* chart.png in Resources */,
 				6388C4B72253CFCD0007CD62 /* kokohabits logo alternate.png in Resources */,
 				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
 				6388C4DE2254504B0007CD62 /* coupon_row.png in Resources */,
+				D0ACCED222629AC4002B9B8D /* Triangle.imageset in Resources */,
 				6316229C2250491800385F4E /* KokoHabitDB.db in Resources */,
 				63BA0D5F222D771A00ADF50B /* Main.storyboard in Resources */,
+				D0ACCED322629AC4002B9B8D /* Spiral.imageset in Resources */,
 				6313E8372246FFE800048E4F /* user.png in Resources */,
+				D0ACCED022629AC4002B9B8D /* Circle.imageset in Resources */,
 				6388C50122548BB50007CD62 /* Info-tvOS.plist in Resources */,
 				6388C4E0225450630007CD62 /* coupon_row_used.png in Resources */,
 				63E4E48A2256FDFD00E8AECC /* lock.png in Resources */,

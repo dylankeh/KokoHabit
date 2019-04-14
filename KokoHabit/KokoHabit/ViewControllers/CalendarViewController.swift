@@ -4,6 +4,8 @@
 //
 //  This view controller shows a month calendar with the days colored in where they met their minimum point requirement
 //  Users are able to swipe back and forth to see other months
+//  Special thanks to patchthecode for his JTAppleCalender library which was used in this viewcontroller
+//  The github project can be found here https://github.com/patchthecode/JTAppleCalendar
 //
 //  Created by Khoa Tran on 2019-04-03.
 //  Copyright © 2019 koko. All rights reserved.

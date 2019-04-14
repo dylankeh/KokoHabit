@@ -121,6 +121,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
         self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         cell.dateLabel.text = cellState.text
+        formatter.dateFormat = "yyyy-MM-dd"
+        if formatter.string(from: date) == formatter.string(from: dao.getLatestWeek()){
+            cell.viewWithTag(1000)?.isHidden = false
+        }
         
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)

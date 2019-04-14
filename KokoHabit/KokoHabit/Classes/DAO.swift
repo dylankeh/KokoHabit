@@ -379,6 +379,37 @@ class DAO: NSObject {
     }
     
     // Created by Khoa Tran
+    public func getLatestWeek() -> Date {
+        var weekStartDate: Date = Date.init()
+        
+        if validator() {
+            print("Successfully opened connection to database at \(String(describing: self.databasePath))")
+            
+            var queryStatement: OpaquePointer? = nil
+            let queryStatementString: String = "SELECT weekStartDate FROM day ORDER BY date DESC LIMIT 1;;"
+            
+            if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK{
+                
+                while sqlite3_step(queryStatement) == SQLITE_ROW {
+                    
+                    let cweekStartDate = sqlite3_column_text(queryStatement, 0)
+                    weekStartDate = dateFormatter.date(from: String(cString: cweekStartDate!))!
+                    
+                }
+                print("finished selecting")
+                sqlite3_finalize(queryStatement)
+            } else {
+                print("Select statement could not be prepared")
+            }
+            sqlite3_close(db)
+        } else {
+            print("Unable to open database")
+        }
+        
+        return weekStartDate
+    }
+    
+    // Created by Khoa Tran
     public func insertWeek(day: Date) {
         let insertWeekStmt = "INSERT INTO week VALUES (?, DATE(?, \"+6 day\"), FALSE, 60);"
         

@@ -60,6 +60,7 @@
 		63E4E4822256C2D400E8AECC /* UITextFieldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4E4812256C2D400E8AECC /* UITextFieldIcon.swift */; };
 		63E4E4892256FDFD00E8AECC /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4E4872256FDFC00E8AECC /* user-icon.png */; };
 		63E4E48A2256FDFD00E8AECC /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4E4882256FDFC00E8AECC /* lock.png */; };
+		CB0BD7A6226416C2006F68DC /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0BD7A5226416C2006F68DC /* ChangePasswordViewController.swift */; };
 		CB186DFF225417BD0030A51B /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186DFE225417BD0030A51B /* CouponCell.swift */; };
 		CB186E01225419B90030A51B /* CouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186E00225419B90030A51B /* CouponController.swift */; };
 		CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0957223EDADD00BF2B6C /* Habit.swift */; };
@@ -169,6 +170,7 @@
 		63E4E4812256C2D400E8AECC /* UITextFieldIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldIcon.swift; sourceTree = "<group>"; };
 		63E4E4872256FDFC00E8AECC /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
 		63E4E4882256FDFC00E8AECC /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		CB0BD7A5226416C2006F68DC /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		CB186DFE225417BD0030A51B /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		CB186E00225419B90030A51B /* CouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponController.swift; sourceTree = "<group>"; };
 		CB2E0957223EDADD00BF2B6C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				0F7C21D92255A6BF0023A0BB /* BarChartViewController.swift */,
 				0F3B2D0F225694DD006119C4 /* PieChartViewController.swift */,
 				63B055CE2260579C000062FD /* AccountViewController.swift */,
+				CB0BD7A5226416C2006F68DC /* ChangePasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				6388C4FC22548BB50007CD62 /* JTCalendarProtocols.swift in Sources */,
 				6388C4F822548BB50007CD62 /* JTAppleCalendarLayoutProtocol.swift in Sources */,
 				6388C4B92253D2250007CD62 /* Coupon.swift in Sources */,
+				CB0BD7A6226416C2006F68DC /* ChangePasswordViewController.swift in Sources */,
 				6388C50A22548CC20007CD62 /* CalendarViewController.swift in Sources */,
 				6388C4F522548BB50007CD62 /* JTAppleCalendarView.swift in Sources */,
 				D03F9A2022413B2F006FB156 /* AddNewHabitViewController.swift in Sources */,

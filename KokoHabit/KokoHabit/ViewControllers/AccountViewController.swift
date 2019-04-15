@@ -20,8 +20,6 @@ class AccountViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var lblTotalHabits: UILabel!
     @IBOutlet weak var lblTotalPoints: UILabel!
     
-    @IBOutlet weak var tfNewPassword: UITextFieldIcon!
-    
     @IBOutlet weak var btnChangePassword: UIButton! {
         didSet {
             btnChangePassword.layer.cornerRadius = 22.5
@@ -55,11 +53,6 @@ class AccountViewController: UIViewController, WKNavigationDelegate {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func changePassword(_ sender: Any) {
-        let newPassword = tfNewPassword.text!
-        
-    }
-    
     @IBAction func logout() {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
@@ -80,15 +73,5 @@ class AccountViewController: UIViewController, WKNavigationDelegate {
         activity.stopAnimating()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    @IBAction func unWindToAccountVC(sender: UIStoryboardSegue) {}
 }

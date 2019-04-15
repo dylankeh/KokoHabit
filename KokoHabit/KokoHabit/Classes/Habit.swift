@@ -2,6 +2,12 @@
 //  Habit.swift
 //  KokoHabit
 //
+//  This is Habit class that use to create each habit
+//  habitId is integer type that the id for each habit
+//  habitName is String type that briefly description for each habit
+//  habitValue is integer type that the point value for each habit
+//  completion is the Bool type that repersent this habit completed or not
+//
 //  Created by Xiaoyu Liang on 2019/3/17.
 //  Copyright © 2019 koko. All rights reserved.
 //

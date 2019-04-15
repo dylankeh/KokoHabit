@@ -906,4 +906,39 @@ class DAO: NSObject {
         
         return totalCompleted
     }
+    
+    // created by Khoa Tran
+    // Last motified: Xiaoyu Liang
+    // get the total cumulative habits completed for the current user
+    public func updatePassword(password: String) -> Bool{
+        let updatePasswordQuery = "UPDATE user SET password = ? WHERE email = ?"
+        var isSuccessful: Bool = false
+        
+        if validator(){
+            var sqlQuery: OpaquePointer? = nil
+            if sqlite3_prepare_v2(db, updatePasswordQuery, -1 , &sqlQuery, nil) == SQLITE_OK{
+                
+                let emailStr = delegate.user.getEmail() as NSString
+                sqlite3_bind_text(sqlQuery, 2, emailStr.utf8String, -1, nil)
+                let passwordStr = password as NSString
+                sqlite3_bind_text(sqlQuery, 1, passwordStr.utf8String, -1, nil)
+                
+                if sqlite3_step(sqlQuery) == SQLITE_DONE {
+                    print("Successful updated password")
+                    isSuccessful = true
+                }
+                else {
+                    let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                    print("UPDATE statement could not be prepared. \(errorMessage)")
+                }
+            }
+            else {
+                let errorMessage = String.init(cString: sqlite3_errmsg(db))
+                print("UPDATE statement could not be prepared. \(errorMessage)")
+            }
+            sqlite3_finalize(sqlQuery)
+        }
+        sqlite3_close(db)
+        return isSuccessful
+    }
 }

@@ -26,14 +26,6 @@ class User: NSObject {
         self.occupation = occupation
     }
     
-    // what is createUser class for??
-    func createUser()
-    {
-        
-    }
-    
-    
-    
     func getId() -> Int
     {
         return id

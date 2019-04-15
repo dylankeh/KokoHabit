@@ -66,6 +66,8 @@
 		CB2E0958223EDADD00BF2B6C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0957223EDADD00BF2B6C /* Habit.swift */; };
 		CB2E095A223EE72400BF2B6C /* MyHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */; };
 		CB4CC820224D799900D5FF94 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CC81F224D799900D5FF94 /* HabitCell.swift */; };
+		D01E9FBC2264D642006E89BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01E9FBA2264D642006E89BA /* AVFoundation.framework */; };
+		D01E9FBF2264D696006E89BA /* Cheering.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D01E9FBE2264D696006E89BA /* Cheering.mp3 */; };
 		D03F9A1E22411B93006FB156 /* PointSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A1D22411B93006FB156 /* PointSystem.swift */; };
 		D03F9A2022413B2F006FB156 /* AddNewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */; };
 		D03F9A2222413B47006FB156 /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F9A2122413B47006FB156 /* EditHabitViewController.swift */; };
@@ -176,6 +178,8 @@
 		CB2E0957223EDADD00BF2B6C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		CB2E0959223EE72400BF2B6C /* MyHabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsViewController.swift; sourceTree = "<group>"; };
 		CB4CC81F224D799900D5FF94 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
+		D01E9FBA2264D642006E89BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D01E9FBE2264D696006E89BA /* Cheering.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cheering.mp3; sourceTree = "<group>"; };
 		D03F9A1D22411B93006FB156 /* PointSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointSystem.swift; sourceTree = "<group>"; };
 		D03F9A1F22413B2F006FB156 /* AddNewHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitViewController.swift; sourceTree = "<group>"; };
 		D03F9A2122413B47006FB156 /* EditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01E9FBC2264D642006E89BA /* AVFoundation.framework in Frameworks */,
 				0F3132462237316600B9B83A /* WebKit.framework in Frameworks */,
 				63E1A3B822567CC4000A296E /* Charts.framework in Frameworks */,
 				0F3132442237315E00B9B83A /* libsqlite3.tbd in Frameworks */,
@@ -204,6 +209,7 @@
 		0F3132402237315600B9B83A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D01E9FBA2264D642006E89BA /* AVFoundation.framework */,
 				0F3132452237316600B9B83A /* WebKit.framework */,
 				0F3132432237315E00B9B83A /* libsqlite3.tbd */,
 				0F3132412237315700B9B83A /* libsqlite3.0.tbd */,
@@ -265,6 +271,7 @@
 		63BA0D58222D771A00ADF50B /* KokoHabit */ = {
 			isa = PBXGroup;
 			children = (
+				D01E9FBD2264D671006E89BA /* Sound */,
 				63E1A3AF22567CA4000A296E /* Charts.xcodeproj */,
 				6388C4E122548BB40007CD62 /* JTAppleCalendar */,
 				0FC6DCD4223EEB53008AF1D6 /* Database */,
@@ -357,6 +364,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		D01E9FBD2264D671006E89BA /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				D01E9FBE2264D696006E89BA /* Cheering.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -447,6 +462,7 @@
 				6313E83B2247021A00048E4F /* coupon.png in Resources */,
 				63BA0D64222D771C00ADF50B /* LaunchScreen.storyboard in Resources */,
 				63BA0D61222D771C00ADF50B /* Assets.xcassets in Resources */,
+				D01E9FBF2264D696006E89BA /* Cheering.mp3 in Resources */,
 				6388C4DE2254504B0007CD62 /* coupon_row.png in Resources */,
 				D0ACCED222629AC4002B9B8D /* Triangle.imageset in Resources */,
 				6316229C2250491800385F4E /* KokoHabitDB.db in Resources */,

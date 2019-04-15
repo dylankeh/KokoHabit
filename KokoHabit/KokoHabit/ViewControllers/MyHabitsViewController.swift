@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum Colors {
     static let red = UIColor(red: 1.0, green: 0.0, blue: 77.0/255.0, alpha: 1.0)
@@ -22,7 +23,7 @@ enum Images {
     static let swirl = UIImage(named: "Spiral.imageset/Spiral")!
 }
 
-class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView! 
     // Phoenix: get selected habit name&point,pass to Edit page,diplay in the placeholder
@@ -31,6 +32,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedHabitId : Int!
     
     var isSameDay : Bool!
+    var soundPlayer : AVAudioPlayer?
     
     var numberOfNotFinishedHabits : Int! = 0
     var isTheFirstDayInAWeek : Bool! = true
@@ -162,6 +164,15 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 print("num is \(String(numberOfNotFinishedHabits))")
                 
                 self.startParticles(emitterLayer: self.emitter)
+                // sound here
+                let soundURL = Bundle.main.path(forResource: "Cheering", ofType: "mp3")
+                let url = URL(fileURLWithPath: soundURL!)
+                soundPlayer = try! AVAudioPlayer.init(contentsOf: url)
+                soundPlayer?.currentTime = 0
+                soundPlayer?.volume = 20
+                soundPlayer?.numberOfLoops = 0
+                soundPlayer?.play()
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
                     
                     self.endParticles(emitterLayer: self.emitter)
@@ -256,7 +267,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 pointSystem.randomPoints(habits: dao.getHabits(day: today))
                 isTheFirstDayInAWeek = false
                 lblock.text = "🔒"
-                navigationItem.rightBarButtonItems?.first?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
             }
             // if today is in the database, means it's the same day, second time open
             else
@@ -270,7 +281,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     isTheFirstDayInAWeek = false
                     lblock.text = "🔒"
-                    navigationItem.rightBarButtonItems?.first?.isEnabled = false
+                    self.navigationItem.rightBarButtonItem?.isEnabled = false
                 }
             }
             
@@ -286,7 +297,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.insertDay(day: today)
             isTheFirstDayInAWeek = true;
             lblock.text = "🔑"
-            navigationItem.rightBarButtonItems?.first?.isEnabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)

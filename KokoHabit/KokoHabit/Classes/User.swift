@@ -56,6 +56,10 @@ class User: NSObject {
         return occupation ?? ""
     }
     
+    func setPassword(password: String) {
+        self.password = password
+    }
+    
     func setOccupation(occu: String)
     {
         occupation = occu;

@@ -5,6 +5,10 @@
 //  Created by Dennis Suarez on 2019-04-03.
 //  Copyright © 2019 koko. All rights reserved.
 //
+// This view pie chart controller will display the weekly progress
+// for each habit. But it also colors the weeks of a month
+// with the same colour.
+//
 
 import UIKit
 import Charts
@@ -20,6 +24,8 @@ class BarChartViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // This method gets the values from the database
+    // loaded everytime the user enters in the monthly progress chart
     override func viewWillAppear(_ animated: Bool) {
         
         let dao = DAO()
@@ -33,11 +39,14 @@ class BarChartViewController: UIViewController {
         setChart(dataPoints: weeks, values: points)
     }
     
+    // This method sets the right components for the chart,
+    // it also sets the correct data.
     func setChart(dataPoints: [String], values: [Double]) {
         barChartView.noDataText = "No progress data available yet."
         
         var dataEntries: [BarChartDataEntry] = []
         
+        //Loop all of the value entries into the chart
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
@@ -68,6 +77,7 @@ class BarChartViewController: UIViewController {
         }
         
         //Animations and making it look pretty
+        barChartView.legend.enabled = false
         barChartView.xAxis.labelPosition = .bottom
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:weeks)

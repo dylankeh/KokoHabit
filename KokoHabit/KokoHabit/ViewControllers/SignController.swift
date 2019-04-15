@@ -5,6 +5,7 @@
 //  Created by Dennis Suarez on 2019-03-17.
 //  Copyright © 2019 koko. All rights reserved.
 //
+// This controller takes care of creating a new user.
 
 import UIKit
 
@@ -14,6 +15,8 @@ class SignController: UIViewController, UITextFieldDelegate {
     @IBOutlet var email: UITextField!
     @IBOutlet var password: UITextField!
     @IBOutlet var confirmPassword: UITextField!
+    
+    //At runtime set this button to look as the following
     @IBOutlet weak var signupBtn: UIButton! {
         didSet {
             signupBtn.layer.cornerRadius = 22.5
@@ -30,10 +33,12 @@ class SignController: UIViewController, UITextFieldDelegate {
                 // Do any additional setup after loading the view.
     }
     
+    //This method will allow a textField to return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
     
+    //This functionality checks that the user enters proper data in the create account
     @IBAction func createAccount(sender:UIButton) {
         let dao = DAO()
         let occupetion:NSString = "Unknown"
@@ -80,6 +85,8 @@ class SignController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// This class extends the String class to add
+// the functionality to match a regex and a string.
 extension String {
     func matches(_ regex: String) -> Bool {
         return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil

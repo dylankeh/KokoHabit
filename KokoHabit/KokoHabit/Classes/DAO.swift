@@ -909,7 +909,7 @@ class DAO: NSObject {
     
     // created by Khoa Tran
     // Last motified: Xiaoyu Liang
-    // get the total cumulative habits completed for the current user
+    // Change user's password
     public func updatePassword(password: String) -> Bool{
         let updatePasswordQuery = "UPDATE user SET password = ? WHERE email = ?"
         var isSuccessful: Bool = false

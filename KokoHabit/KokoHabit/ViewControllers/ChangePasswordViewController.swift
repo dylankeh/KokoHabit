@@ -8,11 +8,13 @@
 
 import UIKit
 
+//  The ViewController that user can change their password
 class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     
     let mainDelegate = UIApplication.shared.delegate as! AppDelegate
     let dao = DAO()
     
+    // Hidden the password
     @IBOutlet weak var tfNewPassword: UITextField! {
         didSet {
             tfNewPassword.isSecureTextEntry = true
@@ -20,6 +22,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     }
     @IBOutlet weak var lblMessage: UILabel!
     
+    //handler the right nav bar button
     @IBAction func changePassword(_ sender: Any) {
         var newPassword: String = tfNewPassword.text!
         newPassword = newPassword.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -27,6 +30,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         var message: String = ""
         var messageColor: UIColor
         
+        //depend on the sitiation and change the response message and color
         if (newPassword.count == 0) {
             message = "Please insert correct format of password!"
             messageColor = #colorLiteral(red: 1, green: 0.1568627506, blue: 0.07450980693, alpha: 1)

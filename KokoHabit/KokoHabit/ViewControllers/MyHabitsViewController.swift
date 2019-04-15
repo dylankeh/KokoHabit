@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+// Enumtable value for colors and images
 enum Colors {
     static let red = UIColor(red: 1.0, green: 0.0, blue: 77.0/255.0, alpha: 1.0)
     static let blue = UIColor.blue
@@ -23,8 +24,8 @@ enum Images {
     static let swirl = UIImage(named: "Spiral.imageset/Spiral")!
 }
 
+//  The ViewController that contains a table view to show all the habit
 class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
-    
     @IBOutlet weak var tableView: UITableView! 
     // Phoenix: get selected habit name&point,pass to Edit page,diplay in the placeholder
     var selectedHabitName : String!
@@ -69,6 +70,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return delegate.habits.count
     }
+    
+    // Table cell action and format
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
@@ -99,6 +102,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         return false
     }
     
+    //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCell
         

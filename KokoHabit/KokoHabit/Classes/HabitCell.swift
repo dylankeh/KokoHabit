@@ -1,6 +1,7 @@
 //
 //  HabitCell.swift
 //  KokoHabit
+//  This is a customized table cell for display each habit
 //
 //  Created by Xiaoyu Liang on 2019/3/28.
 //  Copyright © 2019 koko. All rights reserved.
@@ -9,13 +10,9 @@
 import UIKit
 
 class HabitCell: UITableViewCell {
-    
-    
-
     @IBOutlet weak var lblHabitName: UILabel!
     @IBOutlet weak var lblHabitPoint: UILabel!
     @IBOutlet weak var percentageView: UIView!
-    
     
     func setHabit(habit: Habit) {
         print(habit)
@@ -66,8 +63,7 @@ class HabitCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-            }
-
+    }
 }
 
 // this UIColor extension allows us to use hex values for the color

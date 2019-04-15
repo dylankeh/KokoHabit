@@ -9,8 +9,8 @@
 import UIKit
 import WebKit
 
+//  The ViewController that show user about their accont infomation and quote
 class AccountViewController: UIViewController, WKNavigationDelegate {
-    
     let mainDelegate = UIApplication.shared.delegate as! AppDelegate
     let dao = DAO()
     
@@ -61,13 +61,13 @@ class AccountViewController: UIViewController, WKNavigationDelegate {
         self.performSegue(withIdentifier: "logout", sender : nil)
     }
     
+    //Before the webView show up
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
         activity.isHidden = false
         activity.startAnimating()
-        
     }
     
+    //After the webView show up
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activity.isHidden = true
         activity.stopAnimating()

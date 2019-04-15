@@ -189,7 +189,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.delegate.habits.remove(at: indexPath.section)
                 let indexSet = IndexSet(arrayLiteral: indexPath.section)
                 self.tableView.deleteSections(indexSet, with: .none)
-                self.checkIfTotalPointIs100()
+                
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -256,6 +256,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 pointSystem.randomPoints(habits: dao.getHabits(day: today))
                 isTheFirstDayInAWeek = false
                 lblock.text = "🔒"
+                navigationItem.rightBarButtonItems?.first?.isEnabled = false
             }
             // if today is in the database, means it's the same day, second time open
             else
@@ -269,6 +270,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     isTheFirstDayInAWeek = false
                     lblock.text = "🔒"
+                    navigationItem.rightBarButtonItems?.first?.isEnabled = false
                 }
             }
             
@@ -284,6 +286,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.insertDay(day: today)
             isTheFirstDayInAWeek = true;
             lblock.text = "🔑"
+            navigationItem.rightBarButtonItems?.first?.isEnabled = true
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)
@@ -320,7 +323,11 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         lbTotalPoint.text = String(100 - delegate.habitTotalPointLimit)
-        checkIfTotalPointIs100()
+        if delegate.hasAlertedForNotEnoughPointAllocated == false
+        {
+            checkIfTotalPointIs100()
+            delegate.hasAlertedForNotEnoughPointAllocated = true
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

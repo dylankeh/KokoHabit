@@ -42,7 +42,7 @@ class EditHabitViewController: UIViewController {
                                       pointValue: Int32(tfNewPoint.text!)!,
                                       name: tfNewName.text! as NSString))
                 let alertTitle : String = "Success!";
-                let alertMessage : String = "You updated the habit point and point successfully.";
+                let alertMessage : String = "You updated the habit name and point successfully.";
                 popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
             }
         }

@@ -1,7 +1,12 @@
 //
-//Name: Dennis Suarez
-//Date: March 11, 2019
+//  DAO.swift
+//  KokoHabit
 //
+//  Created by Dennis Suarez on 2019-03-11.
+//  Copyright © 2019 koko. All rights reserved.
+//
+// This class allows to cover a few CRUD operations to insert, select, update and delete information
+// from the database
 
 import UIKit
 import SQLite3
@@ -20,9 +25,10 @@ class DAO: NSObject {
         super.init()
         databasePath = databaseCheck.getDataBasePath(databaseName: "KokoHabitDB.db")
         dateFormatter.dateFormat = "YYYY-MM-dd"
-        print(databasePath)
     }
     
+    // created by Dennis Suarez
+    // how to add an user to the application
     public func addPerson(email:NSString, name:NSString, age:Int32, password:NSString, occupation:NSString) {
         let addPerson = "INSERT INTO user (email, name, age, password, occupation) VALUES (?,?,?,?,?)"
         
@@ -52,10 +58,8 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    public func deletePerson(email:NSString) {
-        //Code
-    }
-    
+    // created by Dennis Suarez
+    // how to get the login information of an user
     public func viewPerson(email:NSString)->User{
         let selectPerson = "SELECT * FROM user WHERE UPPER(email) = UPPER(?)"
         let user: User = User.init()
@@ -92,10 +96,6 @@ class DAO: NSObject {
         }
         sqlite3_close(db)
         return user;
-    }
-    
-    public func updatePerson(email:String) {
-        //Code
     }
     
     // Phoenix added
@@ -789,7 +789,8 @@ class DAO: NSObject {
         
         return listDate
     }
-    
+    // created by Dennis Suarez
+    // get the points for each habit in a daily progress
     public func getHabitProgress() -> [Habit] {
         db = nil
         var habits: [Habit] = []

@@ -5,11 +5,14 @@
 //  Created by Dennis Suarez on 2019-03-17.
 //  Copyright © 2019 koko. All rights reserved.
 //
+// This method works the functionality
+// of the login page
 
 import UIKit
 
 class LoginController: UIViewController, UITextFieldDelegate{
     
+    //At runtime provide the following to the Textfield
     @IBOutlet var email:UITextFieldIcon! {
         didSet {
             email.tintColor = UIColor.lightGray
@@ -18,6 +21,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    //At runtime provide the following to the Textfield
     @IBOutlet var password:UITextFieldIcon! {
         didSet {
             password.tintColor = UIColor.lightGray
@@ -28,6 +32,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    //At runtime provide the following to the Textfield
     @IBOutlet weak var loginBtn: UIButton! {
         didSet {
             loginBtn.layer.cornerRadius = 22.5
@@ -44,10 +49,12 @@ class LoginController: UIViewController, UITextFieldDelegate{
         
     }
     
+    //The text field returns
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
     
+    //This method implements the logining
     @IBAction func login(sender:UIButton) {
         let dao = DAO()
         if (email.text! != "" && password.text! != "") {
@@ -56,7 +63,6 @@ class LoginController: UIViewController, UITextFieldDelegate{
             //Login to menu
             if(password!.text == user.getPassword()) {
                 
-                //Phoenix: store user info in AppDelegate for future use
                 let mainDelegate = UIApplication.shared.delegate as! AppDelegate
                 mainDelegate.user = user
                 let defaults = UserDefaults.standard
@@ -88,6 +94,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
     }
 }
 
+// This class extends the functionality of the UITextField, by using a set Icon
+// method to set an icon inside of it
 extension UITextField {
     
     func setIcon(_ image: UIImage) {

@@ -1,15 +1,13 @@
 # KokoHabit
-![](https://github.com/tranarthur/KokoHabit/blob/master/KokoHabit/KokoHabit/Images/kokohabits%20logo.png)
-![](https://github.com/tranarthur/KokoHabit/blob/master/KokoHabit/KokoHabit/Images/kokohabit_icon.png) 
-
-PROG31632 Mobile iOS Application Development Group Project
+![alt text](https://github.com/tranarthur/KokoHabit/blob/master/KokoHabit/KokoHabit/Images/kokohabits%20logo.png "app logo")
+![alt text](https://github.com/tranarthur/KokoHabit/blob/master/KokoHabit/KokoHabit/Images/kokohabit_icon.png "app icon") 
 
 KokoHabit is an iOS habit application written in swift which uses a point system to help motivate users.
 
 ![](https://github.com/tranarthur/KokoHabit/blob/master/Screenshots/habit_completion.gif)
 
 ## Contributors
-See also the list of [contributors](https://github.com/tranarthur/KokoHabit/blob/master/CONTRIBUTORS.md) who participated in this project.
+See the list of [contributors](https://github.com/tranarthur/KokoHabit/blob/master/CONTRIBUTORS.md) who participated in this project.
 
 ## Acknowledgments
 [danielgindi/Charts](https://github.com/danielgindi/Charts)
@@ -20,3 +18,5 @@ See also the list of [contributors](https://github.com/tranarthur/KokoHabit/blob
 
 [dylankeh](https://github.com/dylankeh)
 - The idea for the entire app
+
+Special thanks to my sister for designing the app icon!

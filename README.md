@@ -17,6 +17,6 @@ See the list of [contributors](https://github.com/tranarthur/KokoHabit/blob/mast
 - Use to create the month view calendar for the calendar page
 
 [dylankeh](https://github.com/dylankeh)
-- The idea for the entire app
+- Came up with app idea
 
 Special thanks to my sister for designing the app icon!

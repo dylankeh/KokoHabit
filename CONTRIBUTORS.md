@@ -12,3 +12,9 @@
 [Qing (Phoenix) Ge](https://github.com/dylankeh)
 - Add/Edit Habit Page
 - Point System
+
+Myself
+- Database design
+- Application UI Design
+- Calendar Page
+- Coupon Page

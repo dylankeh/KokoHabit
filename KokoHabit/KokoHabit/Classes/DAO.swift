@@ -223,7 +223,7 @@ class DAO: NSObject {
     }
     
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     // get all habits for a specific day for the current user
     public func getHabits(day:Date) -> [Habit] {
         
@@ -272,7 +272,7 @@ class DAO: NSObject {
         return habitList
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     // change the completion status of a habit to either complete or incomplete
     public func setHabitCompletetionStatus(day: Date, habitId: Int, status: Int) {
         let updateHabitStmt = "UPDATE day_habit SET completed=? WHERE date=? AND habitId=?;"
@@ -305,7 +305,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func checkIfDayExists(day: Date) -> Bool {
         db = nil
         
@@ -339,7 +339,7 @@ class DAO: NSObject {
         return exists
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     public func checkIfWeekExists(day: Date) -> Bool {
         db = nil
         
@@ -379,7 +379,7 @@ class DAO: NSObject {
         return exists
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func getLatestWeek() -> Date {
         var weekStartDate: Date = Date.init()
         
@@ -410,7 +410,7 @@ class DAO: NSObject {
         return weekStartDate
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func insertWeek(day: Date) {
         let insertWeekStmt = "INSERT INTO week VALUES (?, DATE(?, \"+6 day\"), FALSE, 60);"
         
@@ -439,7 +439,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func insertDay(day: Date) {
         let insertDayStmt = "INSERT INTO day SELECT ? , MAX(weekStartDate) FROM week;"
         
@@ -467,7 +467,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // check if the current user met their weekly point goal
     public func checkIfUserPassedWeeklyPoints() -> Bool {
         db = nil
@@ -509,7 +509,7 @@ class DAO: NSObject {
         return passed
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // get the current weekly point total for the current user
     public func getUserWeeklyPointTotal() -> Int {
         db = nil
@@ -545,7 +545,7 @@ class DAO: NSObject {
         return totalPoints
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // get the specific day point total for the current user
     public func getUserDayPointTotal(day: Date) -> Int {
         db = nil
@@ -584,7 +584,7 @@ class DAO: NSObject {
         return totalPoints
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // get the days where the current user passed their daily minimum point requirement
     public func getDaysWhereUserPassedMinPoints() -> [Date] {
         db = nil
@@ -621,7 +621,7 @@ class DAO: NSObject {
         return dates
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func insertCoupon() {
         let insertCouponStmt = "INSERT INTO coupon (id, email, pointValue) VALUES (NULL, ?, ?);"
         
@@ -651,7 +651,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func useCoupon(day: Date, couponId: Int) {
         
         let useCouponStmt = "UPDATE coupon SET used=1, dateUsed=? WHERE id=?;"
@@ -684,7 +684,7 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Created by Khoa Tran
+    // Created by Arthur Tran
     public func getCoupons() {
         delegate.coupons.removeAll();
         
@@ -836,7 +836,7 @@ class DAO: NSObject {
         return habits
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // get the total cumulative points for the current user
     public func getUserTotalPoints() -> Int {
         db = nil
@@ -872,7 +872,7 @@ class DAO: NSObject {
         return totalPoints
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // get the total cumulative habits completed for the current user
     public func getUserTotalHabitsCompleted() -> Int {
         db = nil
@@ -908,7 +908,7 @@ class DAO: NSObject {
         return totalCompleted
     }
     
-    // created by Khoa Tran
+    // created by Arthur Tran
     // Last motified: Xiaoyu Liang
     // Change user's password
     public func updatePassword(password: String) -> Bool{

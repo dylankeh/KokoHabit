@@ -7,7 +7,7 @@
 //  Special thanks to patchthecode for his JTAppleCalender library which was used in this viewcontroller
 //  The github project can be found here https://github.com/patchthecode/JTAppleCalendar
 //
-//  Created by Khoa Tran on 2019-04-03.
+//  Created by Arthur Tran on 2019-04-03.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

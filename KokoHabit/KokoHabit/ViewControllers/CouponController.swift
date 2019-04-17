@@ -4,7 +4,7 @@
 //
 //  This controller shows a list of the user's unused coupons
 //
-//  Created by Khoa Tran on 2019/4/2.
+//  Created by Arthur Tran on 2019/4/2.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

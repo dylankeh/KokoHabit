@@ -5,7 +5,7 @@
 //  This cell is used to show a cell for the month calendar
 //  Which only shows the day of the month number
 //
-//  Created by Khoa Tran on 2019-04-02.
+//  Created by Arthur Tran on 2019-04-02.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

@@ -3,7 +3,7 @@
 //  This is a UITextField class with some padding for an icon image
 //  KokoHabit
 //
-//  Created by Khoa Tran on 2019-04-04.
+//  Created by Arthur Tran on 2019-04-04.
 //  Copyright © 2019 koko. All rights reserved.
 //
 

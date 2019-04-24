@@ -995,12 +995,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🔑" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEU-PR-f7A">
+                                <rect key="frame" x="324" y="64" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xlJ-05-oxS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="checkmark.png" id="beA-6d-Bbq"/>
                     <connections>
+                        <outlet property="lblock" destination="mEU-PR-f7A" id="YRe-ZP-Hdq"/>
                         <outlet property="tableView" destination="69O-4x-ZhA" id="5Si-mB-raR"/>
                         <segue destination="fRp-lT-7d0" kind="presentation" identifier="goToEditHabitPage" id="wlg-eH-th4"/>
                         <segue destination="uqs-6T-2uS" kind="presentation" identifier="addHabit" id="bSY-46-y84"/>

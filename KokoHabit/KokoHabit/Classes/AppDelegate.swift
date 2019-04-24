@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var habits: [Habit] = []
     var coupons: [Coupon] = []
+    var habitTotalPointLimit : Int! = 100
     
     func setBadgeNumber(badgeNumber : Int) {
         UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (granted, error) in

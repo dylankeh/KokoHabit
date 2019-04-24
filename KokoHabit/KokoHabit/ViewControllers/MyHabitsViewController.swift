@@ -33,6 +33,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     var isSameDay : Bool!
     
     var numberOfNotFinishedHabits : Int! = 0
+    var isTheFirstDayInAWeek : Bool! = true
+    @IBOutlet var lblock: UILabel!
     
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -84,6 +86,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if isTheFirstDayInAWeek == true
+        {
+            return true
+        }
+        return false
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -229,14 +239,33 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         // if the current week is in the database
         if (dao.checkIfWeekExists(day: today)) {
             
-            // if "today" is not in the database
+            // if "today" is not in the database, which means second day, first time open
             if (!dao.checkIfDayExists(day: today)){
                 dao.insertDay(day: today)
                 
                 let pointSystem = PointSystem()
                 // shuffle the habit points 
                 pointSystem.randomPoints(habits: dao.getHabits(day: today))
+                isTheFirstDayInAWeek = false
+                lblock.text = "🔒"
             }
+            // if today is in the database, means it's the same day, second time open
+            else
+            {
+                let weeks : [String] = dao.getAllStartWeeks()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YYYY-MM-dd"
+                
+                // when it is the second day
+                if(weeks.last != dateFormatter.string(from: today))
+                {
+                    isTheFirstDayInAWeek = false
+                    lblock.text = "🔒"
+                }
+            }
+            
+            
+            
         // its a new week
         } else {
             // if the user reached their weekly point goal give them a coupon
@@ -247,6 +276,8 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             dao.insertWeek(day: today)
             // insert new day
             dao.insertDay(day: today)
+            isTheFirstDayInAWeek = true;
+            lblock.text = "🔑"
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)
@@ -259,14 +290,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     func getNumOfNotFinishedHabits()
     {
         print(delegate.habits.count)
-        for habit in delegate.habits
-        {
-            if habit.getCompletion() == false
-            {
-                numberOfNotFinishedHabits += 1
-                print("num is \(String(describing: numberOfNotFinishedHabits))")
-            }
-        }
+        numberOfNotFinishedHabits = delegate.habits.filter {!$0.getCompletion()} .count
     }
  
     override func viewDidLoad() {

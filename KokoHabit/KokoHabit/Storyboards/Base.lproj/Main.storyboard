@@ -1002,12 +1002,27 @@
                                 <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Point:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21u-ZR-ovD">
+                                <rect key="frame" x="187" y="588" width="98" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yM-pZ-bjp">
+                                <rect key="frame" x="311" y="588" width="48" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <color key="textColor" red="0.92195385689999998" green="0.46458935740000001" blue="0.40302744509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xlJ-05-oxS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="checkmark.png" id="beA-6d-Bbq"/>
                     <connections>
+                        <outlet property="lbTotalPoint" destination="4yM-pZ-bjp" id="NJn-3l-g5n"/>
                         <outlet property="lblock" destination="mEU-PR-f7A" id="YRe-ZP-Hdq"/>
                         <outlet property="tableView" destination="69O-4x-ZhA" id="5Si-mB-raR"/>
                         <segue destination="fRp-lT-7d0" kind="presentation" identifier="goToEditHabitPage" id="wlg-eH-th4"/>
@@ -1093,8 +1108,8 @@
         <image name="user.png" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="meM-RL-zeP"/>
-        <segue reference="VHa-2a-cKV"/>
+        <segue reference="n0l-fl-0Gc"/>
+        <segue reference="N7M-eY-iVY"/>
         <segue reference="wRh-Hs-dMM"/>
     </inferredMetricsTieBreakers>
 </document>

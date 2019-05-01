@@ -35,6 +35,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     var numberOfNotFinishedHabits : Int! = 0
     var isTheFirstDayInAWeek : Bool! = true
     @IBOutlet var lblock: UILabel!
+    @IBOutlet var lbTotalPoint: UILabel!
     
     let dao = DAO()
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -104,6 +105,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         
         // setting the cell for sections instead of rows this way there will be a space (margin) between them
         cell.setHabit(habit: delegate.habits[indexPath.section])
+        delegate.habitTotalPointLimit = delegate.habitTotalPointLimit - delegate.habits[indexPath.section].getHabitValue()
         
         // setting how much of the cell should be colored
         // this shows the proportion of the habit in the cell's point value and the total for the day
@@ -180,9 +182,14 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             let yesAction = UIAlertAction(title: "Remove", style: .destructive, handler: { (alert: UIAlertAction!) in
                 
                 print(self.dao.deleteHabit(habitId: Int32(self.delegate.habits[indexPath.section].getHabitId())))
+                // add avaliable point back to the limit
+                self.delegate.habitTotalPointLimit = self.delegate.habitTotalPointLimit + self.delegate.habits[indexPath.section].getHabitValue()
+                self.lbTotalPoint.text = String(100 - self.delegate.habitTotalPointLimit)
+                //print(self.delegate.habitTotalPointLimit)
                 self.delegate.habits.remove(at: indexPath.section)
                 let indexSet = IndexSet(arrayLiteral: indexPath.section)
                 self.tableView.deleteSections(indexSet, with: .none)
+                self.checkIfTotalPointIs100()
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -229,6 +236,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        delegate.habitTotalPointLimit = 100;
         load()
         getNumOfNotFinishedHabits()
     }
@@ -264,8 +272,6 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
             
-            
-            
         // its a new week
         } else {
             // if the user reached their weekly point goal give them a coupon
@@ -292,10 +298,29 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
         print(delegate.habits.count)
         numberOfNotFinishedHabits = delegate.habits.filter {!$0.getCompletion()} .count
     }
+    
+    func checkIfTotalPointIs100()
+    {
+        if(delegate.habitTotalPointLimit > 0)
+        {
+            let alert = UIAlertController(title: "Notice!"
+                , message: "You total point should be 100. You still have \(delegate.habitTotalPointLimit!) points need to allocate."
+                , preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            present(alert, animated: true)
+        }
+    }
  
     override func viewDidLoad() {
         super.viewDidLoad()
         print(delegate.habits.count)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        lbTotalPoint.text = String(100 - delegate.habitTotalPointLimit)
+        checkIfTotalPointIs100()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

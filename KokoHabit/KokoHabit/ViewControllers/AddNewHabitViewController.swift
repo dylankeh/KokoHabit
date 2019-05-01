@@ -12,7 +12,7 @@ class AddNewHabitViewController: UIViewController {
 
     @IBOutlet var habitName: UITextField!
     @IBOutlet var habitPoint: UITextField!
-    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func createHabit(sender:UIButton) {
         
@@ -34,14 +34,32 @@ class AddNewHabitViewController: UIViewController {
             alert.addAction(noAction)
             present(alert, animated: true)
         }
+        else if delegate.habitTotalPointLimit - Int(habitPoint.text!)! < 0
+        {
+            let alert = UIAlertController(title: "Warning!"
+                , message: "Point will be over limit of 100. You only have \(delegate.habitTotalPointLimit!) avaliable points to allocate."
+                , preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            present(alert, animated: true)
+            
+        }
         else
         {
             let mainDelegate = UIApplication.shared.delegate as! AppDelegate
             let dao = DAO()
             
             print(dao.addHabit(email: mainDelegate.user.getEmail() as NSString, pointValue: Int32(habitPoint.text!)!, name: habitName.text! as NSString))
+            delegate.habitTotalPointLimit = delegate.habitTotalPointLimit - Int(habitPoint.text!)!
             
-            dismiss(animated: true, completion: nil)
+            let alert = UIAlertController(title: "Success!"
+                , message: "Added habit successfully."
+                , preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            present(alert, animated: true)
+            
+            //dismiss(animated: true, completion: nil)
         }
     }
     

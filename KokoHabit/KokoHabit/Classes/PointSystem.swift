@@ -2,9 +2,10 @@
 //  PointSystem.swift
 //  KokoHabit
 //
-//  Created by 葛青 on 3/19/19.
+//  Created by Qing Ge Phoenix on 3/19/19.
 //  Copyright © 2019 koko. All rights reserved.
 //
+//  This class is to random the point for each habit in a new day
 
 import UIKit
 
@@ -40,7 +41,6 @@ class PointSystem: NSObject {
         dao.updatePointsAfterRandom(habits: habits)
     }
     
-    // what will it return?
     func checkNotifications() ->Notification
     {
         return notification;

@@ -98,7 +98,8 @@ class DAO: NSObject {
         return user;
     }
     
-    // Phoenix added
+    // created by Qing Ge Phoenix
+    // add new habit into db
     public func addHabit(email: NSString, pointValue: Int32, name: NSString) {
         let addHabit = "INSERT INTO habit (email, pointValue, name) VALUES (?,?,?)"
         
@@ -127,7 +128,8 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Phoenix added
+    // created by Qing Ge Phoenix
+    // delete habit from db
     public func deleteHabit(habitId: Int32) {
         let updateHabitNamePoint = "DELETE FROM week_habit WHERE habitId=? AND weekStartDate = (SELECT MAX(weekStartDate) FROM week_habit);"
         if validator(){
@@ -135,9 +137,6 @@ class DAO: NSObject {
             if sqlite3_prepare_v2(db, updateHabitNamePoint, -1 , &sqlUpdate, nil) == SQLITE_OK{
                 
                 sqlite3_bind_int(sqlUpdate, 1, habitId)
-                
-                //print("point is \(pointValue), name is \(name)")
-                
                 if sqlite3_step(sqlUpdate) == SQLITE_DONE {
                     print("Successful deleted habit")
                 }
@@ -155,7 +154,8 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
-    // Phoenix added
+    // created by Qing Ge Phoenix
+    // update habit in db
     public func updateHabit(id: Int32, pointValue: Int32, name: NSString)
     {
         let updateHabitNamePoint = "UPDATE habit SET pointValue=?, name=? WHERE id=?;"
@@ -187,6 +187,8 @@ class DAO: NSObject {
         sqlite3_close(db)
     }
     
+    // created by Qing Ge Phoenix
+    // update habit point after randomizing the point for each habit
     public func updatePointsAfterRandom(habits: [Habit])
     {
         let updateRandomPoint = "UPDATE day_habit SET pointsWorth=? WHERE date=? AND habitId=?;"
@@ -216,7 +218,6 @@ class DAO: NSObject {
                 }
                 sqlite3_finalize(sqlUpdate)
             }
-            
         }
         sqlite3_close(db)
     }

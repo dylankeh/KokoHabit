@@ -2,9 +2,10 @@
 //  AddNewHabitViewController.swift
 //  KokoHabit
 //
-//  Created by 葛青 on 3/19/19.
+//  Created by Qing Ge Phoenix on 3/19/19.
 //  Copyright © 2019 koko. All rights reserved.
 //
+//  This controller contains the action of adding habits and checking point limit 
 
 import UIKit
 

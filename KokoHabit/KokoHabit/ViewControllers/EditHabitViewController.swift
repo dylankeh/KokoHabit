@@ -2,9 +2,10 @@
 //  EditHabitViewController.swift
 //  KokoHabit
 //
-//  Created by 葛青 on 3/19/19.
+//  Created by Qing Ge Phoenix on 3/19/19.
 //  Copyright © 2019 koko. All rights reserved.
 //
+//  This controller contains funtion of editing habits and checking point limit
 
 import UIKit
 
@@ -29,6 +30,12 @@ class EditHabitViewController: UIViewController {
                 let alertMessage : String = "Point should be a positive integer number.";
                 popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
             }
+            else if delegate.habitTotalPointLimit - Int(tfNewPoint.text!)! < 0
+            {
+                let alertTitle : String = "Warning!";
+                let alertMessage : String = "Point will be over limit of 100. You only have \(delegate.habitTotalPointLimit!) avaliable points to allocate.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
             else
             {
                 print(dao.updateHabit(id: Int32(habitId),
@@ -45,6 +52,12 @@ class EditHabitViewController: UIViewController {
             {
                 let alertTitle : String = "Warning!";
                 let alertMessage : String = "Point should be a positive integer number.";
+                popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
+            }
+            else if delegate.habitTotalPointLimit - Int(tfNewPoint.text!)! < 0
+            {
+                let alertTitle : String = "Warning!";
+                let alertMessage : String = "Point will be over limit of 100. You only have \(delegate.habitTotalPointLimit!) avaliable points to allocate.";
                 popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
             }
             else

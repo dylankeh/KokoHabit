@@ -2,9 +2,10 @@
 //  User.swift
 //  KokoHabit
 //
-//  Created by 葛青 on 3/17/19.
+//  Created by Qing Ge Phoenix on 3/17/19.
 //  Copyright © 2019 koko. All rights reserved.
 //
+//  This class is to store user information
 
 import UIKit
 

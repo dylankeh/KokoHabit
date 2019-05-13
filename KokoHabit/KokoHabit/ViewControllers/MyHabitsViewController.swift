@@ -267,7 +267,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 pointSystem.randomPoints(habits: dao.getHabits(day: today))
                 isTheFirstDayInAWeek = false
                 lblock.text = "🔒"
-                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                
             }
             // if today is in the database, means it's the same day, second time open
             else
@@ -281,7 +281,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     isTheFirstDayInAWeek = false
                     lblock.text = "🔒"
-                    self.navigationItem.rightBarButtonItem?.isEnabled = false
+                    
                 }
             }
             
@@ -296,8 +296,7 @@ class MyHabitsViewController: UIViewController, UITableViewDelegate, UITableView
             // insert new day
             dao.insertDay(day: today)
             isTheFirstDayInAWeek = true;
-            lblock.text = "🔑"
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            lblock.text = "🔑"            
         }
         // get all the active habits
         delegate.habits = dao.getHabits(day: today)

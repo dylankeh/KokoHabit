@@ -30,7 +30,8 @@ class EditHabitViewController: UIViewController {
                 let alertMessage : String = "Point should be a positive integer number.";
                 popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
             }
-            else if delegate.habitTotalPointLimit - Int(tfNewPoint.text!)! < 0
+            else if Int(tfNewPoint.placeholder!)! < Int(tfNewPoint.text!)!
+                && delegate.habitTotalPointLimit + Int(tfNewPoint.placeholder!)! - Int(tfNewPoint.text!)! < 0
             {
                 let alertTitle : String = "Warning!";
                 let alertMessage : String = "Point will be over limit of 100. You only have \(delegate.habitTotalPointLimit!) avaliable points to allocate.";
@@ -54,7 +55,8 @@ class EditHabitViewController: UIViewController {
                 let alertMessage : String = "Point should be a positive integer number.";
                 popUpAlert(alertTitle: alertTitle, alertMessage: alertMessage)
             }
-            else if delegate.habitTotalPointLimit - Int(tfNewPoint.text!)! < 0
+            else if Int(tfNewPoint.placeholder!)! < Int(tfNewPoint.text!)!
+                && delegate.habitTotalPointLimit + Int(tfNewPoint.placeholder!)! - Int(tfNewPoint.text!)! < 0
             {
                 let alertTitle : String = "Warning!";
                 let alertMessage : String = "Point will be over limit of 100. You only have \(delegate.habitTotalPointLimit!) avaliable points to allocate.";
